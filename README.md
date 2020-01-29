@@ -57,7 +57,6 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user, dependent: :user
-- belongs_to :category
 - belongs_to :second_category
 - belongs_to :third_category
 - has_many :images
@@ -122,11 +121,11 @@ Things you may want to cover:
 |Column|Type|Options|  
 |------|----|-------|
 |name|string|null: false, unique: true|  
-|ancestry|string|null: false|
-|item_id|integer|null: false, foreign_key: true|  
+|ancestry|string|null: false|            
 
 
 ### Association
-- has_ancentry
+- has_ancentry 
+- has_many :items
 
 
