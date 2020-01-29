@@ -30,13 +30,16 @@ Things you may want to cover:
 |nickname|string|null: false|             #ニックネーム
 |email|string|null: false,unique: true|
 |encrypted_password|string|null: false|
+
 |last_name|string|null: false|            #姓
 |first_name|string|null: false|           #名
 |last_name_kana|string|null: false|       #振り仮名(姓)
 |first_name_kana|string|null: false|      #振り仮名(名)
+
 |birth_year|string|null: false|           #西暦
 |birth_month|string|null: false|          #月
 |birth_day|string|null: false|            #日
+
 |image|text||                             #プロフィール写真
 
 ### Association
