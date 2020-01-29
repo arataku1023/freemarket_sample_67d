@@ -27,19 +27,17 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|address_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
 |nickname|string|null: false|             #ニックネーム
 |email|string|null: false,unique: true|
 |encrypted_password|string|null: false|
-|last-name|string|null: false|            #姓
-|first-name|string|null: false|           #名
-|last-ruby|string|null: false|            #振り仮名(姓)
-|first-ruby|string|null: false|           #振り仮名(名)
-|birth-year|string|null: false|           #西暦
-|birth-month|string|null: false|          #月
-|birth-day|string|null: false|            #日
-|user-image|text||                        #プロフィール画像
+|last_name|string|null: false|            #姓
+|first_name|string|null: false|           #名
+|last_ruby|string|null: false|            #振り仮名(姓)
+|first_ruby|string|null: false|           #振り仮名(名)
+|birth_year|string|null: false|           #西暦
+|birth_month|string|null: false|          #月
+|birth_day|string|null: false|            #日
+|user_image|text||                        #プロフィール画像
 
 ### Association
 - has_many :items
@@ -56,7 +54,7 @@ Things you may want to cover:
 |status|string|null: false|        #商品の状態
 |bland|string|null: false|         #ブランド名
 |region|string|null: false|        #発送元地域
-|arrival-date|string|null: false|  #発送日
+|arrival_date|string|null: false|  #発送日
 
 ### Association
 - belongs_to :user, dependent: :user
@@ -68,11 +66,11 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|last-name|string|null: false|     #姓
-|first-name|string|null: false|    #名
-|last-ruby|string|null: false|     #振り仮名(姓)
-|first-ruby|string|null: false|    #振り仮名(名)
-|post-code|string|null: false|     #郵便番号
+|last_name|string|null: false|     #姓
+|first_name|string|null: false|    #名
+|last_ruby|string|null: false|     #振り仮名(姓)
+|first_ruby|string|null: false|    #振り仮名(名)
+|post_code|string|null: false|     #郵便番号
 |prefecture|string|null: false|    #都道府県
 |town|string|null: false|          #市区町村
 |address-num|string|null: false|   #番地
@@ -96,8 +94,8 @@ Things you may want to cover:
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image-url|string|null: false| #写真url
-|item_id|integer|null: false, foreign_key: true|
+|image_url|string|null: false|    #商品用の写真URL
+|item_id|integer|null: false, foreign_key: true|   
 
 ### Association
 - belongs_to :item
