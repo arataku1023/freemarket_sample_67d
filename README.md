@@ -51,7 +51,7 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|
 |detail|text|null: false|          #商品説明
 |price|string|null: false|         #値段
-|status|integer|null: false|        #商品の状態
+|status|integer|null: false|       #商品の状態
 |region|string|null: false|        #発送元地域
 |arrival_date|string|null: false|  #発送日
 
@@ -67,7 +67,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|    #商品用の写真URL
-|item_id|integer|null: false, foreign_key: true|   
+|item_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|   
 
 ### Association
 - belongs_to :item        #商品画像
