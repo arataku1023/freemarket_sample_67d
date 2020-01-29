@@ -39,6 +39,7 @@ Things you may want to cover:
 |birth-year|string|null: false|           #西暦
 |birth-month|string|null: false|          #月
 |birth-day|string|null: false|            #日
+|user-image|text||                        #プロフィール画像
 
 ### Association
 - has_many :items
