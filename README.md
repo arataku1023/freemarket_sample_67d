@@ -42,7 +42,6 @@ Things you may want to cover:
 ### Association
 - has_many :items, dependent: :destroy
 - has_one :address, dependent: :destroy
-- has_one :image, dependent: :destroy
 
 
 ## itemsテーブル
@@ -50,6 +49,7 @@ Things you may want to cover:
 |------|----|-------|
 |category_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
+|brand_id|integer|foreign_key: true| 
 |detail|text|null: false|          #商品説明
 |price|string|null: false|         #値段
 |status|integer|null: false|       #商品の状態
