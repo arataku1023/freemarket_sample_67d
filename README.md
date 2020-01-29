@@ -37,6 +37,7 @@ Things you may want to cover:
 |birth_year|string|null: false|           #西暦
 |birth_month|string|null: false|          #月
 |birth_day|string|null: false|            #日
+|image|text||                             #プロフィール写真
 
 ### Association
 - has_many :items, dependent: :destroy
@@ -66,12 +67,10 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |image_url|string|null: false|    #商品用の写真URL
-|item_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|   
+|item_id|integer|null: false, foreign_key: true|  
 
 ### Association
-- belongs_to :item, dependent: :destroy        #商品画像
-- belongs_to :user, dependent: :destroy        #プロフィール画像
+- belongs_to :item       #商品画像
 
 
 
@@ -98,7 +97,6 @@ Things you may want to cover:
 |Column|Type|Options|  
 |------|----|-------|
 |name|string|null: false, unique: true|  
-|item_id|integer|null: false, foreign_key: true|  
 
 ### Association
 - has_many :items
