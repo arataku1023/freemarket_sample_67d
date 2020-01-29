@@ -39,9 +39,9 @@ Things you may want to cover:
 |birth_day|string|null: false|            #日
 
 ### Association
-- has_many :items
-- has_one :address
-- has_one :image
+- has_many :items, dependent: :destroy
+- has_one :address, dependent: :destroy
+- has_one :image, dependent: :destroy
 
 
 ## itemsテーブル
@@ -56,7 +56,7 @@ Things you may want to cover:
 |arrival_date|string|null: false|  #発送日
 
 ### Association
-- belongs_to :user, dependent: :destroy
+- belongs_to :user
 - belongs_to :category
 - has_many :images
 - belongs_to :brand
@@ -91,7 +91,7 @@ Things you may want to cover:
 |recipient_num|string||              #お届け先の電話番号
 
 ### Association
-- belongs_to :user, dependent: :destroy
+- belongs_to :user
 
 
 ## brandsテーブル
@@ -114,7 +114,7 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|  
 
 ### Association
-- belongs_to :user, dependent: :destroy
+- belongs_to :user
 
 
 ## categoriesテーブル
