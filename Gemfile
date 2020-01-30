@@ -80,3 +80,4 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 
 gem 'kaminari'
+gem 'fog-aws'
