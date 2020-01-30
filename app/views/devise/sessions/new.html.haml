@@ -1,0 +1,49 @@
+.login
+  .login__top
+    %img.logo1{:alt => "mercari", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3642602565"}/
+
+  .login__main-box
+    .register
+      %p.register__new アカウントをお持ちでない方はこちら
+      .register__btn 新規会員登録
+    .sns
+      .sns__facebook.box
+        = icon('fab', 'facebook-square', class: 'icon-f')
+        Facebookでログイン
+      .sns__google.box
+        = icon('fab', 'google', class: 'icon-g')
+        Googleでログイン
+    .login-form
+      .email.login-form__group 
+        %p メールアドレス
+      .password.login-form__group 
+        %p パスワード
+      .confirm 私はロボットではありません
+      .login-btn ログイン
+      .forget 
+        %p パスワードをお忘れの方
+
+  .login_bottom
+    %p.policy プライバシーポリシー　メルカリ利用規約　特定商取引に関する表記
+    %img.logo2{:alt => "mercari", :height => "65", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3642602565", :width => "80"}/
+    .inc © Mercari, Inc.
+
+
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "devise/shared/links"
+
