@@ -53,9 +53,10 @@ Things you may want to cover:
 |category_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 |brand_id|integer|foreign_key: true| 
+
 |detail|text|null: false|          #商品説明
-|price|string|null: false|         #値段
-|status|integer|null: false|       #商品の状態
+|price|integer|null: false|         #値段
+|status|integer|null: false|       #商品の状態 enum
 |region|string|null: false|        #発送元地域
 |arrival_date|string|null: false|  #発送日
 
@@ -69,7 +70,7 @@ Things you may want to cover:
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image_url|string|null: false|    #商品用の写真URL
+|image|string|null: false|    #商品用の写真URL
 |item_id|integer|null: false, foreign_key: true|  
 
 ### Association
@@ -108,8 +109,8 @@ Things you may want to cover:
 ## cardsテーブル
 |Column|Type|Options|  
 |------|----|-------|
-|card_id|string|null: false, unique: true|  
-|security_id|string|null: false| 
+|card_num|string|null: false, unique: true|  
+|security_code|string|null: false| 
 |expire_month|integer|null: false| 
 |expire_year|integer|null: false| 
 |user_id|integer|null: false, foreign_key: true|  
