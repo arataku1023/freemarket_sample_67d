@@ -2,7 +2,7 @@ class SignupController < ApplicationController
   # def index
   # end
 
-  def step1
+  def index
     @user = User.new
   end
 
