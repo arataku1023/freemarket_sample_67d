@@ -4,7 +4,7 @@
     %header__main
       %h1
         = link_to root_path do
-          %img{alt: "mercari", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3642602565"}/
+          %img_tag{alt: "mercari", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo.svg?3642602565"}/
       .light-bar
         %ol
           .information
@@ -263,20 +263,20 @@
             .form-group
               %p.l-single-text.text-center
                 「登録」のボタンを押すことにより、
-                %a{link_to "/jp/tos_list/", target: "_blank"}> 利用規約
+                = link_to 利用規約,"/jp/tos_list/", target: "_blank"
                 に同意したものとみなします
               = f.submit '登録', class: "btn-default btn-red"
             .form-group.text-right
               %p
-                %a{link_to "/jp/help_center/article/423/“, target: “_blank"}
-                  本人情報の登録について
+                = link_to 本人情報の登録について,"/jp/help_center/article/423/“, target: “_blank"
+                  
                   %i.icon-arrow-right
             .form-group.recaptcha_term
               %p
                 This site is protected by reCAPTCHA and the Google
-                %a{link_to "https://policies.google.com/privacy", target: "_blank"} Privacy Policy
+                = link_to Privacy Policy, "https://policies.google.com/privacy", target: "_blank"
                 and
-                %a{link_to "https://policies.google.com/terms", target: "_blank"} Terms of Service
+                = link_to Terms of Service, "https://policies.google.com/terms", target: "_blank"
                 apply.
         %footer
           %nav
@@ -287,7 +287,7 @@
               -#   %a{:href => "https://www.mercari.com/jp/tos/”} メルカリ利用規約
               -# %li
               -#   %a{:href => "https://www.mercari.com/jp/tokutei/"} 特定商取引に関する表記
-          %a.single-footer-logo{link_to "https://www.mercari.com/jp/"}
-            %img{alt: "mercari", height: "65", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3642602565", width: "80"}/
+          = link_to "https://www.mercari.com/jp/",class: "single-footer-logo"
+            %img_tag{alt: "mercari", height: "65", src: "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?3642602565", width: "80"}/
           %p
             %small © Mercari, Inc.
