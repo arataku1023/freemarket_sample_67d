@@ -1,2 +1,27 @@
-- @parents.each do |parent|
-  =parent.name
+=render 'modules/header'
+
+.categories-box
+  .whole
+    .ichiran カテゴリー一覧
+    .main
+      - @parents.each do |parent|
+        .cat-li
+          =parent.name
+    - @parents.each do |parent|
+      .sub-cat
+        .cat-li
+          =parent.name   
+        .child-box          
+          .child-all すべて    
+          - parent.children.each do |child|
+            .cat-child.others 
+              = child.name
+            .grand-children-box
+              .cat-grand.all すべて
+              - child.children.each do |grand|
+                .cat-grand
+                  = grand.name
+          
+= render 'modules/banner'
+
+= render 'modules/footer'
