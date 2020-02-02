@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'signup#index'
-  resources :signup do
+
+
+end
+
+
+  
     # collection do
     #   get 'step1'
       # get 'sms_authentication'
@@ -11,9 +14,7 @@ Rails.application.routes.draw do
       # get 'address'
       # get 'done'
     # end
-  end
 
-end
 
 
 # resources :signup do
