@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_075510) do
+ActiveRecord::Schema.define(version: 2020_02_03_014101) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_075510) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
+    t.text "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,17 +65,17 @@ ActiveRecord::Schema.define(version: 2020_02_02_075510) do
     t.integer "status", limit: 1, null: false
     t.string "region", null: false
     t.string "arrival_date", null: false
+    t.string "mial", null: false
+    t.string "mail_way", null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "mail"
-    t.string "mail_way"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["name"], name: "index_items_on_name"
+    t.index ["mail_way"], name: "index_items_on_mail_way"
+    t.index ["mial"], name: "index_items_on_mial"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_075510) do
     t.string "birth_year", default: "", null: false
     t.string "birth_month", default: "", null: false
     t.string "birth_day", default: "", null: false
-    t.string "image", default: ""
+    t.text "image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
