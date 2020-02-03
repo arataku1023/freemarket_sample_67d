@@ -17,6 +17,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+  
+  process resize_to_limit: [500, 620, "#ffffff", "Center"]
+
+  # def extension_whitelist
+  #   %w(jpg jpeg png)
+  # end
+
+  # def size_range
+  #   1..10.megabytes
+  # end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)

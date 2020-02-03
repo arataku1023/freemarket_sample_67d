@@ -1,0 +1,198 @@
+.show-whole{ 
+ padding: 40px 0;
+ background-color: rgb(240, 240, 240);
+  .show-inner{
+   width: 700px;
+   margin: 0 auto;
+   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+    .box-show1{
+     padding: 24px 40px 40px;
+     background-color: white;
+      .show-item{
+       display: block;
+       text-align: center;
+       width: 100%;
+        .name{
+         font-size: 25px;
+         font-weight: bold;
+         margin: 0 auto 15px;
+        }
+        .img-box{
+         max-width: 620px;
+         min-width: 620px;
+         min-height: 520px;
+         max-height: 520px;
+         margin: 30px 0;
+         overflow: hidden;
+          .relative{         
+           position: relative;
+           transition: left .3s;
+            .absolute{
+             position: absolute;
+             display: flex;
+             top: 0;
+            }
+          }
+        }
+        ul.img-lists{
+         display: inline-flex;
+         height: 150px;
+         li{
+           margin-left:5px;
+           opacity: 0.6;
+          }
+        }
+
+        .price-show{
+         margin: 20px 0 30px;
+          .price{
+           font-size: 40px;
+           margin-top: 20px;
+          }
+        }
+        .purchace{
+         background-color: #3CCACE;
+         width: 620px;
+         height: 63px;
+         position: relative;
+          a{
+           line-height: 63px;
+           position: absolute;
+           height: 100%;
+           width: 100%;
+           left: 0;
+           font-size: 25px;
+           text-decoration: none;
+           color: white;
+          }
+        }
+      }
+      .show-detail{
+       margin-top: 35px; 
+        .name{
+         font-weight: bold;
+        }
+        &__content{
+         margin: 30px 0;
+          table{
+           width: 100%;
+           height: 375px;
+           border-collapse: collapse;
+            tr{
+             font-size: 14px;
+              th{
+               text-align: center;
+               width: 20%;
+               background-color: #eee;
+               font-weight: 400;
+               padding: 8px;
+               border: 1px solid #dddddd;
+              }
+              td{
+               width: 61%;
+               padding: 15px 15px;
+               border: 1px solid #dedede;
+              }
+              td.link{
+               color:#3CCACE;
+              }
+            }
+          }
+        }
+        .review{
+         display: flex;
+         justify-content: space-between;
+          &__favorite{
+           font-size: 16px;
+           padding: 5px 10px;
+           display: flex;
+           color: #3CCACE;
+           border: 1px solid #ffb340;
+           border-radius: 30px;
+            .star-icon{
+             line-height: 22px;
+             margin-right: 5px;
+            }
+          }
+          &__favorite:hover{
+           color: rgba(59, 201, 206, 0.5);
+           border: 1px solid rgba(255, 180, 66, 0.55);
+          }
+          &__poor{
+           font-size: 14px;
+           padding: 5px 10px;
+           display: flex;
+           border: 1px solid #333;
+           border-radius: 5px;
+           color: #333;
+            .flag-icon{
+             line-height: 20px;
+             margin-right: 3px;
+            }
+          }
+          &__poor:hover{
+           color: rgb(161, 161, 161);
+           border: 1px solid rgb(161, 161, 161);
+          }
+        }
+      }
+    }   
+
+
+    .box-show2{
+     background-color: white;
+     margin: 10px 0;
+     text-align: center;
+     padding: 24px;
+      .form{
+        .comment{
+         width: 97%;;
+         min-height: 104px;
+         padding: 10px;
+         border: 1px solid rgb(173, 173, 173);
+        }
+        .attention{
+         padding: 8px;
+         font-size: 14px;
+         background-color: #f8f8f8;
+         margin: 10px 0 24px;
+         text-align: left;
+        }
+        button{
+         line-height: 48px;
+         border: 1px solid #3CCACE;
+         color: #fff;
+         width: 60%;
+         font-size: 18px;
+         border-radius: 100px;
+         display: inline-flex;
+          .comment-icon{
+           line-height: 48px;
+           margin: 0 5px 0 34%;
+          }
+        }
+      }
+    }
+
+    ul{
+     margin-bottom: 10px;
+     height: 22px;
+      li{
+       color: #3CCACE;
+      }
+      .previous{
+       float:left;
+      }
+      .next{
+       float: right;
+      }      
+    }
+    .see-others{
+     font-size: 22px;
+     font-weight: bold;
+     color: #3CCACE;
+     display: block;
+     margin: 26px 0 8px;
+    }
+  }
+}

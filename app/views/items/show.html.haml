@@ -1,0 +1,95 @@
+= render 'modules/header'
+
+.show-whole
+  .show-inner
+    .box-show1
+      %script{src: "js/image"}
+      .show-item
+        %p.name ワンチャン
+        .img-box
+          .relative
+            .absolute
+              %img.big{src: "/assets/dog.jpg", height: "520px", width: "620px"}
+              %img.big{src: "/assets/sunflower.jpg", height: "520px", width: "620px"}
+              %img.big{src: "/assets/tulip.jpg", height: "520px", width: "620px"}
+        %ul.img-lists
+          #1
+            %img.small{src: "/assets/dog.jpg", height: "150px", width:"180px"}
+          %li#2
+            %img.small{src: "/assets/sunflower.jpg", height: "150px", width:"180px"}
+          %li#3
+            %img.small{src: "/assets/tulip.jpg", height: "150px", width:"180px"}
+        .price-show
+          %p.price ¥1000000
+          %p.tax (税込) 送料込み
+        .purchace
+          =link_to "購入確認画面へ進む", "/",class: "link"
+
+      .show-detail
+        %p.name ワンチャン
+
+        .show-detail__content
+          %table
+            %tr
+              %th 出品者
+              %td SpiderMan
+            %tr
+              %th カテゴリー
+              %td.link
+                ベビー・キッズ
+                %br
+                ベビー服(男女兼用) ~95cm
+                %br
+                アウター
+            %tr
+              %th ブランド
+              %td
+            %tr
+              %th 商品のサイズ
+              %td 
+            %tr
+              %th 商品の状態
+              %td 元気
+            %tr
+              %th 配送料の負担
+              %td 送料込み（出品者負担）
+            %tr
+              %th 発送元の地域
+              %td.link 岩手県
+            %tr
+              %th 発送日の目安
+              %td 4-7日で発送
+
+        .review
+          .review__favorite
+            = icon('fas', 'star',class: "star-icon")
+            %p.text お気に入り 0 
+          .review__poor
+            = icon('fas', 'flag', class: "flag-icon")
+            %p.text 不適切な商品の通報
+
+    .box-show2
+      .form
+        %input.comment{type: "text-area",placeholder: "コメントを入力"}
+        .attention
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %button
+          = icon('fas','comment',class: "comment-icon") 
+          コメントする
+
+    %ul
+      %li.previous 
+        = icon('fas', 'angle-left')
+        前の商品
+      %li.next 
+        後ろの商品
+        = icon('fas', 'angle-right')
+
+    .see-others 
+      %p.link ベビー・キッズをもっと見る 
+
+= render 'modules/banner'
+
+= render 'modules/footer'
