@@ -5,4 +5,8 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def confirm
+    @item=Item.new
+  end  
+
 end
