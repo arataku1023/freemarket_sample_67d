@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # get 'items/confirm'
+  get 'items/confirm'
   devise_for :users
   root 'home#index'
   resources :users,only: [:index,:show,:edit,:create]

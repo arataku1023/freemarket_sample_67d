@@ -3,5 +3,6 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    @item=Item.new
   end  
 end
