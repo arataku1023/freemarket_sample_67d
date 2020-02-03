@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_075510) do
+ActiveRecord::Schema.define(version: 2020_02_02_102626) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_075510) do
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "image", null: false
+    t.text "image", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_02_02_075510) do
     t.string "birth_year", default: "", null: false
     t.string "birth_month", default: "", null: false
     t.string "birth_day", default: "", null: false
-    t.string "image", default: ""
+    t.text "image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
