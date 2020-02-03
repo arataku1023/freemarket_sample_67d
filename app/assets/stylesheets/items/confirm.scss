@@ -1,0 +1,254 @@
+body {
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+
+  .confirm {
+    background: rgb(245, 245, 245);
+
+    &__main {
+      display: block;
+
+      &__container {
+        width: 700px;
+        margin: 0 auto;
+        background: #fff;
+
+        &__head {
+          font-size: 22px;
+          padding: 32px;
+          line-height: 1.5;
+          text-align: center;
+          border-style: solid;
+          border-width: 0;
+          color: #333333;
+          font-weight: bold;
+        }
+        &__detail {
+          text-align: center;
+          padding: 32px 16px;
+          border-top: 1px solid #f5f5f5;
+          border-bottom: 1px solid #f5f5f5;
+        
+          &__inner {
+            max-width: 343px;
+            margin: 0 auto;
+
+            &__item-box {
+              display: flex;
+              padding: 0;
+
+              &__item-image {
+                height: 80px;
+                width: 80px;
+                min-width: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &__lazyload {
+                  width: 80px;
+                }
+              }
+              &__item-detail {
+                margin-left: 16px;
+
+                &__item-name {
+                  font-size: 14px;
+                  margin: 0;
+                  padding: 0 0 8px;
+                  line-height: 1.5;
+                  text-align: left;
+                }
+                &__price-ja {
+                  margin: 0;
+                  text-align: left;
+                  font-size: 15px;
+
+                  &__shipping-fee {
+                    font-size: 12px;
+                  }
+                }
+                .bold {
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+        }
+        &__procedures {
+          padding-bottom: 48px;
+          text-align: center;
+
+          &__inner {
+            max-width: 343px;
+            margin: 0 auto;
+
+            &__form {
+             
+              &__price-table {
+                display: table;
+                border-collapse: collapse;
+                width: 100%;
+                padding-top: 30px;
+
+                &__price-row {
+                  margin-top: 16px;
+                  font-size: 30px;
+                  display: table-row;
+
+                  &__label {
+                    padding-top: 32px;
+                    font-weight: bold;
+                    font-size: 18px;
+                    text-align: left;
+                    display: table-cell;
+                  }
+                  &__price-cell {
+                    display: table-cell;
+                    padding: 0;
+                    text-align: right;
+
+                    span {
+                      text-align: right;
+                    }
+                  }
+                }
+              }
+              &__have-point {
+                color: #888;
+                margin: 24px 0 32px;
+                list-style: none;
+
+                &__accordion-parent {
+                  display: list-item;
+
+                  &__checkbox-default {
+                    text-align: left;
+
+                    label {
+                      cursor: default;
+                      position: relative;
+                      z-index: 2;
+                      font-size: 14px;
+                      font-weight: 400;
+                      vertical-align: middle;
+                      cursor: pointer;
+                      display: inline-block;
+                    }
+                  }
+                }
+              }
+              &__payment {
+                border-top: 1px solid #f5f5f5;
+                padding: 32px 0px;
+
+                &__inner {
+                  text-align: center;
+                  h3 {
+                    text-align: left;
+                    font-size: 100%;
+                    font-weight: bold;
+                  }
+                  a {
+                    text-align: left;
+                    margin: 0;
+                    padding: 0;
+                    cursor: pointer;
+                    text-decoration: none;
+                  }
+                  &__user-info-text {
+                    text-align: left;
+                    margin: 8px 0 0;
+                    font-size: 14px;
+                    line-height: 1.5;
+
+                    i {
+                      display: inline-block;
+                      font-family: Font Awesome 5 Free;
+                      speak: none;
+                      font-style: normal;
+                      font-weight: bold;
+                      font-variant: normal;
+                      text-transform: none;
+                      line-height: 1;
+                      color: #0099e8;
+                      -webkit-font-smoothing: antialiased;
+                    }
+                    &__registar-text {
+                      color: #0099e8;
+                      margin: 0 0 0 4px;
+                    }
+                  }
+                }
+              }
+              &__shipping-address {
+                padding: 32px 0;
+                border-top: 1px solid #f5f5f5;
+
+                &__inner {
+                  max-width: 343px;
+                  margin: 0 auto;
+
+                  &__clearfix {
+                    display: flex;
+                    justify-content: space-between;
+
+                    &__left {
+                      margin: 0;
+                      font-size: 14px;
+                      float: left;
+                      font-weight: bold;
+                    }
+                    &__right {
+                      display: block;
+                      right: 0px;
+                      font-size: 14px;
+                      text-decoration: none;
+
+                      span {
+                        color: #0099e8;
+                        vertical-align: middle;
+                      }
+                    }
+                  }
+                  &__user-info-text {
+                    text-align: left;
+                    margin: 10px 0 0;
+                    font-size: 14px;
+                    line-height: 1.4;
+                    font-style: normal;
+                    display: block;
+
+                    p {
+                      line-height: 1.5;
+                    }
+                  }
+                }
+              }
+              &__decision {
+                border-top: 1px solid #f5f5f5;
+                padding-bottom: 0;
+                padding: 32px 0px 0px;
+
+                &__btn-default {
+                  border: 1px solid #888;
+                  background: #888;
+                  color: #fff;
+                  display: block;
+                  width: 100%;
+                  line-height: 48px;
+                  font-size: 14px;
+                }
+                input {
+                  border: 0;
+                  outline: 0;
+                  font-family: inherit;
+                  -webkit-appearance: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
