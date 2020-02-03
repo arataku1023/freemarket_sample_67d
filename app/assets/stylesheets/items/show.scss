@@ -17,8 +17,6 @@
          font-weight: bold;
          margin: 0 auto 15px;
         }
-
-
         .img-box{
          max-width: 620px;
          min-width: 620px;
@@ -26,7 +24,7 @@
          max-height: 520px;
          margin: 30px 0;
          overflow: hidden;
-         .relative{         
+          .relative{         
            position: relative;
            transition: left .3s;
             .absolute{
@@ -34,7 +32,7 @@
              display: flex;
              top: 0;
             }
-         }
+          }
         }
         ul.img-lists{
          display: inline-flex;
@@ -52,8 +50,25 @@
            margin-top: 20px;
           }
         }
+        .purchace{
+         background-color: #3CCACE;
+         width: 620px;
+         height: 63px;
+         position: relative;
+          a{
+           line-height: 63px;
+           position: absolute;
+           height: 100%;
+           width: 100%;
+           left: 0;
+           font-size: 25px;
+           text-decoration: none;
+           color: white;
+          }
+        }
       }
       .show-detail{
+       margin-top: 35px; 
         .name{
          font-weight: bold;
         }
