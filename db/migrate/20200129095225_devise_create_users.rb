@@ -17,7 +17,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :birth_month,        null: false, default: ""
       t.string :birth_day,          null: false, default: ""
 
-      t.text :image,                           default: ""  
+      t.text :image
 
       ## Recoverable
       t.string   :reset_password_token
