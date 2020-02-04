@@ -81,3 +81,5 @@ gem 'carrierwave'
 
 gem 'kaminari'
 gem 'fog-aws'
+
+gem 'pry-rails'

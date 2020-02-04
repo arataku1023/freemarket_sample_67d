@@ -1,0 +1,17 @@
+footer{
+  height: 220px;
+  padding: 40px 0px;
+  text-align: center;
+  nav{
+    ul{
+      li{
+        display: flex;
+        a{
+          list-style: none;
+          width: 116px;
+          height: 10px;
+        }
+      }
+    }
+  }
+}
