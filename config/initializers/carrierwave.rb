@@ -17,6 +17,3 @@ CarrierWave.configure do |config|
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/freemarket67d'
   end
 end
-
-
-Rails.application.credentials[:aws][:secrets_access_key]
