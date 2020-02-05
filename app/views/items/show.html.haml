@@ -16,7 +16,7 @@
               %img.big{src: "/assets/tulip.jpg", height: "520px", width: "620px"}
         %ul.img-lists
           - @images.each_with_index do |image,i|
-            %li.img-list{id: "#{i}"}
+            %li.img-list
               =image_tag image.image, height: "150px", width:"180px",id: "#{i}",class: "img-list"
         .price-show
           %p.price 
