@@ -37,9 +37,9 @@
         ul.img-lists{
          display: inline-flex;
          height: 150px;
-         li{
+         li.image-list{
            margin-left:5px;
-           opacity: 0.6;
+           
           }
         }
 
@@ -196,3 +196,12 @@
     }
   }
 }
+
+.opa {
+  opacity: 0.6;
+}
+
+.active {
+  opacity: 1.0;
+}
+
