@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   get 'items/confirm'
   devise_for :users
   root 'home#index'
-  resources :users,only: [:index,:show,:edit,:create]
+  resources :users,only: [:index,:show,:edit,:create] do
+    member do
+      get 'logout'
+    end
+  end
   resources :items do
     member do
       get 'confirm'

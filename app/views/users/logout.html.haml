@@ -5,7 +5,7 @@
       .logout-page
         .logout-page__body
           .logout-page__body__btn
-            ログアウト
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout-btn"
 
     .side-bar
       .mypage-nav

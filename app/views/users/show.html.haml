@@ -214,7 +214,7 @@
           %li.mypage-nav__list__item
             電話番号の確認
           %li.mypage-nav__list__item
-            ログアウト
-            
+            = link_to logout_user_path, class: "logout-btn" do
+              ログアウト
   = render ('modules/banner')
   = render ('modules/footer')
