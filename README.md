@@ -60,6 +60,9 @@ Things you may want to cover:
 |region|string|null: false|        #発送元地域
 |arrival_date|string|null: false|  #発送日
 
+|mail|string|null: false, index: true| #発送負担
+|mail_way|string|null: false, index: true| #発送方法
+
 ### Association
 - belongs_to :user
 - belongs_to :category
