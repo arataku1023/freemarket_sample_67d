@@ -88,45 +88,22 @@
         =link_to "/" do
           %h3.main__items__inner__head__title 商品一覧
       .main__items__inner__lists
-        .main__items__inner__lists__list
-          =link_to "item/3" do
-            %figure.main__items__inner__lists__list__img
-              =image_tag "https://ca.slack-edge.com/TK2M4NQC8-UREHDFJJH-e8345f185cde-512"
-            .main__items__inner__lists__list__body
-              %h3.main__items__inner__lists__list__body__name product3
-              .main__items__inner__lists__list__body__details
-                %ul
-                  %li 30000円
-                  %li
-                    %i.fa.fa-star.main__items__inner__lists__list__body__details__likeIcon
-                    0
-                %p (税込)
-        .main__items__inner__lists__list
-          =link_to "item/2" do
-            %figure.main__items__inner__lists__list__img
-              =image_tag "https://ca.slack-edge.com/TK2M4NQC8-UREHDFJJH-e8345f185cde-512"
-            .main__items__inner__lists__list__body
-              %h3.main__items__inner__lists__list__body__name product2
-              .main__items__inner__lists__list__body__details
-                %ul
-                  %li 20000円
-                  %li
-                    %i.fa.fa-star.main__items__inner__lists__list__body__details__likeIcon
-                    0
-                %p (税込)
-        .main__items__inner__lists__list
-          =link_to "item/1" do
-            %figure.main__items__inner__lists__list__img
-              =image_tag "https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20151003%2F79%2F7096239%2F5%2F351x358x6e23f17c7c720b0df87ee7ce.jpg%2F300%2F600&twidth=300&theight=600&qlt=80&res_format=jpg&op=r"
-            .main__items__inner__lists__list__body
-              %h3.main__items__inner__lists__list__body__name product1
-              .main__items__inner__lists__list__body__details
-                %ul
-                  %li 10000円
-                  %li
-                    %i.fa.fa-star.main__items__inner__lists__list__body__details__likeIcon
-                    0
-                %p (税込)
+        - @items.first(3).each do |item|
+          .main__items__inner__lists__list
+            =link_to "items/#{item.id}" do
+              %figure.main__items__inner__lists__list__img
+                =image_tag @images.find_by(item_id: "#{item.id}").image
+              .main__items__inner__lists__list__body
+                %h3.main__items__inner__lists__list__body__name 
+                  =item.detail
+                .main__items__inner__lists__list__body__details
+                  %ul
+                    %li 
+                      =item.price
+                    %li
+                      %i.fa.fa-star.main__items__inner__lists__list__body__details__likeIcon
+                      0
+                  %p (税込)
 
 = render 'modules/banner'
 
