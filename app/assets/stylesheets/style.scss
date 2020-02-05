@@ -1,10 +1,18 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "./font-awesome";
-@import "login";
+
+@import "users/login";
+
 @import "main";
 @import 'signup';
 @import 'signup/signup-header';
 @import 'signup/signup-footer';
 @import 'signup/signup-main';
+
+@import "modules/banner";
+@import "modules/footer";
+@import "modules/header";
+
+
 
