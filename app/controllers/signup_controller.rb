@@ -1,52 +1,87 @@
 class SignupController < ApplicationController
   # require 'payjp'
   # Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_SECRET_KEY)
+  # before_action :save_registration, only: :address
+  # before_action :save_address, only: '#'
 
   def registration
-    @user = User.new
-  end
-
-  def address
-    session[:nickname] = user_params[:nickname]
-    session[:email] = user_params[:email]
-    session[:encrypted_password] = user_params[:encrypted_password]
-    session[:last_name] = user_params[:last_name]
-    session[:first_name] = user_params[:first_name]
-    session[:last_name_kana] = user_params[:last_name_kana]
-    session[:first_name_kana] = user_params[:first_name_kana]
-    session[:birth_year] = user_params[:birth_year]
-    session[:birth_month] = user_params[:birth_month]
-    session[:birth_day] = user_params[:birth_day]
     @user = User.new
     @user.build_address
   end
 
-  def create
-    @user = User.new(
-      nickname: session[:nickname],
-      email: session[:email],
-      encrypted_password: session[:encrypted_password],
-      last_name: session[:last_name],
-      first_name: session[:first_name],
-      last_name_kana: session[:last_name_kana],
-      first_name_kana: session[:first_name_kana],
-      birth_year: session[:birth_year],
-      birth_month: session[:birth_month],
-      birth_day: session[:birth_day],
+  def save_registration
+    session[:user_params] = user_params
+    session[:address_attributes_after_registration] = user_params[:address_attributes]
+    @user = User.new(session[:user_params])
+    @user.build_address(session[:address_attributes_after_registration])
+    render '/signup/registration' unless @user.valid?
+  end
 
-      name: user_params[:name],
-      post_code: user_parms[:post_code],
-      prefecture: user_params[:prefecture],
-      town: user_params[:town],
-      address_num: user_params[:address_num]
-                  
-    )
+  def address
+    session[:user_params] = user_params
+    session[:address_attributes_after_registration] = user_params[:address_attributes]
+    @user = User.new
+    @user.build_address
+    # session[:nickname] = user_params[:nickname]
+    # session[:email] = user_params[:email]
+    # session[:encrypted_password] = user_params[:encrypted_password]
+    # session[:last_name] = user_params[:last_name]
+    # session[:first_name] = user_params[:first_name]
+    # session[:last_name_kana] = user_params[:last_name_kana]
+    # session[:first_name_kana] = user_params[:first_name_kana]
+    # session[:birth_year] = user_params[:birth_year]
+    # session[:birth_month] = user_params[:birth_month]
+    # session[:birth_day] = user_params[:birth_day]
+    # @user = User.new
+    # @user.build_address
+  end
+
+  def save_address
+    session[:address_attributes_after_address] = user_params[:address_attributes]
+    session[:address_attributes_after_address].merge!(session[:address_attributes_after_registration])
+    @user = User.new
+    @user.build_address(session[:address_attributes_after_address])
+    render '/signup/address' unless session[:address_attributes_after_address]
+
+  def create
+    @user = User.new(session[:user_params])
+    @user.build_address(session[:address_attributes_after_registration])
+    @user.build_address(user_params[:address_attributes])
     if @user.save
-      session[:user_id] = @user.id # ログイン状態維持のためuser_idをsessionに保存
-      redirect_to new_user_path
+      session[:id] = @user.id  #ここでidをsessionに入れることでログイン状態に持っていける。
+      redirect_to '#'
     else
       render '/signup/registration'
     end
+  end
+
+
+
+    # @user = User.new(
+    #   nickname: session[:nickname],
+    #   email: session[:email],
+    #   encrypted_password: session[:encrypted_password],
+    #   last_name: session[:last_name],
+    #   first_name: session[:first_name],
+    #   last_name_kana: session[:last_name_kana],
+    #   first_name_kana: session[:first_name_kana],
+    #   birth_year: session[:birth_year],
+    #   birth_month: session[:birth_month],
+    #   birth_day: session[:birth_day],
+
+    #   name: user_params[:name],
+    #   post_code: user_parms[:post_code],
+    #   prefecture: user_params[:prefecture],
+    #   town: user_params[:town],
+    #   address_num: user_params[:address_num]
+                  
+    # )
+    # if @user.save
+    #   session[:user_id] = @user.id # ログイン状態維持のためuser_idをsessionに保存
+    #   redirect_to new_user_path
+    # else
+    #   render '/signup/registration'
+    # end
   end
   private
 

@@ -28,25 +28,25 @@
             = f.label '市区町村'
             %span.signup-main__form-require 必須
             - if @user.errors.full_messages_for(:town).any?
-              = b.town_field :town, { class: 'signup-main__input-default signup-main__input-default--has-error', placeholder: '福岡市博多区' }
+              = b.text_field :town, { class: 'signup-main__input-default signup-main__input-default--has-error', placeholder: '福岡市博多区' }
             - else
-              = b.password_field :password, { class: 'signup-main__input-default', placeholder: '福岡市博多区' }
+              = b.text_field :town, { class: 'signup-main__input-default', placeholder: '福岡市博多区' }
             =  render partial: 'error-messages', locals: { user: @user, column: "town"}
           .signup-main__form-group 
             = f.label '番地'
             %span.signup-main__form-require 必須
             - if @user.errors.full_messages_for(:address_num).any?
-              = b.address_num_field :address_num, { class: 'signup-main__input-default signup-main__input-default--has-error', placeholder: '' }
+              = b.text_field :address_num, { class: 'signup-main__input-default signup-main__input-default--has-error', placeholder: '' }
             - else
-              = b.password_field :password, { class: 'signup-main__input-default', placeholder: '' }
+              = b.text_field :address_num, { class: 'signup-main__input-default', placeholder: '' }
             =  render partial: 'error-messages', locals: { user: @user, column: "address_num"}
           .signup-main__form-group 
             = f.label 'マンション名やビル名、その部屋番号'
             %span.signup-main__form-require 任意
             - if @user.errors.full_messages_for(:apartment_info).any?
-              = b.apartment_info_field :apartment_info, { class: 'signup-main__input-default signup-main__input-default--has-error', placeholder: '' }
+              = b.text_field :apartment_info, { class: 'signup-main__input-default signup-main__input-default--has-error', placeholder: '' }
             - else
-              = b.password_field :password, { class: 'signup-main__input-default', placeholder: '' }
+              = b.text_field :apartment_info, { class: 'signup-main__input-default', placeholder: '' }
             =  render partial: 'error-messages', locals: { user: @user, column: "aapartment_info"}
 
 

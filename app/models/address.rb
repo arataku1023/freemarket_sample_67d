@@ -5,5 +5,5 @@ class Address < ApplicationRecord
   validates :address_num,             presence: true
   validates :apartment_info,          presence: true
   belongs_to :user, optional: true
-
+  validates_associated :user
 end
