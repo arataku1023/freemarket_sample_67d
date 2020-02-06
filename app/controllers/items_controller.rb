@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   def new
-   @item = Item.new
+  @item = Item.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create

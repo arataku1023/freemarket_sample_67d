@@ -222,7 +222,7 @@
                               ¥
                               / /react-text
                             %div
-                              %input.exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right__input__default{:placeholder => "例）300", :value => ""}/
+                              %input.amount-input{:placeholder => "例）300", :value => ""}/
                         / react-empty: 110
                       %li.exhibition__main__container__inner__form__content-price__form-box__price__form-group
                         .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner
@@ -230,11 +230,13 @@
                             販売手数料 (10%)
                           -# react-text: 199
                           /react-text
-                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right -
+                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right 
+                            .fee
                       %li.exhibition__main__container__inner__form__content-price__form-box__price__form-group
                         .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner.none
                           .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__left.boldest 販売利益
-                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right.boldest -
+                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right.boldest
+                            .total_amount
                 .exhibition__main__container__inner__form__modal{:role => "dialog", :tabindex => "-1"}
                   .exhibition__main__container__inner__form__modal__inner
                 .exhibition__main__container__inner__form__btn-box
