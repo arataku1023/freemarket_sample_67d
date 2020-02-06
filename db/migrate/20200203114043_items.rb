@@ -1,4 +1,4 @@
-class CreateItems < ActiveRecord::Migration[5.2]
+class Items < ActiveRecord::Migration[5.2]
   def change
     create_table :items do |t|
       t.text :detail, null: false
