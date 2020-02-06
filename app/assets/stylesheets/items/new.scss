@@ -111,11 +111,6 @@
               }  
             }
           }
-
-          &__image {
-            
-          }
-      
           &__content-name {
             padding: 0px 40px 40px 40px;
             border-top: 1px solid #eee;
@@ -490,24 +485,11 @@
   width: 106px;
 }
 
-#image-box-1 {
-  
-}
-
 .item-image {
   width: 116px;
   border: 1px dashed #ccc;
   margin-left: 5px;
   color: blue($color: #11c8ff);
-
-  
-  &__content {
-    
-  }
-
-  &__operetion {
-    
-  } 
 }  
 
 #image-box__container {
@@ -516,7 +498,6 @@
 
 #image-box__container__input-area {
   height: 100%;
-  
 }
 
 #img-file {
