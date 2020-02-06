@@ -19,5 +19,6 @@ class User < ApplicationRecord
   validates_associated :address
 
   has_many :items, dependent: :destroy
-  # has_one :address, dependent: :destroy
+  has_one :address, dependent: :destroy
+  has_many :cards
 end

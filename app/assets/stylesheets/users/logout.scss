@@ -1,0 +1,67 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  border-width: 0;
+}
+
+.wrapper {
+  background-color: #ebebeb;   //追加
+  .main {
+    display: block;
+    height:1350px;   //追加
+    width: 1020px;
+    // margin: 40px auto;
+    margin: 0 auto;   //追加
+    padding: 40px 0;   //追加
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    background-color: transparent;   //追加
+    .content {
+      float: right;
+      width: 700px;
+      background-color: #ffffff;  //追加
+      .logout-page {
+        width: 700px;
+        height: 180px;
+        &__body {
+          padding: 66px;
+          &__btn {
+            display: block;
+            line-height: 48px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            background-color: red;
+            .logout-btn {
+              text-decoration: none;
+              color: white;
+            }
+            .logout-btn:hover {
+              color: rgb(127, 149, 221);
+            }
+          }
+        }
+      }
+    }
+    .side-bar {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+      .mypage-nav {
+        &__list {
+          list-style: none;
+          background-color: #ffffff;
+          &__item {
+            border-top: 1px solid #eee;
+            max-height: 48px;
+            padding: 16px;
+            font-size: 14px;
+          }
+        }
+        &__head {
+          margin: 40px 0 0;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
