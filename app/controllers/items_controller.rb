@@ -1,10 +1,29 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
+
   def new
    @item = Item.new
+   @item.images.new
   end
 
   def create
-   Item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
   
   def show
@@ -17,12 +36,21 @@ class ItemsController < ApplicationController
     @parent = @children.parent  
   end
 
+  def destroy
+    @item.destroy
+    redirect_to root_path
+  end
+
   def confirm
     @item=Item.new
   end  
 
-  # private
-  # def item_params   #後でmerge内を追加...brand_id etc.
-  #   params.require(:item).permit(:detail, :price, :status, :region, :arrival_date, :mail, :mail_way).merge(user_id: current_user.id, category_id:) 
-  # end
+  private
+  def item_params   #後でmerge内を追加...brand_id etc.
+    params.require(:item).permit(:detail, :price, :status, :region, :arrival_date, :mail, :mail_way, images_attributes: [:image]).merge(user_id: current_user.id) 
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
