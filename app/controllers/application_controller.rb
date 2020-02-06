@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
 
 
   def tomy_category
-   @parents = Category.order("id ASC").limit(2)
+   @parents = Category.order("id ASC").limit(13)
   end
 end
