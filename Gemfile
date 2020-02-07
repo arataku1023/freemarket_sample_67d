@@ -87,3 +87,6 @@ gem 'enum_help'
 gem 'active_hash'
 
 gem 'payjp'
+
+gem 'pry-rails'
+

@@ -410,14 +410,15 @@
                         font-weight: lighter;
                         font-size: 14px;
                         margin-right: 10px;
-                      }
-                      &__default {
-                        margin-top:10px;
+
+                      }  
+                      .amount-input {
                         padding: 10px 16px 8px;
                         width: 123px;
                         height: 30px;
                         border: 1px solid #ccc;
                         border-radius: 5px;
+
                       }                     
                     }
                   }

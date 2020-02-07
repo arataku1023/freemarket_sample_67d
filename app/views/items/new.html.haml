@@ -141,7 +141,8 @@
                               / react-text: 107
                               ¥
                               / /react-text
-                            = f.text_field :price, :placeholder => "例）300",class: "content-price__form-box__price__form-group__inner__right__default"
+                            = f.text_field :price, :placeholder => "例）300",value: "",class: "amount-input"
+
                         / react-empty: 110
                       %li.content-price__form-box__price__form-group
                         .content-price__form-box__price__form-group__inner
@@ -149,14 +150,17 @@
                             販売手数料 (10%)
                           -# react-text: 199
                           /react-text
-                          .content-price__form-box__price__form-group__inner__right -
-                      %li.content-price__form-box__price__form-group
-                        .content-price__form-box__price__form-group__inner.none
-                          .content-price__form-box__price__form-group__inner__left.boldest 販売利益
-                          .content-price__form-box__price__form-group__inner__right.boldest -
-                .modal{:role => "dialog", :tabindex => "-1"}
-                  .modal__inner
-                .btn-box
+                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right 
+                            .fee
+                      %li.exhibition__main__container__inner__form__content-price__form-box__price__form-group
+                        .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner.none
+                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__left.boldest 販売利益
+                          .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right.boldest
+                            .total_amount
+                .exhibition__main__container__inner__form__modal{:role => "dialog", :tabindex => "-1"}
+                  .exhibition__main__container__inner__form__modal__inner
+                .exhibition__main__container__inner__form__btn-box
+
                   %div
                     %p
                       =link_to "禁止されている出品", "/jp/help_center/getting_started/prohibited_items/", target: "_blank"

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
-  before_action :tomy_category
   protect_from_forgery with: :exception
+  before_action :tomy_category
 
   private
 
