@@ -57,17 +57,15 @@ ActiveRecord::Schema.define(version: 2020_02_07_065600) do
     t.text "detail", null: false
     t.integer "price", null: false
     t.integer "status", limit: 1, null: false
-    t.string "region", null: false
-    t.string "arrival_date", null: false
     t.string "mail", null: false
     t.string "mail_way", null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
+    t.integer "arrival_date_id", null: false
     t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "arrival_date_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["mail"], name: "index_items_on_mail"
