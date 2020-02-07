@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (3.1.0)
+      activesupport (>= 5.0.0)
     activejob (5.2.4.1)
       activesupport (= 5.2.4.1)
       globalid (>= 0.3.6)
@@ -107,8 +109,13 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
+
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+
     erb2haml (0.1.5)
       html2haml
     erubi (1.9.0)
@@ -328,6 +335,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
   ancestry
   bootsnap (>= 1.1.0)
   byebug
@@ -341,6 +349,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  enum_help
   erb2haml
   fog-aws
   font-awesome-sass
@@ -348,6 +357,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   kaminari
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
   payjp
   pry-rails

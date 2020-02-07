@@ -1,0 +1,11 @@
+ja:
+  enums:
+    item:
+      status:
+        nothing: "---"
+        intact: 新品、未使用
+        clean: 未使用に近い
+        good: 目立った傷や汚れなし
+        scratched: やや傷や汚れあり
+        bad: 傷や汚れあり
+        dirty: 全体的に状態が悪い

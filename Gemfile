@@ -75,12 +75,18 @@ gem 'erb2haml'
 
 gem 'devise'
 
-gem 'ancestry'
 gem 'font-awesome-sass'
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'kaminari'
 gem 'fog-aws'
+
+gem 'ancestry'
+gem 'enum_help'
+gem 'active_hash'
+
 gem 'payjp'
 
 gem 'pry-rails'
+
