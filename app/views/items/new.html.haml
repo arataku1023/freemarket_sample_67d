@@ -11,41 +11,24 @@
           %div{"data-reactroot" => ""}
             .exhibition__main__container__inner
               %h2.exhibition__main__container__inner__head 商品の情報を入力
+
               = form_for @item do |f|
                 .upload-box
-                  %h3.upload-box__head
-                    / react-text: 7
-                    出品画像
-                    / /react-text
-                    %span.upload-box__head__require 必須
-                  %p 最大10枚までアップロードできます
-                  .upload-box__img.clearfix.state-image-number-10
-                    .upload-box__img__container
-                      .upload-box__img__container__upload-items.have-item-0
-                        %ul
-                          %li.upload-box__img__container__upload-items__item
-                            -# %figure.exhibition__main__container__inner__form__upload-box__img__container__upload-items__item__figure
-                            -#   %img{:src => "https://i.gzn.jp/img/2016/12/16/irasutoya-on-the-street/jitensya_cycling_man.png"}
-                            -# .exhibition__main__container__inner__form__upload-box__img__container__upload-items__item__button
-                            -#   %a{:href => "https://www.mercari.com/jp/"}編集
-                            -#   %a{:href => "https://www.mercari.com/jp/"}削除
-                    %label.upload-box__img__drop-box.have-item-0
-                      %input.upload-box__img__drop-box__drop-file{:multiple => "multiple", :name => "image1", :style => "display: none;", :type => "file"}/
-                      
-                      %pre.upload-box__img__drop-box__visible-pc
-                        :preserve
-                          ドラッグアンドドロップ
-                          またはクリックしてファイルをアップロード 
-                  / react-empty: 18
-                  / react-empty: 19
-                  / react-empty: 20
-                  / react-empty: 21
-                  / react-empty: 22
-                  / react-empty: 23
-                  / react-empty: 24
-                  / react-empty: 25
-                  / react-empty: 26
-                  / react-empty: 27
+                  .new_item__image
+                    .new_item__image__upload
+                      %h3.new_item__image__upload__head
+                        出品画像
+                        %span.exhibition__main__container__inner__form__image__upload__head__require 必須
+                      %p 最大5枚までアップロードできます
+                      .image-box#image-box-1
+                        .image-box__item-num-0#image-box__container
+                          = f.fields_for :images do |i|
+                            .image-box__item-num-0__input-area#image-box__container__input-area
+                              = i.file_field :image, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
+                              %label{for: "img-file"}
+                                %i.fas.fa-camera
+                                -# %p 画像を投稿
+                                
                 .content-name
                   .content-name__form-group
                     %label

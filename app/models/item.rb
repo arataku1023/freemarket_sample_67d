@@ -6,11 +6,13 @@ class Item < ApplicationRecord
     belongs_to_active_hash :postage
   end
 
-  has_many :images
-
+  has_many :images, dependent: :destroy
   belongs_to :user
   belongs_to :category
   belongs_to :brand
 
+  accepts_nested_attributes_for :images, allow_destroy: true
+
   enum status:{nothing: "", intact: 0, clean: 1, good: 2, scratched: 3, bad: 4, dirty: 5}
 end 
+
