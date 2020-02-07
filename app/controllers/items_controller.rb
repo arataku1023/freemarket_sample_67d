@@ -2,8 +2,12 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
 
   def new
-   @item = Item.new
    @item.images.new
+   @item = Item.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
