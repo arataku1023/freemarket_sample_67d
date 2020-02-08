@@ -40,7 +40,7 @@
             %tr
               %th カテゴリー
               %td.link
-                = @parent.name
+                -# = @parent.name
                 %br 
                 >
                 = @children.name
@@ -65,11 +65,11 @@
             %tr
               %th 発送元の地域
               %td.link 
-                =@item.region
+                = @prefecture.name
             %tr
               %th 発送日の目安
               %td 
-                =@item.arrival_date
+                = @arrival_date.date
 
         .review
           .review__favorite
