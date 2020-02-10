@@ -11,41 +11,20 @@
           %div{"data-reactroot" => ""}
             .exhibition__main__container__inner
               %h2.exhibition__main__container__inner__head 商品の情報を入力
-              = form_for @item do |f|
-                .upload-box
-                  %h3.upload-box__head
-                    / react-text: 7
-                    出品画像
-                    / /react-text
-                    %span.upload-box__head__require 必須
-                  %p 最大10枚までアップロードできます
-                  .upload-box__img.clearfix.state-image-number-10
-                    .upload-box__img__container
-                      .upload-box__img__container__upload-items.have-item-0
-                        %ul
-                          %li.upload-box__img__container__upload-items__item
-                            -# %figure.exhibition__main__container__inner__form__upload-box__img__container__upload-items__item__figure
-                            -#   %img{:src => "https://i.gzn.jp/img/2016/12/16/irasutoya-on-the-street/jitensya_cycling_man.png"}
-                            -# .exhibition__main__container__inner__form__upload-box__img__container__upload-items__item__button
-                            -#   %a{:href => "https://www.mercari.com/jp/"}編集
-                            -#   %a{:href => "https://www.mercari.com/jp/"}削除
-                    %label.upload-box__img__drop-box.have-item-0
-                      %input.upload-box__img__drop-box__drop-file{:multiple => "multiple", :name => "image1", :style => "display: none;", :type => "file"}/
-                      
-                      %pre.upload-box__img__drop-box__visible-pc
-                        :preserve
-                          ドラッグアンドドロップ
-                          またはクリックしてファイルをアップロード 
-                  / react-empty: 18
-                  / react-empty: 19
-                  / react-empty: 20
-                  / react-empty: 21
-                  / react-empty: 22
-                  / react-empty: 23
-                  / react-empty: 24
-                  / react-empty: 25
-                  / react-empty: 26
-                  / react-empty: 27
+              = form_for(@item, url: items_path, method: :post) do |f|
+                .new_item__image
+                  .new_item__image__upload
+                    %h3.exhibition__main__container__inner__form__image__upload__head
+                      出品画像
+                      %span.new_item__image__upload__head__require 必須
+                    %p 最大5枚までアップロードできます
+                    .image-box#image-box-1
+                      .image-box__item-num-0#image-box__container
+                        = f.fields_for :images do |i|
+                          .image-box__item-num-0__input-area#image-box__container__input-area
+                            = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
+                            %label{for: "img-file"}
+                              %i.fas.fa-camera
                 .content-name
                   .content-name__form-group
                     %label
@@ -76,7 +55,7 @@
                       .listing-select-wrapper
                         .listing-select-wrapper__box
                           //親カテゴリーのセレクトボックスの生成
-                          = select_tag 'category_id', options_for_select(@category_parent_array),class: 'listing-select-wrapper__box--select', id: 'parent_category'
+                          = select_tag(:category_id, options_for_select(@category_parent_array),class: 'listing-select-wrapper__box--select', id: 'parent_category')
                           -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
                                   
                       / react-empty: 55
@@ -87,7 +66,7 @@
                         / /react-text
                         %span.form-group__require 必須
                       .select-wrap
-                        = f.select :status, Item.statuses_i18n.invert,{},prompt: "---"
+                        = f.select(:status, Item.statuses_i18n.invert,{},prompt: "---")
                       / react-empty: 64
                 .content
                   .content__header
@@ -103,7 +82,7 @@
                           / /react-text
                           %span.form-group__require 必須
                         .select-wrap
-                          = f.select :mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: :burden_select
+                          = f.select(:mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: :burden_select)
                         / react-empty: 77
                     .form-group
                       %label
@@ -112,7 +91,7 @@
                         / /react-text
                         %span.form-group__require 必須
                       .select-wrap
-                        = f.collection_select :prefecture_id,Prefecture.all,:id, :name, prompt: "---",class:"select-wrap__select-default"
+                        = f.collection_select(:prefecture_id,Prefecture.all,:id, :name, prompt: "---",class:"select-wrap__select-default")
                       / react-empty: 86
                     .form-group
                       %label
@@ -121,7 +100,7 @@
                         / /react-text
                         %span.form-group__require 必須
                       .select-wrap
-                        = f.collection_select :arrival_date_id,Arrival_date.all,:id, :date, prompt: "---"
+                        = f.collection_select(:arrival_date_id,Arrival_date.all,:id, :date, prompt: "---")
                       / react-empty: 95
                 .content-price
                   .content-price__header
@@ -188,7 +167,7 @@
                       に同意したことになります。
                       / /react-text
                   %div
-                    = f.submit '出品する' ,class:"btn-box__btn-default btn-red"
+                    = f.submit '出品する', class:"btn-box__btn-default btn-red"
                     / react-text: 135
                     / /react-text
                   =link_to "もどる", "/",class: "btn-box__btn-default btn-gray"
