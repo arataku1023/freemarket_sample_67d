@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
       format.html
       format.json
     end
+   end 
+
+   def destroy
+    item = Item.find(params[:id])
+    item.destroy
    end
 
    def update
