@@ -89,5 +89,8 @@ gem 'active_hash'
 gem 'payjp'
 
 gem 'pry-rails'
+gem 'bcrypt'
+gem 'rails-i18n'
+
 
 gem 'rails-i18n'
