@@ -64,7 +64,7 @@ class ItemsController < ApplicationController
     @user = User.find(@item.user_id)
     @grandchildren = Category.find(@item.category_id)
     @children = @grandchildren.parent
-    @parent = @children.parent  
+    @parent = @children.parent
     @prefecture = Prefecture.find(@item.prefecture_id)
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
   end
