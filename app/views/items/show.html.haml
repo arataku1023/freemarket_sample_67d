@@ -10,14 +10,13 @@
         .img-box
           .relative
             .absolute
-              - @images.each do |image|
-                =image_tag image.image, class: "big", height: "520px", width: "620px"
-              %img.big{src: "/assets/sunflower.jpg", height: "520px", width: "620px"}
-              %img.big{src: "/assets/tulip.jpg", height: "520px", width: "620px"}
+              - @item.images.each do |image|
+                = image_tag image.image.url, class: "big", height: "520px", width: "620px"
+                -# %img{alt: "a",height: "520", src: image, width: "620"}
         %ul.img-lists
-          - @images.each_with_index do |image,i|
+          - @item.images.each_with_index do |image,i|
             %li.img-list
-              =image_tag image.image, height: "150px", width:"180px",id: "#{i}",class: "img-list"
+              =image_tag image.image.url, height: "150px", width:"180px",id: "#{i}",class: "img-list"
         .price-show
           %p.price 
             ¥
@@ -40,7 +39,7 @@
             %tr
               %th カテゴリー
               %td.link
-                -# = @parent.name
+                = @parent.name
                 %br 
                 >
                 = @children.name
