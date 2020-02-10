@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
+    @item.save!
     # @item.save
     # Image.create
     # Image.create(image_params)
