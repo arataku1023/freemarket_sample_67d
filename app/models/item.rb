@@ -8,7 +8,7 @@ class Item < ApplicationRecord
     belongs_to_active_hash :postage
   end
 
-  has_many :images
+  # has_many :images
 
   belongs_to :user
   belongs_to :category
