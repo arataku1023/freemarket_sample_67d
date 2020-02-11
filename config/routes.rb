@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'home#index'
-  resources :users,only: [:index,:show,:edit,:create] do
+  resources :users,only: [:index,:show,:edit,:create,:destroy] do
     member do
       get 'logout'
     end
@@ -18,11 +18,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :card, only: [:index, :new, :show, :destroy] do
+  resources :cards, only: [:create, :show, :edit] do
     collection do
-      post 'pay', to: 'card#pay'
+      post 'delete', to: 'cards#delete'
+      post 'show'
     end
-  end
+    member do
+      get 'confirmation'
+    end
+  end 
 
   resources :items do
     collection do
