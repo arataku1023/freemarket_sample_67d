@@ -20,10 +20,11 @@
             %span.signup-main__form-require 必須
             - if @minimum_password_length
               %em
-                (#{@minimum_password_length} characters minimum)
+                (#{@minimum_password_length} 文字以上)
             = f.password_field :password, autocomplete: "new-password"
           .signup-main__form-group
             = f.label 'パスワード（確認）'
+            %span.signup-main__form-require 必須
             = f.password_field :password_confirmation, autocomplete: "new-password"
           .signup-main__form-group
             %h3.signup-main__sub-head
@@ -62,23 +63,12 @@
             .clearfix
           %p.signup-main__form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-        .signup-main__content
-
-          .g-recaptcha.signup-recaptcha
-            %div
-              %div
-        .signup-main__form-groups
-          %p.signup-main__text.signup-main__text--center
+          .single
             「次へ進む」のボタンを押すことにより、
             = link_to '#', target: '_blank' do
               利用規約
             に同意したものとみなします
-          = f.submit "次へ"
-        .signup-main__form-group.signup-main__text--right
-          %p
-            = link_to '#', target: '_blank' do
-              本人情報の登録について
-              = icon 'fas', 'chevron-right'
-
+          = f.submit "次へ",class: 'red-btn'
   = render 'signup/footer'
+  
 
