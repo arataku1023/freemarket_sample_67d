@@ -1,4 +1,3 @@
-.home HOME
 = render 'modules/header'
 
 .main
@@ -93,7 +92,9 @@
           .main__items__inner__lists__list
             =link_to "items/#{item.id}" do
               %figure.main__items__inner__lists__list__img
-                =image_tag @images.find_by(item_id: "#{item.id}").image
+                -# =image_tag @images.find_by(item_id: "1")
+                -# =image_tag item.images
+                =image_tag @images.find_by(item_id: item.id).image.url
               .main__items__inner__lists__list__body
                 %h3.main__items__inner__lists__list__body__name 
                   =item.detail
