@@ -23,8 +23,16 @@
             =@item.price
           %p.tax 
             (税込) 送料込み
-        .purchace
-          =link_to "購入確認画面へ進む", "/",class: "link"
+      
+        
+          - if user_signed_in? && current_user.id == @item.user_id
+            .change
+              = link_to '編集', "/items/#{@item.id}/edit", method: :get, class: "btn"
+              %span or
+              = link_to '削除', delete_item_path, class: "btn"
+          - if user_signed_in? && current_user.id != @item.user_id
+            .purchace
+              = link_to "購入確認画面へ進む", "/",class: "link"
 
       .show-detail
         %p.name 

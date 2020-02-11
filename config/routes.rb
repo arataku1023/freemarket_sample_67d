@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'confirm'
+      get 'delete'
     end
   end  
 

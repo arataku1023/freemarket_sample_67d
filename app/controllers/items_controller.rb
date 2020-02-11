@@ -64,9 +64,18 @@ class ItemsController < ApplicationController
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
 
   def confirm
     @item=Item.new
+  end
+
+  def delete
   end
 
 
