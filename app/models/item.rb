@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  belongs_to :brand
+  # belongs_to :brand
 
   enum status:{nothing: "", intact: 0, clean: 1, good: 2, scratched: 3, bad: 4, dirty: 5}
 end 

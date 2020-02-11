@@ -50,6 +50,21 @@
            margin-top: 20px;
           }
         }
+        .change {
+          display: flex;
+          justify-content: space-around;
+          a.btn {
+            background-color: #3ccace;
+            font-size: 30px;
+            text-decoration: none;
+            width: 30%;
+            text-align: center;
+            color: white;
+          }
+          span {
+            font-size: 25px;
+          }
+        }
         .purchace{
          background-color: #3CCACE;
          width: 620px;
