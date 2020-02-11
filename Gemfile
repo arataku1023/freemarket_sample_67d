@@ -44,6 +44,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -94,3 +95,4 @@ gem 'rails-i18n'
 
 
 gem 'rails-i18n'
+gem 'rspec-rails'
