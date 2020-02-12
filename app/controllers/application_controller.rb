@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :tomy_category
 
+  
   private
-
   def production?
     Rails.env.production?
   end
@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
-
 
   def tomy_category
    @parents = Category.order("id ASC").limit(13)
