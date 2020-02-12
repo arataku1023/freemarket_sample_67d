@@ -17,9 +17,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to "/"
-   end
+    if @item.save
+      redirect_to root_path
+    else
+      render new_item_path
+    end  
+  end
 
    def edit
     # @item = Item.find(params[:id])
@@ -51,20 +54,20 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      render 'items/#{@item.id}/edit'
+      render redirect_to edit_item_path(@item.id)
     end   
   end
 
-  def get_category_children
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: "#{params[:parent_name]}").children
-  end
+  # def get_category_children
+  #   #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+  #   @category_children = Category.find_by(name: "#{params[:parent_name]}").children
+  # end
 
-  # 子カテゴリーが選択された後に動くアクション
-  def get_category_grandchildren
-    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-  end
+  # # 子カテゴリーが選択された後に動くアクション
+  # def get_category_grandchildren
+  #   #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+  #   @category_grandchildren = Category.find("#{params[:child_id]}").children
+  # end
   
   def show
     # @item = Item.find(params[:id])
@@ -95,15 +98,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end  
-  # def image_destroy(i)
-  #   @image.find(i)
-  #   @image.destroy
-  # end
-
-  # def image_params
-  #  @item = Item.find(params[:id])
-  #  params.require(:image).permit(:image).merge(item_id: @item.id)
-  # end
 
   # def grand_child_category_brother_search(id)
   #   # @itemのcategory_id（孫）から見たparent_id（子id）を取得
