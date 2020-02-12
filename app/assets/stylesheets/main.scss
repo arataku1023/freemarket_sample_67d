@@ -140,7 +140,7 @@ button{
   &__visual {
     height: 560px;
     width: 100%;
-    background-image: url(../assets/bg-mainVisual-pict_pc.jpg);
+    background-image: image-url("bg-mainVisual-pict_pc.jpg");
     background-size: cover;
 
 
@@ -264,7 +264,7 @@ button{
     }
   }
   &__middle {
-    background-image: url(../assets/bg-topMiddleDl-pict.jpg);
+    background-image: image-url("bg-topMiddleDl-pict.jpg");
     background-size: cover;
     height: 400px;
     padding-left: 200px;

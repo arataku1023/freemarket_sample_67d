@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+  end
 
   root 'home#index'
+  
   resources :users,only: [:index,:show,:edit,:create,:destroy] do
     member do
       get 'logout'
     end
   end
+  
   resources :images
 
   resources :categories, only: [:index]
@@ -35,6 +43,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'confirm'
+      get 'delete'
     end
   end  
 

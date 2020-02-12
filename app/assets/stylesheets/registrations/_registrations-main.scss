@@ -1,0 +1,83 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  border-width: 0;
+}
+.signup-container{
+  width: 100vw;
+  height: 100vh;
+  .signup-main{
+    height: calc(100vh - 128px);
+    .signup-main__container{
+      margin: 0 auto;
+      width: 700px;
+      height: auto;
+      background-color: whitesmoke;
+      h2{
+        height: auto;
+        background-color:whitesmoke;
+        padding: 32px;
+        color: black;
+        text-align: center;
+      }
+      .signup-main__content{
+        margin: 0 140px;
+        height: 100%;
+        .signup-main__form-group{
+          width: 100%;
+          margin: 8px 0 0;
+          padding: 24px 16px 40px;
+          background-color: white;
+          label{
+            width: 85px;
+            height: 15px;
+          }
+          .signup-main__form-require{
+            width: 32px;
+            height: 19px;
+            background-color: red;
+            color: white;
+            padding: 2px 4px;
+          }
+          input{
+            width: 343px;
+            height: 30px;
+            margin: 8px 0 0;
+            padding: 10px 16px 8px;
+            border: 1px solid #ccc;
+          }
+
+          .signup-main__birth_day-select-wrap{
+            display: flex;
+
+            select{
+              width: 100px;
+              margin-top: 5px;
+              height: 50px;
+              background-color: white;
+            }
+            span{
+              margin-top: 30px;
+              padding-right: 8px;
+
+            }
+          
+          }
+        }
+          input.red-btn{
+            background-color: red;
+            color: white;
+            margin: 24px 0px 0px;
+            height: 50px;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+          }
+          a{
+            height: 100px;
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
