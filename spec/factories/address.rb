@@ -5,7 +5,6 @@ FactoryBot.define do
     prefecture             {"abc"}
     town                   {"abc"}
     address_num            {"00000"}
-    apartment_info         {"000"}
   end
 
 end

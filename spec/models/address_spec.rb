@@ -28,14 +28,6 @@ describe Address do
       address = build(:address, address_num: nil)
       address.valid?
       expect(address.errors[:address_num]).to include("を入力してください")
-
     end
-
-    # #apartment_info
-    # it "is invalid without a apartment_info" do
-    #   address = build(:address, apartment_info: nil)
-    #   address.valid?
-    #   expect(address.errors[:apartment_info]).to include("を入力してください")
-    # end
   end
 end
