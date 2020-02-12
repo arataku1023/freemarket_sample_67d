@@ -48,6 +48,7 @@ class CardsController < ApplicationController
   end
 
   private
+  
   def get_payjp_info
     if Rails.env == 'development'
       Payjp.api_key = "sk_test_45098fce6379a29a1ab3a29b"
