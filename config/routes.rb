@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'images/destroy'
   devise_for :users
 
   root 'home#index'
@@ -33,5 +34,6 @@ Rails.application.routes.draw do
       get 'confirm'
     end
   end  
+
 
 end
