@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   def show
     # @item = Item.find(params[:id])
     @images = Image.where(item_id: @item.id)
-    @brand = Brand.find(@item.brand_id)
+    # @brand = Brand.find(@item.brand_id)
     @user = User.find(@item.user_id)
     @grandchildren = Category.find(@item.category_id)
     @children = @grandchildren.parent
@@ -81,16 +81,35 @@ class ItemsController < ApplicationController
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
 
   def confirm
     @item=Item.new
   end
 
+  def delete
+  end
 
+
+  def pay
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    charge = Payjp::Charge.create(
+    amount: @item.price,
+    card: params['payjp-token'],
+    currency: 'jpy'
+    )
+  end
+
+  
   private
   def item_params   #後でmerge内を追加...brand_id etc. #category_id:
     # params.require(:item).permit(:name, :detail, :price, :status, :arrival_date_id, :mail, :mail_way, :prefecture_id, :category_id).merge(user_id: "1", brand_id: "1")
-    params.require(:item).permit(:name, :detail, :price, :status, :arrival_date_id, :mail, :mail_way, :prefecture_id, :category_id, images_attributes: [:image]).merge(user_id: "1", brand_id: "1")
+    params.require(:item).permit(:name, :detail, :price, :status, :arrival_date_id, :mail, :mail_way, :prefecture_id, :category_id, images_attributes: [:image]).merge(user_id: current_user.id)
 
     # params.require(:image).permit(:image, :image_id)
   end

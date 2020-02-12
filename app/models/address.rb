@@ -3,7 +3,7 @@ class Address < ApplicationRecord
   validates :prefecture,              presence: true
   validates :town,                    presence: true
   validates :address_num,             presence: true
-  validates :apartment_info,          presence: true
+  validates :apartment_info,          length: { minimum: 0, maximum: 100 }
   belongs_to :user, optional: true
   validates_associated :user
 end

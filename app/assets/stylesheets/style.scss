@@ -5,9 +5,12 @@
 @import "users/login";
 
 @import "main";
-@import 'signup/signup-header';
-@import 'signup/signup-footer';
-@import 'signup/signup-main';
+
+// @import 'registrations';
+@import 'registrations/registrations-header';
+@import 'registrations/registrations-footer';
+@import 'registrations/registrations-main';
+
 
 @import "modules/banner";
 @import "modules/footer";
