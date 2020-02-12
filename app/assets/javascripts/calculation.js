@@ -4,7 +4,7 @@ $(function() {
     input = parseInt(input);
     if(input >= 300 && input <= 9999999) {
     var fee = Math.floor(input * 0.1)
-    var total_amount = (input + fee)
+    var total_amount = (input - fee)
     $('.fee').html(fee.toLocaleString())
     $('.fee').prepend('¥')
     $('.total_amount').html(total_amount.toLocaleString())
