@@ -1,0 +1,10 @@
+.signup-container
+  = render 'signup/header-credit-card'
+  %main.signup-main
+    %section.signup-main__container
+      %h2.signup-main__head.signup-main__head--registration
+        登録完了
+        .signup-main__content
+          .signup-main__form-group
+            = link_to "トップへ戻る", root_path
+  = render 'signup/footer'

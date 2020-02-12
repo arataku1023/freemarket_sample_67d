@@ -1,0 +1,39 @@
+.signup-container
+  = render 'signup/header-sms'
+  %main.signup-main
+    %section.signup-main__container
+      %h2.signup-main__head.signup-main__head--registration
+        お届け先住所入力
+      = form_for @address do |f|
+        = render "devise/shared/error_messages", resource: @address
+        .signup-main__content
+          .signup-main__form-group
+            = f.label '郵便番号'
+            %span.signup-main__form-require 必須
+            = f.text_field :post_code
+          .signup-main__form-group
+            = f.label '都道府県'
+            %span.signup-main__form-require 必須
+            = f.text_field :prefecture
+          .signup-main__form-group
+            = f.label '市区町村'
+            %span.signup-main__form-require 必須
+            = f.text_field :town
+          .signup-main__form-group 
+            = f.label '番地'
+            %span.signup-main__form-require 必須
+            = f.text_field :address_num
+          .signup-main__form-group 
+            = f.label 'マンション名やビル名、その部屋番号'
+            %span.signup-main__form-require 任意
+            = f.text_field :apartment_info
+            .clearfix
+          %p.signup-main__form-info-text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .single
+            「登録」のボタンを押すことにより、
+            = link_to '#', target: '_blank' do
+              利用規約
+            に同意したものとみなします
+          = f.submit "登録",class: 'red-btn'
+  = render 'signup/footer'

@@ -1,21 +1,74 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.signup-container
+  = render 'signup/header-registration'
+  %main.signup-main
+    %section.signup-main__container
+      %h2.signup-main__head.signup-main__head--registration
+        会員情報入力
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .signup-main__content
+          .signup-main__form-group
+            = f.label 'ニックネーム'
+            %span.signup-main__form-require 必須
+            = f.text_field :nickname
+          .signup-main__form-group
+            = f.label 'メールアドレス'
+            %span.signup-main__form-require 必須
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+          .signup-main__form-group
+            = f.label 'パスワード'
+            %span.signup-main__form-require 必須
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} 文字以上)
+            = f.password_field :password, autocomplete: "new-password"
+          .signup-main__form-group
+            = f.label 'パスワード（確認）'
+            %span.signup-main__form-require 必須
+            = f.password_field :password_confirmation, autocomplete: "new-password"
+          .signup-main__form-group
+            %h3.signup-main__sub-head
+              本人確認
+            %p.signup-main__text
+              安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .signup-main__form-group.signup-main__form-group--half
+            %div
+              = f.label 'お名前(全角)'
+              %span.signup-main__form-require 必須
+              = f.text_field :last_name
+              = f.text_field :first_name
+          .signup-main__form-group.signup-main__form-group--half
+            %div
+              = f.label 'お名前カナ(全角)'
+              %span.signup-main__form-require 必須
+              = f.text_field :last_name_kana
+              = f.text_field :first_name_kana
+          .signup-main__form-group#change-day
+            = f.label '生年月日'
+            %span.signup-main__form-require 必須
+            %br
+            .signup-main__birth_day-select-wrap
+            
+              .signup-main__select-wrap
+                = f.collection_select(:birth_year,Birth_year.all,:id, :year, prompt: "---")
+              %span 年
+
+              .signup-main__select-wrap.signup-main__select-wrap--month
+                = f.collection_select(:birth_month,Birth_month.all,:id, :month, prompt: "---")
+              %span 月
+              .signup-main__select-wrap.signup-main__select-wrap--day
+        
+                = f.collection_select(:birth_day,Birth_day.all,:id, :day, prompt: "---")
+              %span 日
+            .clearfix
+          %p.signup-main__form-info-text
+            ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .single
+            「次へ進む」のボタンを押すことにより、
+            = link_to '#', target: '_blank' do
+              利用規約
+            に同意したものとみなします
+          = f.submit "次へ",class: 'red-btn'
+  = render 'signup/footer'
+  
+
