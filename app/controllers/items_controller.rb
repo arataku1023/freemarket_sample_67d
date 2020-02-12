@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update]
 
   def new
    @item = Item.new
@@ -21,7 +22,7 @@ class ItemsController < ApplicationController
    end
 
    def edit
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     @item.images.build
     @images = Image.where(item_id: @item.id)
     @grandchild = Category.find(@item.category_id)
@@ -46,8 +47,7 @@ class ItemsController < ApplicationController
    end
 
    def update
-    # binding.pry
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -56,10 +56,8 @@ class ItemsController < ApplicationController
   end
 
   def get_category_children
-    # binging.pry
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}").children
-    # binging.pry
   end
 
   # 子カテゴリーが選択された後に動くアクション
@@ -69,7 +67,7 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     @images = Image.where(item_id: @item.id)
     @brand = Brand.find(@item.brand_id)
     @user = User.find(@item.user_id)
@@ -94,6 +92,9 @@ class ItemsController < ApplicationController
     # params.require(:image).permit(:image, :image_id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end  
   # def image_destroy(i)
   #   @image.find(i)
   #   @image.destroy
