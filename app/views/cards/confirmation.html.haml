@@ -1,0 +1,23 @@
+.wrapper
+  = render ('modules/header')
+  .main
+    =render ('modules/side-bar')
+    .main__content
+      %section.card-section
+        %h2.card-section__title 支払い方法
+        .payment
+          .sub-title 
+            %p クレジットカード一覧
+          .add-card
+            = link_to edit_card_path(current_user), class: "add-card__btn", data: {"turbolinks" => false} do
+              %i
+              = icon('fas', 'credit-card', class: "card__icon")
+              クレジットカードを追加する
+          .annotation
+            = link_to '#',class: "annotation__link" do
+              %span 支払い方法について
+              = icon 'fas', 'chevron-right'
+
+  = render ('modules/sell-btn')
+  = render ('modules/banner')
+  = render ('modules/footer')

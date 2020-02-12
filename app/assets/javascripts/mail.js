@@ -59,7 +59,6 @@ $(function(){
     appendMailBox(insertHTML);
    }else{
      $('#postage_wrapper').remove(); 
-     alert('配送料の負担は選択されていません');
    }
   });
 });

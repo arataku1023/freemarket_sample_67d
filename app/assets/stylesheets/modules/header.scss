@@ -171,23 +171,14 @@
      }
      &__right {
        display: flex;
-
        &__login {
-         margin-right: 50px;
          a {
            text-decoration: none;
            color: black;
            line-height: 50px;
+           margin-right: 30px;
            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
          } 
-       }
-       &__new {
-         a {
-           text-decoration: none;
-           color: black;
-           line-height: 50px;
-           font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-         }  
        }
      }
    }

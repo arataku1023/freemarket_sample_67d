@@ -63,7 +63,7 @@
 .banner {
  height: 350px;
  width: 100vw;
- background-image: url(/assets/bg-appBanner-pict.jpg);
+ background-image: image-url("bg-appBanner-pict.jpg");
  background-size: cover;
   
  &__inner {

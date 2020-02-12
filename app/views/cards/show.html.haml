@@ -1,0 +1,31 @@
+.wrapper
+  = render ('modules/header')
+  .main
+    =render ('modules/side-bar')
+    .main__content
+      %section.card-section
+        %h2.card-section__title 支払い方法
+        .payment
+          .sub-title 
+            %p クレジットカード一覧
+          .payment__lists
+            .card
+              .card__logo
+                = image_tag '//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?73731125', width: '49', height: '20', alt: 'jcb'
+              .card__number 
+                = "**** **** **** " + @default_card_information.last4
+              .expire__date 
+                - exp_month = @default_card_information.exp_month.to_s
+                - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                = exp_month + " / " + exp_year
+            = form_tag(delete_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+              %input{ type: "hidden", name: "card_id", value: "" }
+              %button.delete_btn 削除する
+          .annotation
+            = link_to '#',class: "annotation__link" do
+              %span 支払い方法について
+              = icon 'fas', 'chevron-right'
+
+  = render ('modules/sell-btn')
+  = render ('modules/banner')
+  = render ('modules/footer')
