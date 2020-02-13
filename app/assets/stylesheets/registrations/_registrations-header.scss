@@ -54,22 +54,22 @@
     }
     &--active{
       font-weight: 600;
-      color: #ea352d;
+      color: #3CCACE;
       .signup-header__progress-status {
-        background: #ea352d;
+        background: #3CCACE;
         &:before{
-          background: #ea352d;
+          background: #3CCACE;
         }
       }
     }
     &--through {
       .signup-header__progress-status {
-        background: #ea352d;
+        background: #3CCACE;
         &:before{
-          background: #ea352d;
+          background: #3CCACE;
         }
         &:after{
-          background: #ea352d;
+          background: #3CCACE;
         }
       }
     }

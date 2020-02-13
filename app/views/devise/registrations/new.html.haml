@@ -1,6 +1,6 @@
 .signup-container
-  = render 'signup/header-registration'
   %main.signup-main
+    = render 'signup/header-registration'
     %section.signup-main__container
       %h2.signup-main__head.signup-main__head--registration
         会員情報入力
@@ -35,31 +35,33 @@
             %div
               = f.label 'お名前(全角)'
               %span.signup-main__form-require 必須
-              = f.text_field :last_name
-              = f.text_field :first_name
+              .input-box
+                = f.text_field :last_name, placeholder:"山田"
+                = f.text_field :first_name, placeholder:"太郎"
           .signup-main__form-group.signup-main__form-group--half
             %div
               = f.label 'お名前カナ(全角)'
               %span.signup-main__form-require 必須
-              = f.text_field :last_name_kana
-              = f.text_field :first_name_kana
-          .signup-main__form-group#change-day
+              .input-box
+                = f.text_field :last_name_kana, placeholder:"ヤマダ"
+                = f.text_field :first_name_kana, placeholder:"タロウ"
+          .signup-main__form-group#change-day 
             = f.label '生年月日'
             %span.signup-main__form-require 必須
             %br
             .signup-main__birth_day-select-wrap
-            
               .signup-main__select-wrap
                 = f.collection_select(:birth_year,Birth_year.all,:id, :year, prompt: "---")
-              %span 年
-
+                = icon 'fas', 'chevron-down'
+                %span 年
               .signup-main__select-wrap.signup-main__select-wrap--month
                 = f.collection_select(:birth_month,Birth_month.all,:id, :month, prompt: "---")
-              %span 月
+                = icon 'fas', 'chevron-down'
+                %span 月
               .signup-main__select-wrap.signup-main__select-wrap--day
-        
                 = f.collection_select(:birth_day,Birth_day.all,:id, :day, prompt: "---")
-              %span 日
+                = icon 'fas', 'chevron-down'
+                %span 日
             .clearfix
           %p.signup-main__form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
@@ -69,6 +71,5 @@
               利用規約
             に同意したものとみなします
           = f.submit "次へ",class: 'red-btn'
-  = render 'signup/footer'
-  
 
+    = render "modules/logo-footer"

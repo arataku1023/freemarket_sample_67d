@@ -3,8 +3,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :tomy_category
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_card
+
   
   private
+
   def production?
     Rails.env.production?
   end
@@ -19,6 +22,13 @@ class ApplicationController < ActionController::Base
    @parents = Category.order("id ASC").limit(13)
   end
 
+  def set_card
+    if user_signed_in?
+      @card = current_user.cards.first
+    end
+  end
+
+  
   protected
 
   def configure_permitted_parameters

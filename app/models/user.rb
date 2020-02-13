@@ -17,11 +17,12 @@ class User < ApplicationRecord
   
   
   # validates_associated :address
+  has_many :seller_items, class_name: 'Item', :foreign_key => 'seller_id', dependent: :destroy
 
-  has_many :items, dependent: :destroy
-  # has_one :address, dependent: :destroy
+  # has_many :items, dependent: :destroy
+  
   has_many :cards
-  has_one :address
+  has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
   # has_secure_password
   # extend ActiveHash::Associations::ActiveRecordExtensions do
