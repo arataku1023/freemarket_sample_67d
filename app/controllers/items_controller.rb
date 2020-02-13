@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   require 'payjp'
   before_action :set_card
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:edit, :update, :show, :pay, :confirm, :destroy]
 
 
   def new
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save!
-    redirect_to "/"
+    redirect_to root_path
   end
 
 
@@ -56,7 +56,6 @@ class ItemsController < ApplicationController
   end
 
 
-
   def get_category_children        # 親カテゴリーが選択された後に動くアクション
    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
@@ -81,14 +80,15 @@ class ItemsController < ApplicationController
 
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      redirect_to delete_item_path
+    end  
   end
 
 
   def confirm
-    @item=Item.find(params[:id])
     @user = User.find(current_user.id)
   end
 
@@ -102,8 +102,6 @@ class ItemsController < ApplicationController
       redirect_to action: "confrimation"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
-      @item = Item.find(params[:id])
-     # 購入した際の情報を元に引っ張ってくる
       card = current_user.cards.first
      # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
       Payjp.api_key = "sk_test_45098fce6379a29a1ab3a29b"
@@ -121,7 +119,6 @@ class ItemsController < ApplicationController
         flash[:alert] = '購入に失敗しました。'
         redirect_to controller: "items", action: 'show'
       end
-     #↑この辺はこちら側のテーブル設計どうりに色々しています
     end
   end
 
@@ -146,21 +143,5 @@ class ItemsController < ApplicationController
       images_attributes: [:image]
     ).merge(user_id: current_user.id)
   end
-
-
-  # def grand_child_category_brother_search(id)
-  #   # @itemのcategory_id（孫）から見たparent_id（子id）を取得
-  #   grand_child_category_parent_id = Category.find(id).parent_id
-  #   # @itemのcategory_id（孫）から見たparent_id（子id）と同じparent_id（子id）をもつレコードを取得
-  #   grand_child_category_brother_ids = Category.where(parent_id: grand_child_category_parent_id)
-  #   return grand_child_category_brother_ids
-  # end
-  
-  # def child_category_brother_search(id)
-  #   # @itemのcategory_id（孫）から見たparent（子id）のもつparent_id（親）を取得
-  #   child_category_parent_id = Category.find(id).parent.parent_id
-  #   # @itemのcategory_id（孫）から見たparent（子）のもつparent_id（親）と同じparent_id（親）をもつレコードを取得
-  #   child_category_brother_ids = Category.where(parent_id: child_category_parent_id)
-  # end
 
 end
