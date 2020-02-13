@@ -36,9 +36,9 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|   #データベースから、親カテゴリーのみ抽出し、配列化
       @category_parent_array << parent.name
     end
-    @category_children_array = ["#{@child.name}"]
+    @category_children_array = [@child.name]           #式展開を解除
     Category.where(ancestry: "1").pluck(:name)
-    @category_grandchildren_array = ["#{@grandchild.name}"]
+    @category_grandchildren_array = [@grandchild.name] #式展開を解除
     Category.where(ancestry: "1/14").pluck(:name)
     respond_to do |format|
       format.html
@@ -57,12 +57,12 @@ class ItemsController < ApplicationController
 
 
   def get_category_children        # 親カテゴリーが選択された後に動くアクション
-   @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+   @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children #式展開を解除
   end
 
 
   def get_category_grandchildren   # 子カテゴリーが選択された後に動くアクション
-     @category_grandchildren = Category.find("#{params[:child_id]}").children
+     @category_grandchildren = Category.find(params[:child_id]).children #式展開を解除
   end
   
 
@@ -75,7 +75,7 @@ class ItemsController < ApplicationController
     @prefecture = Prefecture.find(@item.prefecture_id)
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
     
-    # @brand = Brand.find(@item.brand_id)
+    # @brand = Brand.find(@item.brand_id) ←後日実装の予定
   end
 
 
