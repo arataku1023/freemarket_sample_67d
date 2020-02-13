@@ -29,23 +29,15 @@
                 .content-name
                   .content-name__form-group
                     %label
-                      / react-text: 31
                       商品名
-                      / /react-text
                       %span.content-name__form-group__require 必須
                     %div
                       = f.text_field :name,:placeholder => "商品名（必須 40文字まで)",class: "content-name__form-group__input-default"
-                    / react-empty: 35
                   .content-name__form-group
                     %label
-                      / react-text: 38
                       商品の説明
-                      / /react-text
-                      / react-text: 39
-                      / /react-text
                       %span.content-name__form-group__require 必須
                     = f.text_area :detail,class: "content-name__form-group__textarea-default", :rows => "5",:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-                    / react-empty: 42
                 .content
                   .content__header
                     %h3.content__header__head 商品の詳細
@@ -58,17 +50,12 @@
                           //親カテゴリーのセレクトボックスの生成
                           = select_tag(:category_id, options_for_select(@category_parent_array),class: 'listing-select-wrapper__box--select', id: 'parent_category')
                           -# %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
-                                  
-                      / react-empty: 55
-                    .form-group
+                                                      .form-group
                       %label
-                        / react-text: 58
                         商品の状態
-                        / /react-text
                         %span.form-group__require 必須
                       .select-wrap
                         = f.select(:status, Item.statuses_i18n.invert,{},prompt: "---")
-                      / react-empty: 64
                 .content
                   .content__header
                     %h3.content__header__head 配送について
@@ -78,31 +65,22 @@
                     .content__mail-box
                       .form-group
                         %label
-                          / react-text: 71
                           配送料の負担
-                          / /react-text
                           %span.form-group__require 必須
                         .select-wrap
                           = f.select(:mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: :burden_select)
-                        / react-empty: 77
                     .form-group
                       %label
-                        / react-text: 80
                         発送元の地域
-                        / /react-text
                         %span.form-group__require 必須
                       .select-wrap
                         = f.collection_select(:prefecture_id,Prefecture.all,:id, :name, prompt: "---",class:"select-wrap__select-default")
-                      / react-empty: 86
                     .form-group
                       %label
-                        / react-text: 89
                         発送までの日数
-                        / /react-text
                         %span.form-group__require 必須
                       .select-wrap
                         = f.collection_select(:arrival_date_id,Arrival_date.all,:id, :date, prompt: "---")
-                      / react-empty: 95
                 .content-price
                   .content-price__header
                     %h3.exhibition__main__container__inner__form__content-price__header__head 販売価格(300〜9,999,999)
@@ -112,24 +90,17 @@
                       %li.content-price__form-box__price__form-group
                         .content-price__form-box__price__form-group__inner
                           %label.content-price__form-box__price__form-group__inner__left.bold
-                            / react-text: 104
                             価格
-                            / /react-text
                             %span.content-price__form-box__price__form-group__inner__left__require 必須
                           .content-price__form-box__price__form-group__inner__right
                             .content-price__form-box__price__form-group__inner__right__input
-                              / react-text: 107
                               ¥
-                              / /react-text
                             = f.text_field :price, :placeholder => "例）300",value: "",class: "amount-input"
 
-                        / react-empty: 110
                       %li.content-price__form-box__price__form-group
                         .content-price__form-box__price__form-group__inner
                           %label.content-price__form-box__price__form-group__inner__left
                             販売手数料 (10%)
-                          -# react-text: 199
-                          /react-text
                           .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right 
                             .fee
                       %li.exhibition__main__container__inner__form__content-price__form-box__price__form-group
@@ -144,35 +115,20 @@
                   %div
                     %p
                       =link_to "禁止されている出品", "/jp/help_center/getting_started/prohibited_items/", target: "_blank"
-                      / react-text: 123
                       、
-                      / /react-text
                       =link_to "行為", "/jp/help_center/getting_started/prohibited_conduct/", target: "_blank"
-                      / react-text: 125
                       を必ずご確認ください。
-                      / /react-text
                     %p
-                      / react-text: 127
                       またブランド品でシリアルナンバー等がある場合はご記載ください。
-                      / /react-text
                       =link_to "偽ブランドの販売","/jp/help_center/getting_started/counterfeit_goods/", target: "_blank"
-                      / react-text: 129
                       は犯罪であり処罰される可能性があります。
-                      / /react-text
                     %p
-                      / react-text: 131
                       また、出品をもちまして
-                      / /react-text
                       =link_to "加盟店規約","/jp/seller_terms/"
-                      / react-text: 133
                       に同意したことになります。
-                      / /react-text
                   %div
                     = f.submit '出品する', class:"btn-box__btn-default btn-red"
-                    / react-text: 135
-                    / /react-text
                   =link_to "もどる", "/",class: "btn-box__btn-default btn-gray"
-                  / react-empty: 137
               .exhibition__main__container__inner__overlay
              
     = render 'modules/logo-footer'

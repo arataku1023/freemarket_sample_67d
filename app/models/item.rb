@@ -18,11 +18,11 @@ class Item < ApplicationRecord
   validates :arrival_date_id,   presence: true
   validates :prefecture_id,     presence: true
 
-  # has_many :images
-
   belongs_to :user
+
   belongs_to :category
-  # belongs_to :brand
+
+  # belongs_to :brand ←後日実装の予定
 
   enum status:{nothing: "", intact: 0, clean: 1, good: 2, scratched: 3, bad: 4, dirty: 5}
 end 

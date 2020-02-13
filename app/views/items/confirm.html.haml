@@ -57,7 +57,7 @@
                       = @user.first_name
                       = @user.last_name
               %section.confirm__main__container__procedures__inner__form__decision.buy-user-info
-                = f.submit '購入する', class:"confirm__main__container__procedures__inner__form__decision__btn-default btn-red bold"
-                %input#user_info_is_not_complete{:type => "hidden"}/
+                = form_tag(action: :pay, method: :post) do
+                  %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_5ec65b0b13864670fb40c7d8"}
           %section
     = render "modules/logo-footer"
