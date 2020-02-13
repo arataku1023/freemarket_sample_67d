@@ -1,5 +1,6 @@
 .wrapper
   = render ('modules/header')
+  - breadcrumb :mypage
   .main
     =render ('modules/side-bar')
     .content
@@ -9,7 +10,7 @@
             .mypage-user__icon__link__image
               = image_tag 'member_photo_noimage_thumb.png', size: '60x60'
             .mypage-user__icon__link__user-name
-              takuyaman
+              = @user.nickname
             .mypage-user__icon__link__infomation
               .mypage-user__icpn__link__infomation__evalution
                 評価100万

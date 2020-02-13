@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :images
+  resources :images,only: [:destroy]
 
   resources :categories, only: [:index]
 
@@ -50,5 +51,6 @@ Rails.application.routes.draw do
       get 'delete'
     end
   end  
+
 
 end
