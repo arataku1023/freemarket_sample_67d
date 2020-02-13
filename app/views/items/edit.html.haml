@@ -18,7 +18,7 @@
                       .item-image{"data-image" => img.image}
                         .item-image__content
                           .item-image__content--icon
-                            = image_tag img, "height": "114", "width": "116"
+                            = image_tag img.image.url, "height": "114", "width": "116"
                         .item-image__operetion
                           = link_to "削除",image_path(img.id),method: :delete
                     .image-box__item-num-0#image-box__container
