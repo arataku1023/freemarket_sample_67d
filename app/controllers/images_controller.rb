@@ -5,5 +5,6 @@ class ImagesController < ApplicationController
       redirect_to edit_item_path(image.item_id)
     else
       redirect_to edit_item_path(image.item_id)
+    end
   end
 end
