@@ -4,6 +4,6 @@ class ImagesController < ApplicationController
     if image.destroy
       redirect_to edit_item_path(image.item_id)
     else
-      redirect_to edit_item_path(image.item_id
+      redirect_to edit_item_path(image.item_id)
     end
 end
