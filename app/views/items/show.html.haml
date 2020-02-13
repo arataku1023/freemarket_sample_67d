@@ -6,7 +6,7 @@
       %script{src: "js/image"}
       .show-item
         %p.name 
-          =@item.detail
+          =@item.name
         .img-box
           .relative
             .absolute
@@ -54,13 +54,13 @@
                 %br 
                 >
                 = @grandchildren.name
-            %tr
-              %th ブランド
-              %td
-                -# =@brand.name
-            %tr
-              %th 商品のサイズ
-              %td ?
+            -# %tr
+            -#   %th ブランド
+            -#   %td
+            -#     -# =@brand.name
+            -# %tr
+            -#   %th 商品のサイズ
+            -#   %td ?
             %tr
               %th 商品の状態
               %td 
