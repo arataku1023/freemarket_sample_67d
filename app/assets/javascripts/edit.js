@@ -1,0 +1,165 @@
+$(function() {
+  $(document).ready(function() {
+    var input = $(".amount-input").val();
+    input = parseInt(input);
+    if(input >= 300 && input <= 9999999) {
+    var fee = Math.floor(input * 0.1)
+    var total_amount = (input - fee)
+    $('.fee').html(fee.toLocaleString())
+    $('.fee').prepend('¥')
+    $('.total_amount').html(total_amount.toLocaleString())
+    $('.total_amount').prepend('¥')
+    }
+    else{
+    $('.fee').html("-")
+    $('.total_amount').html("-")
+    }
+  });
+
+});
+
+
+$(function(){
+  //ボックスのオプションを作成
+    function appendMailOption(mail){
+     var html = `<option value="${mail.txt}" data-mail="${mail.val}">${mail.txt}</option>`;
+     return html;
+    }
+  
+  //配送方法の表示
+    function appendMailBox(insertHtml){
+     var mailSelectHtml = '';
+     mailSelectHtml = `<div class="form-group" id= 'postage_wrapper'>
+                         <label>
+                           配送の方法
+                           <span class="form-group__require">
+                             必須
+                           </span>
+                         </label>
+                         <div class="select-wrap">
+                           <select name="item[mail_way]" id="item_mail_way">
+                             <option value="">
+                               ---
+                             </option>
+                             ${insertHtml}
+                           </select>
+                         </div>
+                       </div>`;
+     $('.content__mail-box').append(mailSelectHtml);
+    }
+    
+    var arr = [
+     {val:"1", txt:"未定"},
+     {val:"2", txt:"クロネコヤマト"},
+     {val:"3", txt:"ゆうパック"},
+     {val:"4", txt:"ゆうメール"},
+     {val:"5", txt:"ゆうパケット"},
+     {val:"6", txt:"らくらくメルカリ便"},
+     {val:"7", txt:"普通郵便(定形、定形外)"},
+     {val:"8", txt:"レターパック"},
+     {val:"9", txt:"クリックポスト"}
+    ];
+  
+    
+  //配送負担を選択後
+    $('#item_mail').on('change', function(){
+     var sendContent = document.getElementById('item_mail').value; //選択された情報を取得
+     if (sendContent == "送料込み(出品者負担)"){    //発送負担が出品者である事を確認
+       $('.form-group-way').remove();
+       var insertHTML = '';
+       for(var i=0;i<arr.length;i++){
+         insertHTML += appendMailOption(arr[i]);
+       };
+       appendMailBox(insertHTML);
+     }else if(sendContent == "着払い(購入者負担)"){
+      $('.form-group-way').remove();
+      var insertHTML = '';
+      for(var i=0;i<4;i++){
+        insertHTML += appendMailOption(arr[i]);
+      };
+      appendMailBox(insertHTML);
+     }else{
+       $('.form-group-way').remove(); 
+       alert('配送料の負担は選択されていません');
+     }
+    });
+  });
+
+  $(function(){
+    //ボックスのオプションを作成
+      function appendMailOption(mail){
+       var html = `<option value="${mail.txt}" data-mail="${mail.val}">${mail.txt}</option>`;
+       return html;
+      }
+    
+    //配送方法の表示
+      function appendMailBox(insertHtml){
+       var mailSelectHtml = '';
+       mailSelectHtml = `<div class="form-group" id= 'postage_wrapper'>
+                           <label>
+                             配送の方法
+                             <span class="form-group__require">
+                               必須
+                             </span>
+                           </label>
+                           <div class="select-wrap">
+                             <select name="item[mail_way]" id="item_mail_way">
+                               <option value="">
+                                 ---
+                               </option>
+                               ${insertHtml}
+                             </select>
+                           </div>
+                         </div>`;
+       $('.content__mail-box').append(mailSelectHtml);
+      }
+      
+      var arr = [
+       {val:"1", txt:"未定"},
+       {val:"2", txt:"クロネコヤマト"},
+       {val:"3", txt:"ゆうパック"},
+       {val:"4", txt:"ゆうメール"},
+       {val:"5", txt:"ゆうパケット"},
+       {val:"6", txt:"らくらくメルカリ便"},
+       {val:"7", txt:"普通郵便(定形、定形外)"},
+       {val:"8", txt:"レターパック"},
+       {val:"9", txt:"クリックポスト"}
+      ];
+    
+      
+    //配送負担を選択後
+      $('#item_mail_way').on('focus', function(){
+       var sendContent = document.getElementById('item_mail').value; //選択された情報を取得
+       if (sendContent == "送料込み(出品者負担)"){    //発送負担が出品者である事を確認
+         $('.form-group-way').remove();
+         var insertHTML = '';
+         for(var i=0;i<arr.length;i++){
+           insertHTML += appendMailOption(arr[i]);
+         };
+         appendMailBox(insertHTML);
+       }else if(sendContent == "着払い(購入者負担)"){
+        $('.form-group-way').remove();
+        var insertHTML = '';
+        for(var i=0;i<4;i++){
+          insertHTML += appendMailOption(arr[i]);
+        };
+        appendMailBox(insertHTML);
+       }else{
+         $('.form-group-way').remove(); 
+         alert('配送料の負担は選択されていません');
+       }
+      });
+    });
+
+  $(function() {
+    $('#c_category').click(function() {
+      $('#c_category').remove();
+      $('#g_category').remove();
+    });
+    $('#g_category').click(function() {
+      $('#c_category').remove();
+      $('#g_category').remove();
+    });
+  });
+
+

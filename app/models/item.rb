@@ -7,6 +7,16 @@ class Item < ApplicationRecord
     belongs_to_active_hash :arrival_date
     belongs_to_active_hash :postage
   end
+  validates :name,              presence: true, length: { maximum: 40 }
+  validates :detail,            presence: true, length: { maximum: 1000 }
+  validates :price,             presence: true, inclusion: 300..9999999
+  validates :status,            presence: true
+  validates :mail,              presence: true
+  validates :mail_way,          presence: true
+  validates :user_id,           presence: true
+  validates :category_id,       presence: true
+  validates :arrival_date_id,   presence: true
+  validates :prefecture_id,     presence: true
 
     belongs_to :user
     

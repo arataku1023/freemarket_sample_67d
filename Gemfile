@@ -96,3 +96,4 @@ gem 'rails-i18n'
 
 gem 'rails-i18n'
 gem 'rspec-rails'
+gem 'gretel'

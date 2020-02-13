@@ -14,9 +14,10 @@
               %h3.confirm__main__container__detail__inner__item-box__item-image
                 =image_tag "https://ca.slack-edge.com/TK2M4NQC8-UREHDFJJH-e8345f185cde-512", class: "confirm__main__container__detail__inner__item-box__item-image__lazyload"
               .confirm__main__container__detail__inner__item-box__item-detail
-                %p.confirm__main__container__detail__inner__item-box__item-detail__item-name 遊戯王 ＲＵＭ－七皇の剣 3枚セット
+                %p.confirm__main__container__detail__inner__item-box__item-detail__item-name 
+                  = @item.name
                 %p.confirm__main__container__detail__inner__item-box__item-detail__price-ja.bold
-                  %span ¥300
+                  = @item.price
                   %span.confirm__main__container__detail__inner__item-box__item-detail__price-ja__shipping-fee （税込）送料込み
         %section.confirm__main__container__procedures
           .confirm__main__container__procedures__inner
@@ -25,7 +26,7 @@
                 %li.confirm__main__container__procedures__inner__form__price-table__price-row.buy-you-pay.bold
                   .confirm__main__container__procedures__inner__form__price-table__price-row__label 支払い金額
                   .confirm__main__container__procedures__inner__form__price-table__price-row__price-cell
-                    %span{"data-buy-pay": "300"} ¥300
+                    = @item.price
               %ul.confirm__main__container__procedures__inner__form__have-point
                 %li.confirm__main__container__procedures__inner__form__have-point__accordion-parent
                   .confirm__main__container__procedures__inner__form__have-point__accordion-parent__checkbox-default.buy-use-point
@@ -47,42 +48,14 @@
                       %span 変更する
                   %address.confirm__main__container__procedures__inner__form__shipping-address__inner__user-info-text
                     %p
-                      〒100-8111
+                      〒
+                      = @user.address.post_code
                       %br/
-                      東京都 千代田区
-                      千代田 １−１
+                      = @user.address.prefecture
+                      = @user.address.town
                       %br/
-                      納富 直人
-              %input{name: "seller_id", type: "hidden", value: "536423857"}/
-              %input{name: "payment_fee", type: "hidden", value: "0"}/
-              %input{name: "payment_amount", type: "hidden", value: "300"}/
-              %input{name: "price", type: "hidden", value: "300"}/
-              %input{name: "category_id", type: "hidden", value: "1152"}/
-              %input{name: "item_condition", type: "hidden", value: "2"}/
-              %input{name: "shipping_payer", type: "hidden", value: "2"}/
-              %input{name: "shipping_method", type: "hidden", value: "9"}/
-              %input{name: "shipping_duration", type: "hidden", value: "1"}/
-              %input{name: "shipping_class", type: "hidden", value: "0"}/
-              %input{name: "zip_code1", type: "hidden", value: "840"}/
-              %input{name: "zip_code2", type: "hidden", value: "0805"}/
-              %input{name: "paid_method", type: "hidden", value: "card"}/
-              %input{name: "checksum", type: "hidden", value: "91773c14cc1a8dbd3b2387fc20d909f7"}/
-              %input{name: "payment_card_sequence_no", type: "hidden", value: "0"}/
-              %input{name: "payment_use_last_card_base64", type: "hidden", value: "eWVz"}/
-              %input{name: "item_name_base64", type: "hidden", value: "6YGK5oiv546LIO+8su+8te+8re+8jeS4g+eah+OBruWJoyAz5p6a44K744OD44OI"}/
-              %input{name: "description_base64", type: "hidden", value: "4piGMzAw5YaG5ZWG5ZOB44G+44Go44KB6LK344GEU0FMReS4reKYhgrku5bjga7lr77osaHllYblk4HjgpLjgYrjgb7jgajjgoHos7zlhaXjgacKMueCueKApjEwMOWGhuW8leOBjQoz54K54oCmMjAw5YaG5byV44GNCjTngrnigKYzMDDlhoblvJXjgY0K5L2V54K56LO85YWl44GE44Gf44Gg44GE44Gm44KCMTAw5YaG44Ga44Gk44GK5YCk5byV44GN44GE44Gf44GX44G+44GZ77yBCgrjgZPjga7jg5rjg7zjgrjjga7kuIvjgavlr77osaHllYblk4HkuIDopqfjga7jg4/jg4Pjgrfjg6Xjgr/jgrDjgoLjgYLjgorjgb7jgZnvvIEK5Ye65ZOB6ICF44Oa44O844K444GL44KJ44KC44GU6Kan44GE44Gf44Gg44GR44G+44GZ44Gu44Gn44CB44CM4pev4pev44Go4pev4pev44KS5LiA57eS44Gr44CN44Go44Kz44Oh44Oz44OI5LiL44GV44GE4piGCgrpgYrmiK/njosK44CQ44K544O844OR44O844CRCiAgIFJVTeODvOS4g+eah+OBruWJoyAz5p6aCgrjgJDnmbrpgIHjgavjgaTjgYTjgabjgJEK5Z+65pys55qE44Gr5a6a5b2i5aSW6YO15L6/44KE44Of44OL44Os44K/44O844KS5L2/55So44GX44Gm44GK44KK44G+44GZ44Gu44Gn44CB6L+96Leh44GM44Gn44GN44G+44Gb44KTKD5fPCkK6YWN6YGU5pmC44Gu57Sb5aSx44KE6YWN6YGU5b6M44Gu55uX6Zuj44Gq44Gp44Gv6LKs5Lu744KS6LKg44GI44G+44Gb44KT44Gu44Gn44CB44GU5LqG5om/5LiL44GV44GEbShfXyltCgrjg6njg7Pjgq/jgqLjg4Pjg5fjg57jgrjjg4Pjgq8K44K244O744K744OW44Oz44K544O744Ov44OzCgrihpPmpJzntKLjgavjgYrkvb/jgYTjgY/jgaDjgZXjgYTihpMKCiMzMDDlhoZTQUxF5a++6LGh5ZWG5ZOB5LiA6Kan"}/
-              %input{name: "shipping_from_area_base64", type: "hidden", value: "MjM="}/
-              %input{name: "family_name_base64", type: "hidden", value: "57SN5a+M"}/
-              %input{name: "first_name_base64", type: "hidden", value: "55u05Lq6"}/
-              %input{name: "family_name_kana_base64", type: "hidden", value: "44OO44Km44OJ44Of"}/
-              %input{name: "first_name_kana_base64", type: "hidden", value: "44OK44Kq44OI"}/
-              %input{name: "prefecture_base64", type: "hidden", value: "5L2Q6LOA55yM"}/
-              %input{name: "city_base64", type: "hidden", value: "5L2Q6LOA5biC"}/
-              %input{name: "address1_base64", type: "hidden", value: "56We6YeO6KW/M+S4geebrjItMTI="}/
-              %input{name: "address2_base64", type: "hidden", value: ""}/
-              %input{name: "telephone_base64", type: "hidden", value: "MDk1MjMxNzU3Mg=="}/
-              %input{name: "__csrf_value", type: "hidden", value: "c0ad5429d2af3795b1b1f5ed96a8f6b6b8974ee76224de8bc2692438256a0c8c00f7a62667ff5ab6f28d32ec2028e614c1150d99aa45c713e255dbe972fccd951"}/
-              %input{name: "_s", type: "hidden", value: "U2FsdGVkX1-VG7m5r2eDKAuxwfPHWBaohvvHR6Sz7lUoVYolnAVTs1H_mAXRFdGh0dA4QbXrgNYHENpP_cpSvdHYrSRoWmb_8RfV8FkvFQ1JIGhfiYVvgrhMyuTaWSTw"}/
+                      = @user.first_name
+                      = @user.last_name
               %section.confirm__main__container__procedures__inner__form__decision.buy-user-info
                 = form_tag(action: :pay, method: :post) do
                   %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_5ec65b0b13864670fb40c7d8"}
