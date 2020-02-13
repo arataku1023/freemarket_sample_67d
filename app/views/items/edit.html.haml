@@ -18,9 +18,9 @@
                       .item-image{"data-image" => img.image}
                         .item-image__content
                           .item-image__content--icon
-                            %img{:height => "114", :src => img.image, :width => "116"}/
+                            = image_tag img, "height": "114", "width": "116"
                         .item-image__operetion
-                          = link_to "削除","/images/#{img.id}",method: :delete
+                          = link_to "削除",image_path(img.id),method: :delete
                     .image-box__item-num-0#image-box__container
                       = f.fields_for :image do |i|
                         .image-box__item-num-0__input-area#image-box__container__input-area

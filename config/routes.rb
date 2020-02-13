@@ -16,9 +16,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :images
-  
-  get 'images/destroy'
+  resources :images,only: [:destroy]
 
   resources :categories, only: [:index]
 

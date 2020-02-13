@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
   end
 
    def edit
-    # @item = Item.find(params[:id])
     @item.images.build
     @images = Image.where(item_id: @item.id)
     @grandchild = Category.find(@item.category_id)
@@ -36,13 +35,9 @@ class ItemsController < ApplicationController
       @category_parent_array << parent.name
     end
     @category_children_array = ["#{@child.name}"]
-    Category.where(ancestry: "1").each do |children|   #データベースから、親カテゴリーのみ抽出し、配列化
-      @category_children_array << children.name
-    end
+    Category.where(ancestry: "1").pluck(:name)
     @category_grandchildren_array = ["#{@grandchild.name}"]
-    Category.where(ancestry: "1/14").each do |grandchildren|   #データベースから、親カテゴリーのみ抽出し、配列化
-      @category_grandchildren_array << grandchildren.name
-    end
+    Category.where(ancestry: "1/14").pluck(:name)
     respond_to do |format|
       format.html
       format.json
@@ -50,7 +45,6 @@ class ItemsController < ApplicationController
    end
 
    def update
-    # @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -70,9 +64,7 @@ class ItemsController < ApplicationController
   # end
   
   def show
-    # @item = Item.find(params[:id])
     @images = Image.where(item_id: @item.id)
-    # @brand = Brand.find(@item.brand_id)
     @user = User.find(@item.user_id)
     @grandchildren = Category.find(@item.category_id)
     @children = @grandchildren.parent
