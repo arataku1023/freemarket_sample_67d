@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      render redirect_to edit_item_path(@item.id)
+      redirect_to edit_item_path(@item.id)
     end   
   end
 
