@@ -1,8 +1,11 @@
 .wrapper
   = render ('modules/header')
-  - breadcrumb :user_sign_out
+  .bread-crumbs
+    - breadcrumb :user_sign_out
+    = breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs-list'
   .main
     =render ('modules/side-bar')
+
     .content
       .logout-page
         .logout-page__body
