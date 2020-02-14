@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
   resources :images,only: [:destroy]
 
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show]
 
   resources :signup do
     collection do
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     collection do
-      post 'pay/:id'=> 'items#pay', as: 'pay'
+      post 'pay/:id', to: 'items#pay', as: 'pay'
     end
 
     member do

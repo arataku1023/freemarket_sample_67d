@@ -90,21 +90,19 @@
       .main__items__inner__lists
         
         - @items.first(3).each do |item|
-          .main__items__inner__lists__list
+          .items_list
             =link_to "items/#{item.id}" do
-              %figure.main__items__inner__lists__list__img
-                -# =image_tag @images.find_by(item_id: "1")
-                -# =image_tag item.images
+              %figure.items_list__img
                 =image_tag @images.find_by(item_id: item.id).image.url
-              .main__items__inner__lists__list__body
-                %h3.main__items__inner__lists__list__body__name 
+              .items_list__body
+                %h3.items_list__body__name 
                   =item.detail
-                .main__items__inner__lists__list__body__details
+                .items_list__body__details
                   %ul
                     %li 
                       =item.price
                     %li
-                      %i.fa.fa-star.main__items__inner__lists__list__body__details__likeIcon
+                      %i
                       0
                   %p (税込)
 
