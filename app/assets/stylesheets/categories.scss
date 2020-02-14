@@ -3,6 +3,14 @@
   display: block;
   padding: 40px 0;
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+   #category_link{ //全カテゴリのリンクに付与*青色で
+    text-decoration: none;
+    color: #0099E8;
+   }
+   #category_link:hover{
+    text-decoration: underline;
+    opacity: 0.7;
+   }
   .whole{
    width: 700px;
    margin: 0 auto;

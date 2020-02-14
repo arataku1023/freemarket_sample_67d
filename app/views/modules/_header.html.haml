@@ -25,18 +25,18 @@
             - @parents.each do |parent|
               %li.categories__li
                 .parent-list
-                  =parent.name
+                  = link_to "#{parent.name}",category_path(parent.id), id: :category_link
 
                 %ul.child-categories.relative-for-grand
                   - parent.children.each_with_index do |child,i|
                     %li.child-categories__li                    
                       .child-list
-                        = child.name
+                        = link_to "#{child.name}",category_path(child.id), id: :category_link
 
                       %ul.grand-categories
                         - child.children.each do |grandchild|
                           %li.grand-categories__li
-                            = grandchild.name
+                            = link_to "#{grandchild.name}",category_path(grandchild.id), id: :category_link
                     
         %li.header__inner__nav__left__lists-b
           =link_to "ブランド","/", id: :brandBtn 

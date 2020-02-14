@@ -88,10 +88,6 @@
               z-index: 1;
               // 通常時見えなくする
               display: none;
-
-              &__category {
-
-              }
             }
           }
         }
@@ -390,7 +386,7 @@ button{
         display: flex;
         justify-content: space-around;
 
-        &__list {
+        .items_list {
           width: 220px;
           display: inline-block;
           background-color: #fff;
@@ -432,9 +428,6 @@ button{
                 align-items: center;
                 justify-content: space-between;
               }
-                li {
-                 
-                }
               p {
                 font-size: 10px;
                 text-align: left;

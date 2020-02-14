@@ -56,8 +56,13 @@
                       %br/
                       = @user.first_name
                       = @user.last_name
-              %section.confirm__main__container__procedures__inner__form__decision.buy-user-info
-                = form_tag(action: :pay, method: :post) do
-                  %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_5ec65b0b13864670fb40c7d8"}
+            %section
+              -# = form_tag(action: :pay, method: :post) do
+              -#   %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_5ec65b0b13864670fb40c7d8"}
+              = form_with(url: pay_items_path, method: :post, local: true) do
+                %button.payjp-button{type: "submit","data-key" => "pk_test_5ec65b0b13864670fb40c7d8", src: "https://checkout.pay.jp"}
+                  購入する
           %section
     = render "modules/logo-footer"
+
+= render 'modules/sell-btn'

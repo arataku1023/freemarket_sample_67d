@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   require 'payjp'
+
   before_action :set_card
   before_action :set_item, only: [:edit, :update, :show, :pay, :confirm, :destroy]
 
@@ -57,12 +58,12 @@ class ItemsController < ApplicationController
 
 
   def get_category_children        # 親カテゴリーが選択された後に動くアクション
-   @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children #式展開を解除
+    @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children #式展開を解除
   end
 
 
   def get_category_grandchildren   # 子カテゴリーが選択された後に動くアクション
-     @category_grandchildren = Category.find(params[:child_id]).children #式展開を解除
+    @category_grandchildren = Category.find(params[:child_id]).children #式展開を解除
   end
   
 
@@ -99,9 +100,11 @@ class ItemsController < ApplicationController
 
   def pay #クレジット購入
     if @card.blank?
-      redirect_to action: "confrimation"
+      redirect_to action: "confrim"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
+      @item = Item.find(params[:id])
+     # 購入した際の情報を元に引っ張ってくる
       card = current_user.cards.first
      # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
       Payjp.api_key = "sk_test_45098fce6379a29a1ab3a29b"
@@ -109,7 +112,7 @@ class ItemsController < ApplicationController
       Payjp::Charge.create(
       amount: @item.price, #支払金額
       customer: card.customer_id, #顧客ID
-      currency: 'jpy', #日本円
+      currency: 'jpy'
       )
      # ↑商品の金額をamountへ、cardの顧客idをcustomerへ、currencyをjpyへ入れる
       if @item.update(sold_status: 1, buyer_id: current_user.id)
@@ -124,6 +127,12 @@ class ItemsController < ApplicationController
 
 
   private
+
+  def set_card   # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
+    if user_signed_in?
+      @card = current_user.cards.first
+    end
+  end
 
   def set_item
     @item = Item.find(params[:id])
