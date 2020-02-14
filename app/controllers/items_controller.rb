@@ -32,15 +32,19 @@ class ItemsController < ApplicationController
     @images = Image.where(item_id: @item.id)
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
-    @parent = @grandchild.parent.parent.name
+    @parent = @grandchild.parent.parent
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |parent|   #データベースから、親カテゴリーのみ抽出し、配列化
       @category_parent_array << parent.name
     end
-    @category_children_array = [@child.name]           #式展開を解除
-    Category.where(ancestry: "1").pluck(:name)
-    @category_grandchildren_array = [@grandchild.name] #式展開を解除
-    Category.where(ancestry: "1/14").pluck(:name)
+    @category_children_array = ["---"]
+      @parent.children.each do |children|   #データベースから、親カテゴリーのみ抽出し、配列化
+      @category_children_array << children.name
+    end
+    @category_grandchildren_array = ["---"]
+    @grandchild.siblings.each do |grandchild|   #データベースから、親カテゴリーのみ抽出し、配列化
+      @category_grandchildren_array << grandchild.name
+    end
     respond_to do |format|
       format.html
       format.json
