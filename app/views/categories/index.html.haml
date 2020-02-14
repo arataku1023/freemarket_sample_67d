@@ -1,5 +1,7 @@
 =render 'modules/header'
-- breadcrumb :caregories
+.bread-crumbs
+  - breadcrumb :caregories
+  = breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs-list'
 .categories-box
   .whole
     .ichiran カテゴリー一覧

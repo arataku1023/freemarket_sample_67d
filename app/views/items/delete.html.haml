@@ -1,12 +1,6 @@
 .wrapper
   = render ('modules/header')
   .main
-    .content
-      .logout-page
-        .logout-page__body
-          .logout-page__body__btn
-            = link_to "商品を削除する", item_path, method: :delete, class:"logout-btn"
-
     .side-bar
       .mypage-nav
         %ul.mypage-nav__list
@@ -62,5 +56,12 @@
             電話番号の確認
           %li.mypage-nav__list__item
             ログアウト
+    .content
+      .logout-page
+        .logout-page__body
+          .logout-page__body__btn
+            = link_to "商品を削除する", item_path, method: :delete, class:"logout-btn"
+
+    
   = render ('modules/banner')
   = render ('modules/footer')

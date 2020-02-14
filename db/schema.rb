@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_02_13_093111) do
     t.integer "status", limit: 1, null: false
     t.string "mail", null: false
     t.string "mail_way", null: false
+    t.integer "sold_status"
+    t.bigint "buyer_id"
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id"
@@ -65,8 +67,6 @@ ActiveRecord::Schema.define(version: 2020_02_13_093111) do
     t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sold_status"
-    t.bigint "buyer_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["mail"], name: "index_items_on_mail"

@@ -1,13 +1,9 @@
 .wrapper
   = render ('modules/header')
-  - breadcrumb :user_sign_out
+  .bread-crumbs
+    - breadcrumb :user_sign_out
+    = breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs-list'
   .main
-    .content
-      .logout-page
-        .logout-page__body
-          .logout-page__body__btn
-            = link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout-btn"
-
     .side-bar
       .mypage-nav
         %ul.mypage-nav__list
@@ -63,5 +59,12 @@
             電話番号の確認
           %li.mypage-nav__list__item
             ログアウト
+    .content
+      .logout-page
+        .logout-page__body
+          .logout-page__body__btn
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class:"logout-btn"
+
+    
   = render ('modules/banner')
   = render ('modules/footer')

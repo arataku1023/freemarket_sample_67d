@@ -99,7 +99,7 @@ class ItemsController < ApplicationController
 
   def pay #クレジット購入
     if @card.blank?
-      redirect_to action: "confrimation"
+      redirect_to confirmation_card_path
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       card = current_user.cards.first
