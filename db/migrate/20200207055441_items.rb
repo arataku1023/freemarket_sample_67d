@@ -7,7 +7,10 @@ class Items < ActiveRecord::Migration[5.2]
       t.integer :status, null: false, limit: 1
       t.string :mail, null: false, index: true
       t.string :mail_way, null: false, index: true
-    
+
+      t.integer :sold_status
+      t.bigint :buyer_id
+
       t.references :user, foreign_key: true, null: false
       t.references :category, foreign_key: true, null: false
       t.references :brand, foreign_key: true

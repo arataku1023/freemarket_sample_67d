@@ -2,7 +2,10 @@
  height: 100px;
  width: 100vw;
  padding-bottom: 10px;
-
+ #category_link{ //全カテゴリのリンクに付与*黒で
+  text-decoration: none;
+  color: #333;
+ }
  &__inner {
    height: 82px;
    width: 70%;
@@ -64,15 +67,18 @@
      justify-content: space-between;
      &__left {
        position: relative;
-       width: 200px;
+       width: 180px;
 
        &__lists {
         line-height: 50px;   
         .categorybtn {
           #btn{
-           color: black;
+           color: #333;
            text-decoration: none;
            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+          }
+          #btn:hover{
+           color: #0099E8;
           }
          }
          .categorybtn:hover + .categories{
@@ -87,18 +93,15 @@
           font-size: 14px;
           color: #333;
           font-weight: 300; 
-          width: 130px;
           z-index: 1;
           display:none;
           position: relative;
           margin-top: -1px;
-          border: 1px 0 1px 1px solid rgb(235, 235, 235);
+          border: 1px solid rgb(235, 235, 235);
           &__li{
            .parent-list{
              padding: 2px 0 2px 5px;
-             width: 160px;
              background-color: white;
-             border-right:1px solid rgb(235, 235, 235);
            }
            .parent-list:hover{
             background-color: #3CCACE;
@@ -111,11 +114,13 @@
             display: block;
            }
            .child-categories{
+            min-height: 650px;
+            background-color: white;
             display:none;
             position: absolute;
             top: 0;
-            left: 166px;
-            border-right:1px solid rgb(235, 235, 235);
+            left: 178px;
+            border:1px solid rgb(235, 235, 235);
             .relative-for-grand{
              position: relative;
             }
@@ -138,13 +143,15 @@
               }
               .grand-categories{
                width: 220px;
+               min-height: 650px;
                display:none;
                position: absolute;
                top: 0;
                left: 166px;
-               border-right: 1px solid rgb(235, 235, 235);
+               border: 1px solid rgb(235, 235, 235);
                &__li{
                 padding-left: 5px;
+                background-color: white;
                }
                &__li:hover{
                 background-color: rgb(233, 233, 233);
@@ -166,6 +173,9 @@
            color: black;
            text-decoration: none;
            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+         }
+         a:hover{
+          color: #0099E8;
          }
        }
      }

@@ -1,6 +1,6 @@
 .select-wrap {
   width: 400px;
-  height: 48px;                                  
+  height: 48px;                       
   select {
     width: 400px;
     height: 48px;
@@ -8,6 +8,10 @@
     border: 1px solid #ccc;
     font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
     background-color: #fff;
+    outline: none;
+  }              
+  select:focus{
+    border: 1px solid rgb(79, 185, 255);
   }
 }
 //カテゴリ選択欄の表示
@@ -43,9 +47,11 @@
       border: 1px solid #ccc;
       font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
       background-color: #fff;
+      outline:none;
     }
-  }
-  .listing-select-wrapper{
+    select:focus{
+      border: 1px solid rgb(79, 185, 255);
+    }        
   }
   .listing-select-wrapper__added{
     margin-top: 10px;
@@ -233,7 +239,11 @@
                 font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
                 font-family: inherit;
                 -webkit-appearance: none;
+                outline:none;
               }
+              &__input-default:focus{
+                border: 1px solid rgb(79, 185, 255);
+              }        
             }
             &__form-group {
               margin: 40px 0 0;
@@ -266,7 +276,11 @@
                 background-color: #fff;
                 font-size: 16px;
                 line-height: 1.5;
+                outline: none;
               }
+              &__textarea-default:focus{
+                border: 1px solid rgb(79, 185, 255);
+              }  
             }
           }
           .content {
@@ -398,7 +412,11 @@
                         height: 30px;
                         border: 1px solid #ccc;
                         border-radius: 5px;
-                      }                     
+                        outline: none;
+                      } 
+                      .amount-input:focus{
+                        border: 1px solid rgb(79, 185, 255);
+                      }                      
                     }
                   }
                 }

@@ -8,7 +8,7 @@ describe Item do
       item = build(:item, name: "")
       item.valid?
       expect(item.errors[:name]).to include("を入力してください")
-  end
+    end
 
     #detail
     it "is invalid without a detail" do
