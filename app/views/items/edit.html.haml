@@ -48,13 +48,13 @@
                     %span.listing-default--require 必須  
                     .listing-select-wrapper
                       .listing-select-wrapper__box#parent_wrapper
-                        = select_tag(:category_id, options_for_select(@category_parent_array, selected: @parent),class: 'listing-select-wrapper__box--select', id: 'parent_category')
-                    #children_wrapper.listing-select-wrapper__added
+                        = select_tag(:category_id, options_for_select(@category_parent_array, selected: @parent.name),class: 'listing-select-wrapper__box--select', id: 'parent_category')
+                    .listing-select-wrapper__added#children_wrapper
                       .listing-select-wrapper__box
-                        = select_tag(:category_id, options_for_select(@category_children_array, selected: @child),class: '.listing-select-wrapper__box--select', id: 'c_category', name: 'category_id')
-                    .listing-select-wrapper
-                      .listing-select-wrapper__box#grandchildren_wrapper
-                        = select_tag(:category_id, options_for_select(@category_grandchildren_array, selected: @grandchild),class: 'listing-select-wrapper__box--select', id: 'g_category')
+                        = select_tag(:category_id, options_for_select(@category_children_array, selected: @child.name),class: 'listing-select-wrapper__box--select', id: 'child_category')
+                    .listing-select-wrapper__added#grandchildren_wrapper
+                      .listing-select-wrapper__box
+                        = select_tag(:category_id, options_for_select(@category_grandchildren_array, selected: @grandchild.name),class: 'listing-select-wrapper__box--select', id: 'g_category')
 
                   .form-group
                     %label
