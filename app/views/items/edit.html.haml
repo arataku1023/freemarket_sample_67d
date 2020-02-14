@@ -75,12 +75,12 @@
                         %span.form-group__require 必須
                       .select-wrap
                         = f.select(:mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: 'item_mail')
-                    .form-group-way
+                    .form-group-way#postage_wrapper
                       %label
                         配送の方法
                         %span.form-group__require 必須
                       .select-wrap
-                        = f.select(:mail_way,[[@item.mail_way,''],["",""],["",""]],class: "select-wrap__select-default",id: 'item_mail_way')
+                        = f.select(:mail_way,[[@item.mail_way,@item.mail_way],["",""],["",""]],class: "select-wrap__select-default",id: 'item_mail_way')
                   .form-group
                     %label
                       発送元の地域
