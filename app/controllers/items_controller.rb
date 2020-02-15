@@ -26,7 +26,6 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-
   def edit
     @item.images.build
     @images = Image.where(item_id: @item.id)
@@ -37,14 +36,17 @@ class ItemsController < ApplicationController
     Category.where(ancestry: nil).each do |parent|   #データベースから、親カテゴリーのみ抽出し、配列化
       @category_parent_array << parent.name
     end
-    @category_children_array = ["---"]
-      @parent.children.each do |children|   #データベースから、親カテゴリーのみ抽出し、配列化
-      @category_children_array << children.name
-    end
-    @category_grandchildren_array = ["---"]
-    @grandchild.siblings.each do |grandchild|   #データベースから、親カテゴリーのみ抽出し、配列化
-      @category_grandchildren_array << grandchild.name
-    end
+    # @category_children_array = ["---"]
+    #   @parent.children.each do |children|   #データベースから、親カテゴリーのみ抽出し、配列化
+    #   @category_children_array << children.id
+    # end
+    # @category_grandchildren_array = ["---"]
+    # @grandchild.siblings.each do |grandchild|   #データベースから、親カテゴリーのみ抽出し、配列化
+    #   @category_grandchildren_array << grandchild.name
+    # end
+    @category = Category.find(@item.category_id)
+    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
     respond_to do |format|
       format.html
       format.json
@@ -53,6 +55,7 @@ class ItemsController < ApplicationController
 
 
    def update
+    # binding.pry
     if @item.update(item_params)
       redirect_to root_path
     else
