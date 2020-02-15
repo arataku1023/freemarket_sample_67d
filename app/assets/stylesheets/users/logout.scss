@@ -17,8 +17,10 @@
     background-color: transparent;   //追加
     .content {
       float: right;
+      height: 200px;
       width: 700px;
       background-color: #ffffff;  //追加
+      height: max-content;
       .logout-page {
         width: 700px;
         height: 180px;

@@ -1,8 +1,7 @@
 class CardsController < ApplicationController
   require 'payjp'
   before_action :get_payjp_info, only: [:new_create, :create, :delete, :show]
-  before_action :set_card
-  
+
   def edit
   end
 
@@ -55,10 +54,6 @@ class CardsController < ApplicationController
     else
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     end
-  end
-
-  def set_card
-    @card = current_user.cards.first
   end
 
 end

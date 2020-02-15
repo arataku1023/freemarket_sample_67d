@@ -15,14 +15,12 @@ class User < ApplicationRecord
   validates :birth_month,             presence: true
   validates :birth_day,               presence: true
   
+  has_many :items
   
-  # validates_associated :address
-
-  has_many :items, dependent: :destroy
-  # has_one :address, dependent: :destroy
   has_many :cards
-  has_one :address
+  has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
+
   # has_secure_password
   # extend ActiveHash::Associations::ActiveRecordExtensions do
   #   belong_to_active_hash :birth_year

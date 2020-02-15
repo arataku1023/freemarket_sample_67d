@@ -1,5 +1,8 @@
 .wrapper
   = render ('modules/header')
+  .bread-crumbs
+    - breadcrumb :mypage_card
+    = breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs-list'
   .main
     =render ('modules/side-bar')
     .main__content
