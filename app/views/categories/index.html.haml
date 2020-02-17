@@ -8,22 +8,23 @@
     .main
       - @parents.each do |parent|
         .cat-li
-          =parent.name
+          = parent.name
     - @parents.each do |parent|
       .sub-cat
         .cat-li
           =parent.name   
         .child-box
-          .child-all すべて    
+          .child-all  
+            = link_to "すべて", category_path(parent), id: :category_link  
           - parent.children.each do |child|
             .cat-child.others 
               = child.name
             .grand-children-box
               .cat-grand.all 
-                = link_to "#{child.name}", category_path(child.id), id: :category_link
+                = link_to "すべて", category_path(child), id: :category_link
               - child.children.each do |grand|
                 .cat-grand
-                  = link_to "#{grand.name}",category_path(grand.id), id: :category_link
+                  = link_to "#{grand.name}",category_path(grand), id: :category_link
 
 = render 'modules/banner'
 
