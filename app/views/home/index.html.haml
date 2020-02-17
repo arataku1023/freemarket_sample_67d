@@ -93,7 +93,7 @@
           .items_list
             =link_to "items/#{item.id}" do
               %figure.items_list__img
-                =image_tag @images.find_by(item_id: item.id).url
+                =image_tag @images.find_by(item_id: item.id).image
               .items_list__body
                 %h3.items_list__body__name 
                   =item.name
