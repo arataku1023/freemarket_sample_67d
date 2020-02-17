@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  has_many :favorites
+  has_many :fav_posts, through: :favorites, source: :post
   # has_secure_password
   # extend ActiveHash::Associations::ActiveRecordExtensions do
   #   belong_to_active_hash :birth_year

@@ -68,7 +68,6 @@ class ItemsController < ApplicationController
     @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children #式展開を解除
   end
 
-
   def get_category_grandchildren   # 子カテゴリーが選択された後に動くアクション
     @category_grandchildren = Category.find(params[:child_id]).children #式展開を解除
   end
@@ -82,7 +81,7 @@ class ItemsController < ApplicationController
     @parent = @children.parent  
     @prefecture = Prefecture.find(@item.prefecture_id)
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
-    
+    @favorites_count = Favorite.where(item_id: @item.id).count
     # @brand = Brand.find(@item.brand_id) ←後日実装の予定
   end
 

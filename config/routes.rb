@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'favorites/destroy'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -52,4 +51,6 @@ Rails.application.routes.draw do
       get 'delete'
     end
   end  
+
+  resources :favorites, only: [:create, :destroy]   
 end
