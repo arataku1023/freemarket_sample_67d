@@ -97,7 +97,10 @@ class ItemsController < ApplicationController
 
 
   def confirm
+    @item=Item.find(params[:id])
+    item = Item.find(params[:id])
     @user = User.find(current_user.id)
+    @image = Image.where(item_id: item.id).first
   end
 
 
