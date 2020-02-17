@@ -89,7 +89,7 @@
           %h3.main__items__inner__head__title 商品一覧
       .main__items__inner__lists
         
-        - @items.first(3).each do |item|
+        - @items.each do |item|
           .items_list
             =link_to "items/#{item.id}" do
               %figure.items_list__img

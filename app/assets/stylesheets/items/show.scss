@@ -60,6 +60,9 @@
             width: 30%;
             text-align: center;
             color: white;
+            &:hover{
+              opacity: 0.7;
+            }
           }
           span {
             font-size: 25px;
@@ -79,6 +82,9 @@
            font-size: 25px;
            text-decoration: none;
            color: white;
+           &:hover{
+             opacity: 0.7;
+           }
           }
         }
       }
@@ -108,8 +114,16 @@
                padding: 15px 15px;
                border: 1px solid #dedede;
               }
-              td.link{
+              td{
                color:#3CCACE;
+                a{
+                 color:#3CCACE;
+                 text-decoration: none;
+                 &:hover{
+                   opacity: 0.7;
+                   text-decoration: underline;
+                 }
+                }
               }
             }
           }

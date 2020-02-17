@@ -7,9 +7,9 @@
       = @category.name + "の商品一覧"
 
     .items_box__contents
-      - @items.first(3).each do |item|
+      - @items.each do |item|
         .items_list
-          =link_to "items/#{item.id}" do
+          =link_to item_path(item.id) do
             %figure.items_list__img
               =image_tag @images.find_by(item_id: item.id).image.url
             .items_list__body
