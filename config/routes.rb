@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+
+  namespace :items do
+    resources :searches, only: :index
+  end  
   
   resources :users,only: [:index,:show,:edit,:create,:destroy] do
     member do
@@ -51,6 +55,5 @@ Rails.application.routes.draw do
       get 'confirm'
       get 'delete'
     end
-  end  
-
+  end 
 end

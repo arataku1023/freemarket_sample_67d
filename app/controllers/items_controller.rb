@@ -133,6 +133,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+    redirect_to items_path
+  end
 
   private
 
