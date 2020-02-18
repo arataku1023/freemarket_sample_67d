@@ -20,149 +20,71 @@
                 出品数99万
       
       .mypage-tab
-        %ul.mypage-tab__menu
-          %li.mypage-tab__menu__nav
-            お知らせ
-          %li.mypage-tab__menu__nav
-            やることリスト
+        .mypage-tab__menu
+          お気に入り一覧
 
-        %ul.mypage-tab__list
-          %li.mypage-tab__list__item
+        .mypage-tab__list
+        - @favorites.each do |favo|
+          .mypage-tab__list__item
+            - item = Item.find(favo.item_id)
             .mypage-tab__list__item__icon
               %figure
-                = image_tag 'icon_brand.png', size: '48x48'
+                = image_tag Image.find_by(item_id: favo.item_id).image.url, size: '48x48'
             .mypage-tab__list__item__body
               .mypage-tab__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
+                = item.name
               .mypage-tab__list__item__body__time
                 .mypage-tab__list__item__body__time__icon
-                  = icon 'far', 'clock'
+                  ¥
                 .mypage-tab__list__item__body__time__date
-                  1日前
+                  = item.price
             .mypage-tab__list__item__icon-arrow-right
+            = link_to "/items/#{item.id}" do
               %i.fas.fa-chevron-right
 
-          %li.mypage-tab__list__item
+      .mypage-tab
+        - items = Item.where(buyer_id: @user.id)
+        .mypage-tab__menu
+          購入した商品
+
+        .mypage-tab__list
+        - items.each do |item|
+          .mypage-tab__list__item
             .mypage-tab__list__item__icon
               %figure
-                = image_tag 'icon_brand.png', size: '48x48'
+                = image_tag Image.find_by(item_id: item.id), size: '48x48'
             .mypage-tab__list__item__body
               .mypage-tab__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
+                = item.name
               .mypage-tab__list__item__body__time
                 .mypage-tab__list__item__body__time__icon
-                  = icon 'far', 'clock'
+                  ¥
                 .mypage-tab__list__item__body__time__date
-                  1日前
+                  = item.price
             .mypage-tab__list__item__icon-arrow-right
+            = link_to "/items/#{item.id}" do
               %i.fas.fa-chevron-right
-
-          %li.mypage-tab__list__item
-            .mypage-tab__list__item__icon
-              %figure
-                = image_tag 'icon_brand.png', size: '48x48'
-            .mypage-tab__list__item__body
-              .mypage-tab__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
-              .mypage-tab__list__item__body__time
-                .mypage-tab__list__item__body__time__icon
-                  = icon 'far', 'clock'
-                .mypage-tab__list__item__body__time__date
-                  1日前
-            .mypage-tab__list__item__icon-arrow-right
-              %i.fas.fa-chevron-right
-
-          %li.mypage-tab__list__item
-            .mypage-tab__list__item__icon
-              %figure
-                = image_tag 'icon_brand.png', size: '48x48'
-            .mypage-tab__list__item__body
-              .mypage-tab__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
-              .mypage-tab__list__item__body__time
-                .mypage-tab__list__item__body__time__icon
-                  = icon 'far', 'clock'
-                .mypage-tab__list__item__body__time__date
-                  1日前
-            .mypage-tab__list__item__icon-arrow-right
-              %i.fas.fa-chevron-right
-              
-          %li.mypage-tab__list__item
-            .mypage-tab__list__item__index
-              一覧を見る
-
-      .mypage-tab-container
-        購入した商品
-        %ul.mypage-tab-container__menu
-          %li.mypage-tab-container__menu__nav
-            取引中
-          %li.mypage-tab-container__menu__nav
-            過去の取引
-
-        %ul.mypage-tab-container__list
-          %li.mypage-tab-container__list__item
-            .mypage-tab-container__list__item__icon
-              %figure
-                = image_tag 'icon_brand.png', size: '48x48'
-            .mypage-tab-container__list__item__body
-              .mypage-tab-container__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
-              .mypage-tab-container__list__item__body__time
-                .mypage-tab-container__list__item__body__time__icon
-                  = icon 'far', 'clock'
-                .mypage-tab-container__list__item__body__time__date
-                  1日前
-            .mypage-tab-container__list__item__icon-arrow-right
-              %i.fas.fa-chevron-right
-
-          %li.mypage-tab-container__list__item
-            .mypage-tab-container__list__item__icon
-              %figure
-                = image_tag 'icon_brand.png', size: '48x48'
-            .mypage-tab-container__list__item__body
-              .mypage-tab-container__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
-              .mypage-tab-container__list__item__body__time
-                .mypage-tab-container__list__item__body__time__icon
-                  = icon 'far', 'clock'
-                .mypage-tab-container__list__item__body__time__date
-                  1日前
-            .mypage-tab-container__list__item__icon-arrow-right
-              %i.fas.fa-chevron-right
-
-          %li.mypage-tab-container__list__item
-            .mypage-tab-container__list__item__icon
-              %figure
-                = image_tag 'icon_brand.png', size: '48x48'
-            .mypage-tab-container__list__item__body
-              .mypage-tab-container__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
-              .mypage-tab-container__list__item__body__time
-                .mypage-tab-container__list__item__body__time__icon
-                  = icon 'far', 'clock'
-                .mypage-tab-container__list__item__body__time__date
-                  1日前
-            .mypage-tab-container__list__item__icon-arrow-right
-              %i.fas.fa-chevron-right
-
-          %li.mypage-tab-container__list__item
-            .mypage-tab-container__list__item__icon
-              %figure
-                = image_tag 'icon_brand.png', size: '48x48'
-            .mypage-tab-container__list__item__body
-              .mypage-tab-container__list__item__body__text
-                事務局から個別メッセージ「ログイン通知」
-              .mypage-tab-container__list__item__body__time
-                .mypage-tab-container__list__item__body__time__icon
-                  = icon 'far', 'clock'
-                .mypage-tab-container__list__item__body__time__date
-                  1日前
-            .mypage-tab-container__list__item__icon-arrow-right
-              %i.fas.fa-chevron-right
-
-          %li.mypage-tab-container__list__item
-            %p.mypage-tab-container__list__item__index
-              一覧を見る
+      -# .mypage-tab-container
+      -#   .mypage-tab-container__menu
+          
+      -#   .mypage-tab-container__list
+      -#     - items = Item.where(buyer_id: @user.id)
+      -#     .mypage-tab-container__list__item
+      -#     - items.each do |item|
+      -#       .mypage-tab-container__list__item__icon
+      -#         %figure
+      -#           = image_tag Image.find_by(item_id: item.id), size: '48x48'
+      -#       .mypage-tab-container__list__item__body
+      -#         .mypage-tab-container__list__item__body__text
+      -#           = item.name
+      -#         .mypage-tab-container__list__item__body__time
+      -#           .mypage-tab-container__list__item__body__time__icon
+      -#             ¥
+      -#           .mypage-tab-container__list__item__body__time__date
+      -#             = item.price
+      -#       .mypage-tab-container__list__item__icon-arrow-right
+      -#       = link_to "/items/#{item.id}" do
+      -#         %i.fas.fa-chevron-right
 
   = render ('modules/banner')
   = render ('modules/footer')

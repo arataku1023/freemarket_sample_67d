@@ -22,7 +22,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :address
 
   has_many :favorites
-  has_many :fav_posts, through: :favorites, source: :post
+  has_many :fav_items, through: :favorites, source: :item
   # has_secure_password
   # extend ActiveHash::Associations::ActiveRecordExtensions do
   #   belong_to_active_hash :birth_year

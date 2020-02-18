@@ -52,5 +52,6 @@ Rails.application.routes.draw do
     end
   end  
 
-  resources :favorites, only: [:create, :destroy]   
+  post "favorites/:item_id/create" => "favorites#create"
+  post "favorites/:item_id/destroy" => "favorites#destroy"
 end

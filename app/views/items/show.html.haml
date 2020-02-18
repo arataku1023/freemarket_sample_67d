@@ -81,11 +81,11 @@
         .review
           .review__favorite
             - if Favorite.find_by(user_id: current_user.id, item_id: @item.id)
-              = link_to("/favorites", {method: "post"}) do
-                %span.fa.fa-heart.like-btn-unlike
+              = link_to "/favorites/#{@item.id}/destroy",{method: :post} do
+                %span.fa.fa-heart.like-btn-unlike{data: {item_id: @item.id}}
             - else
-              = link_to("/favorites", {method: "post"}) do
-                %span.fa.fa-heart.like-btn
+              = link_to "/favorites/#{@item.id}/create",{method: :post} do
+                %span.fa.fa-heart.like-btn{data: {item_id: @item.id}}
             = @favorites_count
 
           .review__poor

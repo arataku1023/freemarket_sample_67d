@@ -14,9 +14,10 @@
     font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     background-color: transparent;   //追加
     .content {
+      background-color: #ebebeb;
       float: right;
       width: 700px;
-      background-color: #ffffff;  //追加
+      // background-color: #ffffff;  //追加
       .mypage-user {
         background-image: image-url("bg-topMiddleDl-pict.jpg");
         &__icon {
@@ -42,6 +43,7 @@
         }
       }
       .mypage-tab {
+        background-color: #ffffff;
        
         &__menu {
           border: 0;
@@ -59,7 +61,7 @@
           list-style: none;
           &__item {
             border-bottom: 1px solid #eee;    
-            min-height: 80px;
+            // min-height: 80px;
             font-size: 14px;
             display: flex;
             position: relative;
@@ -102,7 +104,8 @@
         }
       }
       .mypage-tab-container {
-        padding-top: 40px;
+        background-color: #ffffff;
+        margin-top: 40px;
         font-size: 16px;
         &__menu {
           border: 0;
