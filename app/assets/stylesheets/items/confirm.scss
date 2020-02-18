@@ -46,6 +46,7 @@ body {
 
                 &__lazyload {
                   width: 80px;
+                  height: 80px;
                 }
               }
               &__item-detail {
@@ -244,6 +245,14 @@ body {
                   font-family: inherit;
                   -webkit-appearance: none;
                 }
+              }
+            }
+            section{
+              .payjp-button{
+                color: white;
+                font-size: 16px;
+                width: 300px;
+                height: 40px;
               }
             }
           }

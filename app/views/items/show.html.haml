@@ -47,13 +47,13 @@
             %tr
               %th カテゴリー
               %td.link
-                = @parent.name
+                = link_to "#{@parent.name}", category_path(@parent),class: "parent_link"
                 %br 
                 >
-                = @children.name
+                = link_to "#{@children.name}", category_path(@children)
                 %br 
                 >
-                = @grandchildren.name
+                = link_to "#{@grandchildren.name}", category_path(@grandchildren)
             -# %tr
             -#   %th ブランド
             -#   %td

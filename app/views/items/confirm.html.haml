@@ -12,7 +12,7 @@
           .confirm__main__container__detail__inner
             .confirm__main__container__detail__inner__item-box
               %h3.confirm__main__container__detail__inner__item-box__item-image
-                =image_tag "https://ca.slack-edge.com/TK2M4NQC8-UREHDFJJH-e8345f185cde-512", class: "confirm__main__container__detail__inner__item-box__item-image__lazyload"
+                =image_tag Image.find_by(item_id: @item.id).image.url, class: "confirm__main__container__detail__inner__item-box__item-image__lazyload"
               .confirm__main__container__detail__inner__item-box__item-detail
                 %p.confirm__main__container__detail__inner__item-box__item-detail__item-name 
                   = @item.name
@@ -57,8 +57,6 @@
                       = @user.first_name
                       = @user.last_name
             %section
-              -# = form_tag(action: :pay, method: :post) do
-              -#   %script.payjp-button{:src => "https://checkout.pay.jp", :type => "text/javascript" ,"data-text" => "購入する" ,"data-key" => "pk_test_5ec65b0b13864670fb40c7d8"}
               = form_with(url: pay_items_path, method: :post, local: true) do
                 %button.payjp-button{type: "submit","data-key" => "pk_test_5ec65b0b13864670fb40c7d8", src: "https://checkout.pay.jp"}
                   購入する

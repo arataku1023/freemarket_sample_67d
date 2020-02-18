@@ -22,8 +22,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save!
-    redirect_to root_path
+    if @item.save
+      redirect_to root_path
+    else
+      redirect_to new_item_path
+    end  
   end
 
   def edit
@@ -54,7 +57,7 @@ class ItemsController < ApplicationController
   end
 
 
-   def update
+  def update
     # binding.pry
     if @item.update(item_params)
       redirect_to root_path
@@ -99,7 +102,10 @@ class ItemsController < ApplicationController
 
 
   def confirm
+    @item=Item.find(params[:id])
+    item = Item.find(params[:id])
     @user = User.find(current_user.id)
+    @image = Image.where(item_id: item.id).first
   end
 
 
@@ -116,7 +122,7 @@ class ItemsController < ApplicationController
      # 購入した際の情報を元に引っ張ってくる
       card = current_user.cards.first
      # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
-      Payjp.api_key = "sk_test_45098fce6379a29a1ab3a29b"
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
      # キーをセットする(環境変数においても良い)
       Payjp::Charge.create(
       amount: @item.price, #支払金額

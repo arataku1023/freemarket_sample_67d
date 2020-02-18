@@ -2,27 +2,44 @@
 
 .items_whole
   .categories_line
+    - items = Item.where(category_id: @related_category_id)
+    - grand_items = Item.where(category_id: @category_id)
   .items_box
     .items_box__title
       = @category.name + "の商品一覧"
-
     .items_box__contents
-      - @items.first(3).each do |item|
-        .items_list
-          =link_to "items/#{item.id}" do
-            %figure.items_list__img
-              =image_tag @images.find_by(item_id: item.id).image.url
-            .items_list__body
-              %h3.items_list__body__name 
-                =item.detail
-              .items_list__body__details
-                %ul
-                  %li 
-                    =item.price
-                  %li
-                    %i
-                    0
-                %p (税込)
+    - items.each do |item|
+      .items_list
+        =link_to item_path(item.id) do
+          %figure.items_list__img
+            =image_tag Image.find_by(item_id: item.id).image.url
+          .items_list__body
+            %h3.items_list__body__name 
+              =item.detail
+            .items_list__body__details
+              %ul
+                %li 
+                  =item.price
+                %li
+                  %i
+                  0
+              %p (税込)
+    - grand_items.each do |item|
+      .items_list
+        =link_to item_path(item.id) do
+          %figure.items_list__img
+            =image_tag Image.find_by(item_id: item.id).image.url
+          .items_list__body
+            %h3.items_list__body__name 
+              =item.detail
+            .items_list__body__details
+              %ul
+                %li 
+                  =item.price
+                %li
+                  %i
+                  0
+              %p (税込)
 
 = render 'modules/banner'
 
