@@ -15,9 +15,9 @@
             .labels
               = f.label '都道府県'
               %span.signup-main__form-require 必須
-            =f.collection_select(:prefecture,Prefecture.all,:id, :name, prompt: "---")
+            =f.collection_select(:prefectures,Prefecture.all,:id, :name, prompt: "---")
             = icon('fas', 'chevron-down')
-            -# = f.text_field :prefecture,placeholder:"例)福岡県"
+
           .signup-main__form-group
             = f.label '市区町村'
             %span.signup-main__form-require 必須
