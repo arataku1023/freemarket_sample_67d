@@ -35,11 +35,12 @@
           }
         }
         ul.img-lists{
-          display: inline-flex;
-          height: 150px;
-          li.image-list{
-            margin-left:5px;
-           
+         display: inline-flex;
+         height: 150px;
+         width: 620px;
+         overflow: scroll;
+         li.image-list{
+           margin-left:5px;
           }
         }
 
@@ -112,11 +113,17 @@
                 width: 61%;
                 padding: 15px 15px;
                 border: 1px solid #dedede;
+                a{
+                  text-decoration: none;
+                  color: #3CCACE;
+                  &:hover{
+                    text-decoration: underline;
+                    opacity: 0.7;
+                  }
+                }
               }
-
               td.link{
-                color:#3CCACE;
-
+                color: #3CCACE;
               }
             }
           }
@@ -196,7 +203,6 @@
                     }
                   }
                   .message-user-unknown {
-                    // background: $light_gray;
                     text-align: center;
                     img {
                       width: 32px;
@@ -242,7 +248,6 @@
                 word-break: break-all;
                 .message-icons {
                   margin: 8px 0 0;
-                  // @include clearfix;
                   i {
                     vertical-align: middle;
                     font-size: 18px;
@@ -296,13 +301,11 @@
             }
             .message-left {
               margin: 60px 0 0;
-              // @include clearfix;
-              .message-user {
+              .message-user{
                 float: left;
                 position: relative;
                 top: -20px;
                 display: inline-block;
-                // color: $light_black;
                 figure {
                   div {
                     width: 40px;
@@ -316,7 +319,6 @@
                     }
                   }
                   .message-user-unknown {
-                    // background: $light_gray;
                     text-align: center;
                     img {
                       width: 32px;
@@ -360,7 +362,6 @@
                 word-break: break-all;
                 .message-icons {
                   margin: 8px 0 0;
-                  // @include clearfix;
                   i {
                     vertical-align: middle;
                     font-size: 18px;
@@ -432,7 +433,6 @@
             .btn-default {
               border: 1px solid #888;
               background: #888;
-              // color: $white;
               cursor: not-allowed;
               line-height: 48px;
               display: block;
@@ -442,7 +442,6 @@
               margin: 8px 0 0;
               text-align: center;
               font-size: 14px;
-              // color: $white;
             }
           }
         }

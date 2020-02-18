@@ -69,7 +69,7 @@
             .card_input.top__margin
               %label セキュリティーコード
               %span.require 必須
-              = text_field_tag "cvc", "", class: "input__deafult top__margin", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+              = text_field_tag "cvc", "", maxlength: "3",class: "input__deafult top__margin", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
               .single__code.top__margin
                 %span.question-mark ? 
                 %span カードの裏面の番号とは？

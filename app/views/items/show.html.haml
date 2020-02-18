@@ -12,11 +12,10 @@
             .absolute
               - @item.images.each do |image|
                 = image_tag image.image.url, class: "big", height: "520px", width: "620px"
-                -# %img{alt: "a",height: "520", src: image, width: "620"}
         %ul.img-lists
           - @item.images.each_with_index do |image,i|
             %li.img-list
-              = image_tag image.image.url, height: "150px", width:"180px",id: "#{i}",class: "img-list"
+              = image_tag image.image.url, height: "120px", width:"144px",id: "#{i}",class: "img-list"
         .price-show
           %p.price 
             ¥
