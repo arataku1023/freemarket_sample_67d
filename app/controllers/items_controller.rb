@@ -82,6 +82,8 @@ class ItemsController < ApplicationController
     @parent = @children.parent  
     @prefecture = Prefecture.find(@item.prefecture_id)
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
     
     # @brand = Brand.find(@item.brand_id) ←後日実装の予定
   end
