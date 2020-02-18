@@ -37,6 +37,8 @@
         ul.img-lists{
          display: inline-flex;
          height: 150px;
+         width: 620px;
+         overflow: scroll;
          li.image-list{
            margin-left:5px;
            
