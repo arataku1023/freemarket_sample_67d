@@ -93,7 +93,7 @@ Things you may want to cover:
 |town|string|null: false|            #市区町村
 |address_num|string|null: false|     #番地
 |apartment_info|string||             #マンション名やビル名、その部屋番号
-|recipient_num|string||              #お届け先の電話番号
+|phone_num|string||              #お届け先の電話番号
 
 ### Association
 - belongs_to :user

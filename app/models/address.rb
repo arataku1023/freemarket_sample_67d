@@ -6,4 +6,7 @@ class Address < ApplicationRecord
   validates :apartment_info,          length: { minimum: 0, maximum: 100 }
   belongs_to :user, optional: true
   validates_associated :user
+
+  extend ActiveHash::Associations::ActiveRecordExtensions 
+  belongs_to_active_hash :prefecture
 end
