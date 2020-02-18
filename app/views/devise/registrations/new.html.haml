@@ -10,17 +10,14 @@
           .signup-main__form-group
             = f.label 'ニックネーム'
             %span.signup-main__form-require 必須
-            = f.text_field :nickname
+            = f.text_field :nickname,placeholder:"例）山ちゃん"
           .signup-main__form-group
             = f.label 'メールアドレス'
             %span.signup-main__form-require 必須
-            = f.email_field :email, autofocus: true, autocomplete: "email"
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例）yamadataro1111@gmail.com"
           .signup-main__form-group
-            = f.label 'パスワード'
+            = f.label 'パスワード(7文字以上)'
             %span.signup-main__form-require 必須
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} 文字以上)
             = f.password_field :password, autocomplete: "new-password"
           .signup-main__form-group
             = f.label 'パスワード（確認）'

@@ -6,6 +6,7 @@ class Addresses < ActiveRecord::Migration[5.2]
       t.string :town, null: false
       t.string :address_num, null: false
       t.string :apartment_info
+      t.string :phone_num
       t.references :user, foreign_key: true, null: false
 
       t.timestamps
