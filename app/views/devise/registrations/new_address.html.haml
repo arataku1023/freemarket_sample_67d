@@ -10,11 +10,14 @@
           .signup-main__form-group
             = f.label '郵便番号'
             %span.signup-main__form-require 必須
-            = f.text_field :post_code,placeholder:"例)000-0000"
-          .signup-main__form-group
-            = f.label '都道府県'
-            %span.signup-main__form-require 必須
-            = f.text_field :prefecture,placeholder:"例)福岡県"
+            = f.text_field :post_code,placeholder:"例)000-0000", maxlength: "7"
+          .signup-main__form-group.prefecture_box
+            .labels
+              = f.label '都道府県'
+              %span.signup-main__form-require 必須
+            =f.collection_select(:prefecture,Prefecture.all,:id, :name, prompt: "---")
+            = icon('fas', 'chevron-down')
+            -# = f.text_field :prefecture,placeholder:"例)福岡県"
           .signup-main__form-group
             = f.label '市区町村'
             %span.signup-main__form-require 必須
@@ -30,7 +33,7 @@
           .signup-main__form-group 
             = f.label '電話番号'
             %span.signup-main__form-require 任意
-            = f.text_field :phone_num
+            = f.text_field :phone_num, maxlength: "7"
             .clearfix
           %p.signup-main__form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
