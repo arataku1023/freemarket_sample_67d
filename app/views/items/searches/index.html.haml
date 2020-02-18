@@ -1,0 +1,33 @@
+=render 'modules/header'
+
+.items_whole
+  .categories_line
+  .items_box
+    .items_box__title
+      検索結果
+  - if @items.present?
+    .items_box__contents
+      - @items.each do |item|
+        .items_list
+          =link_to item_path(item.id) do
+            %figure.items_list__img
+              =image_tag Image.find_by(item_id: item.id).image.url
+            .items_list__body
+              %h3.items_list__body__name 
+                =item.detail
+              .items_list__body__details
+                %ul
+                  %li 
+                    =item.price
+                  %li
+                    %i
+                    0
+                %p (税込)
+  - else 
+    %p そんな商品はない              
+
+= render 'modules/banner'
+
+= render 'modules/footer'
+
+= render 'modules/sell-btn'
