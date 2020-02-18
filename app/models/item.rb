@@ -19,7 +19,7 @@ class Item < ApplicationRecord
   validates :prefecture_id,     presence: true
 
   belongs_to :user
-
+  has_many :comments
   belongs_to :category
 
   # belongs_to :brand ←後日実装の予定

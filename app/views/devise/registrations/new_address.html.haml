@@ -1,5 +1,5 @@
 .signup-container
-  = render 'signup/header-sms'
+  = render 'header-sms'
   %main.signup-main
     %section.signup-main__container
       %h2.signup-main__head.signup-main__head--registration
@@ -10,15 +10,18 @@
           .signup-main__form-group
             = f.label '郵便番号'
             %span.signup-main__form-require 必須
-            = f.text_field :post_code
-          .signup-main__form-group
-            = f.label '都道府県'
-            %span.signup-main__form-require 必須
-            = f.text_field :prefecture
+            = f.text_field :post_code,placeholder:"例)000-0000", maxlength: "7"
+          .signup-main__form-group.prefecture_box
+            .labels
+              = f.label '都道府県'
+              %span.signup-main__form-require 必須
+            =f.collection_select(:prefecture,Prefecture.all,:id, :name, prompt: "---")
+            = icon('fas', 'chevron-down')
+            -# = f.text_field :prefecture,placeholder:"例)福岡県"
           .signup-main__form-group
             = f.label '市区町村'
             %span.signup-main__form-require 必須
-            = f.text_field :town
+            = f.text_field :town,placeholder:"例)福岡市中央区"
           .signup-main__form-group 
             = f.label '番地'
             %span.signup-main__form-require 必須
@@ -27,6 +30,10 @@
             = f.label 'マンション名やビル名、その部屋番号'
             %span.signup-main__form-require 任意
             = f.text_field :apartment_info
+          .signup-main__form-group 
+            = f.label '電話番号'
+            %span.signup-main__form-require 任意
+            = f.text_field :phone_num, maxlength: "7"
             .clearfix
           %p.signup-main__form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

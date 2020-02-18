@@ -5,10 +5,12 @@ class CategoriesController < ApplicationController
 
 
   def show
+    # @category = Category.find(params[:id])
+    # category_check(@category)
+    # @images = Image.all
     @category = Category.find(params[:id])
-    category_check(@category)
-    @images = Image.all
-
+    @category_id = @category.id
+    @related_category_id = Category.find(params[:id]).descendant_ids
   end
 
 
@@ -17,7 +19,6 @@ class CategoriesController < ApplicationController
   def category_check(cat)
     anc = cat.ancestry
     match_id = []
-
     if anc.blank?
       anc_set = "#{cat.id}"       # "^#{cat.id}/"
       reg = Regexp.new(anc_set)
@@ -31,7 +32,6 @@ class CategoriesController < ApplicationController
 
     elsif anc.match(/\//)
       @items = Item.where(category_id: cat.id, buyer_id: nil).order("id DESC")
-
     else
       parent = anc
       child = cat.id
@@ -43,7 +43,6 @@ class CategoriesController < ApplicationController
       end
       @items = Item.where(category_id: match_id, buyer_id: nil).order("id DESC")
     end
-
   end
 
 end
