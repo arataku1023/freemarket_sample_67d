@@ -2,7 +2,7 @@
 
 .items_whole
   .categories_line
-    - items = Item.where(category_id: @category.descendant_ids)
+    - items = Item.where(category_id: @category.descendant_ids,category_id: @category.id)
   .items_box
     .items_box__title
       = @category.name + "の商品一覧"
