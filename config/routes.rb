@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
+
+  namespace :items do
+    resources :searches, only: :index
+  end  
   
   resources :users,only: [:index,:show,:edit,:create,:destroy] do
     member do
@@ -38,6 +42,7 @@ Rails.application.routes.draw do
   end 
 
   resources :items do
+    resources :comments, only: :create
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
@@ -54,4 +59,5 @@ Rails.application.routes.draw do
 
   post "favorites/:item_id/create" => "favorites#create"
   post "favorites/:item_id/destroy" => "favorites#destroy"
+  end 
 end

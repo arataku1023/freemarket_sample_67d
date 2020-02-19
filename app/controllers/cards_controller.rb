@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   require 'payjp'
-  before_action :get_payjp_info, only: [:new_create, :create, :delete, :show]
+  before_action :get_payjp_info
 
   def edit
   end
@@ -49,13 +49,6 @@ class CardsController < ApplicationController
   private
   
   def get_payjp_info
-    if Rails.env == 'development'
-      Payjp.api_key = "sk_test_45098fce6379a29a1ab3a29b"
-    else
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-    end
+    Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
   end
-
 end
-
-# Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]

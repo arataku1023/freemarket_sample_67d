@@ -347,12 +347,6 @@ button{
             height: 340px;
           }
         }
-        &__substitle {
-
-        }
-        &__datail {
-
-        }
       }
     }
   }
@@ -381,60 +375,8 @@ button{
 
       }
       &__lists {
-        width: 780px;
+        width: 1120px;
         margin: 26px auto;
-        display: flex;
-        justify-content: space-around;
-
-        .items_list {
-          width: 220px;
-          display: inline-block;
-          background-color: #fff;
-
-          a {
-            text-decoration: none;
-            font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-          }
-          &__img {
-            width: 220px;
-            height: 150px;
-            position: relative;
-  
-            img {
-              position: absolute;
-              width: 100%;
-              z-index: auto;
-              height: 100%;
-              width: 100%;
-              object-fit: cover;
-            }
-          }
-          &__body {
-            background-color: white;
-            color: #333;
-            padding: 16px;
-            
-            &__name {
-              line-height: 1.5;
-              font-size: 16px;
-              text-align: left;
-              font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
-            }
-            &__details {
-              font-size: 16px;
-
-              ul {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-              }
-              p {
-                font-size: 10px;
-                text-align: left;
-              }
-            }
-          }  
-        }
       }
     }
   }

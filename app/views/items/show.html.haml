@@ -12,11 +12,10 @@
             .absolute
               - @item.images.each do |image|
                 = image_tag image.image.url, class: "big", height: "520px", width: "620px"
-                -# %img{alt: "a",height: "520", src: image, width: "620"}
         %ul.img-lists
           - @item.images.each_with_index do |image,i|
             %li.img-list
-              = image_tag image.image.url, height: "150px", width:"180px",id: "#{i}",class: "img-list"
+              = image_tag image.image.url, height: "120px", width:"144px",id: "#{i}",class: "img-list"
         .price-show
           %p.price 
             ¥
@@ -32,14 +31,14 @@
           - if user_signed_in? && current_user.id != @item.user_id
             .purchace
               = link_to "購入確認画面へ進む", confirm_item_path,class: "link" 
-
                     
       .show-detail
-        %p.name 
-          =@item.detail
-
         .show-detail__content
           %table
+            %tr
+              %th 詳細
+              %td 
+                = @item.detail
             %tr
               %th 出品者
               %td 
@@ -47,20 +46,13 @@
             %tr
               %th カテゴリー
               %td.link
-                = @parent.name
+                = link_to "#{@parent.name}", category_path(@parent),class: "parent_link"
                 %br 
                 >
-                = @children.name
+                = link_to "#{@children.name}", category_path(@children)
                 %br 
                 >
-                = @grandchildren.name
-            -# %tr
-            -#   %th ブランド
-            -#   %td
-            -#     -# =@brand.name
-            -# %tr
-            -#   %th 商品のサイズ
-            -#   %td ?
+                = link_to "#{@grandchildren.name}", category_path(@grandchildren)
             %tr
               %th 商品の状態
               %td 
@@ -93,16 +85,23 @@
             = icon('fas', 'flag', class: "flag-icon")
             %p.text 不適切な商品の通報
 
-    .box-show2
-      .form
-        %input.comment{type: "text-area",placeholder: "コメントを入力"}
-        .attention
-          相手のことを考え丁寧なコメントを心がけましょう。
-          %br
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %button
-          = icon('fas','comment',class: "comment-icon") 
-          コメントする
+    .item-detail-message
+      .message-container
+        - if @comments.present?
+          .message-content
+            %ul.message-items
+              = @comment.text
+
+        - if user_signed_in?
+          .message-content
+            %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            = form_for [@item, @comment] do |c|
+              - if @item.sold_status == 1
+                = c.text_area :text,required: "required", class: 'textarea-default'
+                = c.submit "コメントする", data: { disable_with: "送信中..." },class: 'message-submit btn-default btn-gray',id: "new-comment-submit"
+              - else
+                = c.text_area :text, class: 'textarea-default disabled'
+                = c.submit "売り切れのためコメントできません",:disabled => true, class: 'message-submit btn-default btn-gray'
 
     %ul
       %li.previous 

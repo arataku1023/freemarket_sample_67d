@@ -19,13 +19,18 @@ class Item < ApplicationRecord
   validates :prefecture_id,     presence: true
 
   belongs_to :user
-
+  has_many :comments
   belongs_to :category
 
   has_many :favorites
   has_many :users, through: :favorites
 
   # belongs_to :brand ←後日実装の予定
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
 
   enum status:{nothing: "", intact: 0, clean: 1, good: 2, scratched: 3, bad: 4, dirty: 5}
 end 

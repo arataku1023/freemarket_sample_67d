@@ -22,31 +22,26 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save!
-    redirect_to root_path
+    if @item.save
+      redirect_to root_path
+    else
+      redirect_to new_item_path
+    end  
   end
 
+  
   def edit
     @item.images.build
     @images = Image.where(item_id: @item.id)
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @grandchild.parent.parent
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|   #データベースから、親カテゴリーのみ抽出し、配列化
-      @category_parent_array << parent.name
-    end
-    # @category_children_array = ["---"]
-    #   @parent.children.each do |children|   #データベースから、親カテゴリーのみ抽出し、配列化
-    #   @category_children_array << children.id
-    # end
-    # @category_grandchildren_array = ["---"]
-    # @grandchild.siblings.each do |grandchild|   #データベースから、親カテゴリーのみ抽出し、配列化
-    #   @category_grandchildren_array << grandchild.name
-    # end
-    @category = Category.find(@item.category_id)
-    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+    #親カテゴリの配列
+    @parent_categories = Category.where(ancestry: nil).pluck(:name)
+    #子カテゴリの配列
+    @child_categories = Category.where('ancestry = ?', "#{@grandchild.parent.ancestry}")
+    #孫カテゴリの配列
+    @grand_child = Category.where('ancestry = ?', "#{@grandchild.ancestry}")
     respond_to do |format|
       format.html
       format.json
@@ -54,12 +49,12 @@ class ItemsController < ApplicationController
   end
 
 
-   def update
+  def update
     # binding.pry
     if @item.update(item_params)
       redirect_to root_path
     else
-      redirect_to edit_item_path(@item.id)
+      redirect_to edit_item_path(@item.id), notice: '内容に不備があります'
     end   
   end
 
@@ -83,8 +78,9 @@ class ItemsController < ApplicationController
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
     @favorites_count = Favorite.where(item_id: @item.id).count
     # @brand = Brand.find(@item.brand_id) ←後日実装の予定
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
-
 
   def destroy
     if @item.destroy
@@ -94,11 +90,8 @@ class ItemsController < ApplicationController
     end  
   end
 
-
   def confirm
-    @user = User.find(current_user.id)
   end
-
 
   def delete
   end
@@ -113,7 +106,7 @@ class ItemsController < ApplicationController
      # 購入した際の情報を元に引っ張ってくる
       card = current_user.cards.first
      # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
-      Payjp.api_key = "sk_test_45098fce6379a29a1ab3a29b"
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
      # キーをセットする(環境変数においても良い)
       Payjp::Charge.create(
       amount: @item.price, #支払金額
@@ -131,6 +124,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.search(params[:keyword])
+    redirect_to items_path
+  end
 
   private
 
