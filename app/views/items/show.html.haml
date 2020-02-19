@@ -31,14 +31,14 @@
           - if user_signed_in? && current_user.id != @item.user_id
             .purchace
               = link_to "購入確認画面へ進む", confirm_item_path,class: "link" 
-
                     
       .show-detail
-        %p.name 
-          =@item.detail
-
         .show-detail__content
           %table
+            %tr
+              %th 詳細
+              %td 
+                = @item.detail
             %tr
               %th 出品者
               %td 
@@ -53,13 +53,6 @@
                 %br 
                 >
                 = link_to "#{@grandchildren.name}", category_path(@grandchildren)
-            -# %tr
-            -#   %th ブランド
-            -#   %td
-            -#     -# =@brand.name
-            -# %tr
-            -#   %th 商品のサイズ
-            -#   %td ?
             %tr
               %th 商品の状態
               %td 
@@ -102,10 +95,6 @@
               - else
                 = c.text_area :text, class: 'textarea-default disabled'
                 = c.submit "売り切れのためコメントできません",:disabled => true, class: 'message-submit btn-default btn-gray'
-
-
- 
-
 
     %ul
       %li.previous 

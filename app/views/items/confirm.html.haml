@@ -49,13 +49,13 @@
                   %address.confirm__main__container__procedures__inner__form__shipping-address__inner__user-info-text
                     %p
                       〒
-                      = @user.address.post_code
+                      = current_user.address.post_code
                       %br/
-                      = @user.address.prefecture
-                      = @user.address.town
+                      = current_user.address.prefecture
+                      = current_user.address.town
                       %br/
-                      = @user.first_name
-                      = @user.last_name
+                      = current_user.first_name
+                      = current_user.last_name
             %section
               = form_with(url: pay_items_path, method: :post, local: true) do
                 %button.payjp-button{type: "submit","data-key" => "pk_test_5ec65b0b13864670fb40c7d8", src: "https://checkout.pay.jp"}

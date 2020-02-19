@@ -36,13 +36,12 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @grandchild.parent.parent
-    @category_parent_array = ["---"]
-    Category.where(ancestry: nil).each do |parent|   #データベースから、親カテゴリーのみ抽出し、配列化
-      @category_parent_array << parent.name
-    end
-    @category = Category.find(@item.category_id)
-    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+    #親カテゴリの配列
+    @parent_categories = Category.where(ancestry: nil).pluck(:name)
+    #子カテゴリの配列
+    @child_categories = Category.where('ancestry = ?', "#{@grandchild.parent.ancestry}")
+    #孫カテゴリの配列
+    @grand_child = Category.where('ancestry = ?', "#{@grandchild.ancestry}")
     respond_to do |format|
       format.html
       format.json
@@ -55,7 +54,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      redirect_to edit_item_path(@item.id)
+      redirect_to edit_item_path(@item.id), notice: '内容に不備があります'
     end   
   end
 
@@ -63,7 +62,6 @@ class ItemsController < ApplicationController
   def get_category_children        # 親カテゴリーが選択された後に動くアクション
     @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children #式展開を解除
   end
-
 
   def get_category_grandchildren   # 子カテゴリーが選択された後に動くアクション
     @category_grandchildren = Category.find(params[:child_id]).children #式展開を解除
@@ -80,10 +78,7 @@ class ItemsController < ApplicationController
     @arrival_date = Arrival_date.find(@item.arrival_date_id)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
-    
-    # @brand = Brand.find(@item.brand_id) ←後日実装の予定
   end
-
 
   def destroy
     if @item.destroy
@@ -93,14 +88,8 @@ class ItemsController < ApplicationController
     end  
   end
 
-
   def confirm
-    @item=Item.find(params[:id])
-    item = Item.find(params[:id])
-    @user = User.find(current_user.id)
-    @image = Image.where(item_id: item.id).first
   end
-
 
   def delete
   end
