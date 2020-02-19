@@ -5,12 +5,7 @@ class CategoriesController < ApplicationController
 
 
   def show
-    # @category = Category.find(params[:id])
-    # category_check(@category)
-    # @images = Image.all
     @category = Category.find(params[:id])
-    @category_id = @category.id
-    @related_category_id = Category.find(params[:id]).descendant_ids
   end
 
 
