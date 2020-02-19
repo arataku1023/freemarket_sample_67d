@@ -86,7 +86,8 @@
             - else
               = link_to "/favorites/#{@item.id}/create",{method: :post} do
                 %span.fa.fa-heart.like-btn{data: {item_id: @item.id}}
-            = @favorites_count
+            .favorites.count
+              = @favorites_count
 
           .review__poor
             = icon('fas', 'flag', class: "flag-icon")
