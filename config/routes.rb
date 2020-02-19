@@ -20,13 +20,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
 
-  resources :signup do
-    collection do
-      get 'registration'
-      get 'address'
-    end
-  end
-
   resources :cards, only: [:create, :show, :edit] do
     collection do
       post 'delete', to: 'cards#delete'
@@ -38,6 +31,7 @@ Rails.application.routes.draw do
   end 
 
   resources :items do
+    resources :comments, only: [:create, :destroy]
     collection do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }

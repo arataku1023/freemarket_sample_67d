@@ -91,18 +91,18 @@
         - if @comments.present?
           .message-content
             %ul.message-items
-              = @comment.text
-
+              = render partial: 'user_comments',locals: { item: @item, comments: @comments}
         - if user_signed_in?
           .message-content
-            %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             = form_for [@item, @comment] do |c|
-              - if @item.sold_status == 1
+              -# %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              - if @item.sold_status == nil
                 = c.text_area :text,required: "required", class: 'textarea-default'
                 = c.submit "コメントする", data: { disable_with: "送信中..." },class: 'message-submit btn-default btn-gray',id: "new-comment-submit"
               - else
                 = c.text_area :text, class: 'textarea-default disabled'
-                = c.submit "売り切れのためコメントできません",:disabled => true, class: 'message-submit btn-default btn-gray'
+                = c.submit "売り切れのためコメントできません",disabled: true, class: 'message-submit btn-default btn-gray'
+        
 
 
  

@@ -159,8 +159,6 @@
         }
       }
     }   
-
-
     .item-detail-message {
       width: 700px;
       margin: 8px auto;
@@ -169,20 +167,29 @@
           padding: 24px;
           background: white;
           .message-items {
-            // @include clearfix;
+            &:after {
+              content: "";
+              clear: both;
+              display: block;
+            }
             margin: 0;
             li:first-child {
               margin: 1.5em 0 0;
             }
             .message-right {
               margin: 60px 0 0;
-              // @include clearfix;
+              &:after {
+                content: "";
+                clear: both;
+                display: block;
+              }
               .message-user {
                 float: right;
                 position: relative;
                 top: -20px;
                 display: inline-block;
                 color: #ea352d;
+                text-decoration: none;
                 figure {
                   div {
                     width: 40px;
@@ -196,7 +203,7 @@
                     }
                   }
                   .message-user-unknown {
-                    // background: $light_gray;
+                    background: lightgray;
                     text-align: center;
                     img {
                       width: 32px;
@@ -219,6 +226,7 @@
                     left: auto;
                     right: 56px;
                     text-align: right;
+                    color: #3CCACE;
                   }
                 }
                 .message-is-seller {
@@ -232,7 +240,7 @@
                 }
               }
               .message-body {
-                width: 600px;
+                width: 85%;
                 float: left;
                 position: relative;
                 padding: 16px;
@@ -240,9 +248,14 @@
                 border-radius: 15px;
                 line-height: 1.5;
                 word-break: break-all;
+                margin-bottom: 20px;
                 .message-icons {
                   margin: 8px 0 0;
-                  // @include clearfix;
+                  &:after {
+                    content: "";
+                    clear: both;
+                    display: block;
+                  }
                   i {
                     vertical-align: middle;
                     font-size: 18px;
@@ -268,6 +281,7 @@
                     }
                     button {
                       border: none;
+                      background-color: inherit;
                       .fa-flag {
                         color: #aaa;
                         background: #fbf0e6;
@@ -296,13 +310,17 @@
             }
             .message-left {
               margin: 60px 0 0;
-              // @include clearfix;
+              &:after {
+                content: "";
+                clear: both;
+                display: block;
+              }
               .message-user {
                 float: left;
                 position: relative;
                 top: -20px;
                 display: inline-block;
-                // color: $light_black;
+                color: black;
                 figure {
                   div {
                     width: 40px;
@@ -316,7 +334,7 @@
                     }
                   }
                   .message-user-unknown {
-                    // background: $light_gray;
+                    background: lightgray;
                     text-align: center;
                     img {
                       width: 32px;
@@ -337,6 +355,7 @@
                     height: 1.2em;
                     white-space: nowrap;
                     text-overflow: ellipsis;
+                    margin-right: 20px;
                   }
                 }
                 .message-is-seller {
@@ -350,7 +369,7 @@
                 }
               }
               .message-body {
-                width: 600px;
+                width: 85%;
                 float: right;
                 position: relative;
                 padding: 16px;
@@ -358,9 +377,14 @@
                 border-radius: 15px;
                 line-height: 1.5;
                 word-break: break-all;
+                margin-bottom: 20px;
                 .message-icons {
                   margin: 8px 0 0;
-                  // @include clearfix;
+                  &:after {
+                    content: "";
+                    clear: both;
+                    display: block;
+                  }
                   i {
                     vertical-align: middle;
                     font-size: 18px;
@@ -386,6 +410,7 @@
                     }
                     button {
                       border: none;
+                      background-color: inherit;
                       .fa-flag {
                         color: #aaa;
                         background: #eef0f4;
@@ -420,7 +445,7 @@
             .textarea-default {
               margin: 8px 0 0;
               display: block;
-              width: 100%;
+              width: 630px;
               max-width: 100%;
               min-height: 104px;
               padding: 10px;
@@ -430,9 +455,9 @@
               background: #f5f5f5;
             }
             .btn-default {
-              border: 1px solid #888;
-              background: #888;
-              // color: $white;
+              border: 1px solid #3CCACE;
+              background: #3CCACE;
+              color: white;
               cursor: not-allowed;
               line-height: 48px;
               display: block;
@@ -442,18 +467,16 @@
               margin: 8px 0 0;
               text-align: center;
               font-size: 14px;
-              // color: $white;
+              color: white;
             }
           }
         }
       }
     }
-
     ul{
       margin-bottom: 10px;
       height: 22px;
       li{
-        color: #3CCACE;
       }
       .previous{
         float:left;
@@ -471,12 +494,9 @@
     }
   }
 }
-
 .opa {
   opacity: 0.6;
 }
-
 .active {
   opacity: 1.0;
 }
-
