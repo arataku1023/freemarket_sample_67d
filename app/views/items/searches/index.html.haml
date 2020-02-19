@@ -4,7 +4,7 @@
   .categories_line
   .items_box
     .items_box__title
-      検索結果
+      #{params[:keyword]}　の検索結果
   - if @items.present?
     .items_box__contents
       - @items.each do |item|
@@ -14,7 +14,7 @@
               =image_tag Image.find_by(item_id: item.id).image.url
             .items_list__body
               %h3.items_list__body__name 
-                =item.detail
+                =item.name
               .items_list__body__details
                 %ul
                   %li 
