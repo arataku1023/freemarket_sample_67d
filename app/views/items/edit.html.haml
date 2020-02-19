@@ -5,6 +5,8 @@
       #sell-container
         %div{"data-reactroot" => ""}
           .exhibition__main__container__inner
+            %h2
+              = render 'layouts/notifications'
             %h2.exhibition__main__container__inner__head 商品の情報を入力
             = form_for(@item, url: "/items/#{@item.id}", method: :patch) do |f|
               .new_item__image
@@ -48,7 +50,7 @@
                     %span.listing-default--require 必須  
                     .listing-select-wrapper
                       .listing-select-wrapper__box#parent_wrapper
-                        = select_tag(:category_id, options_for_select(@parent_categories, selected: @parent),class: 'listing-select-wrapper__box--select', id: 'parent_category')
+                        = select_tag(:category_id, options_for_select(@parent_categories, selected: @parent.name),class: 'listing-select-wrapper__box--select', id: 'parent_category')
                     #children_wrapper.listing-select-wrapper__added
                       .listing-select-wrapper__box
                         %select#child_category.listing-select-wrapper__box--select{:name => ":category_id",data: {child_id: @child.id}}
