@@ -48,5 +48,9 @@ Rails.application.routes.draw do
       get 'confirm'
       get 'delete'
     end
+  end  
+
+  post "favorites/:item_id/create" => "favorites#create"
+  post "favorites/:item_id/destroy" => "favorites#destroy"
   end 
 end

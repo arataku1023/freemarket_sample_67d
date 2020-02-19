@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user=User.find(current_user.id)
+    @exhibited_items_count = Item.where(user_id: current_user.id).count
+    @purchased_items_count = Item.where(buyer_id: current_user.id).count
+    @favorites = Favorite.where(user_id: current_user.id)
   end
-
+  
   def edit
   end
 

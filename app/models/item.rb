@@ -22,6 +22,9 @@ class Item < ApplicationRecord
   has_many :comments
   belongs_to :category
 
+  has_many :favorites
+  has_many :users, through: :favorites
+
   # belongs_to :brand ←後日実装の予定
 
   def self.search(search)
