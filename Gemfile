@@ -96,3 +96,5 @@ gem 'rails-i18n'
 
 gem 'rspec-rails'
 gem 'gretel'
+
+gem "recaptcha", require: "recaptcha/rails"
