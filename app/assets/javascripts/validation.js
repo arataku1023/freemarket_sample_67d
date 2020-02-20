@@ -266,7 +266,7 @@ function card_input_check(){
 		$("#cvc_error").html("　*セキュリティーコードは必須です。");
 		$("#cvc").addClass("inp_error");
 		result = false;
-	}else if(!cvc.match(/^([0-9])$/)){
+	}else if(!cvc.match(/[0-9]/)){
   $("#cvc_error").html("　*半角数字で入力してください。");
 		$("#cvc").addClass("inp_error");
 		result = false;

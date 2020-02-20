@@ -236,6 +236,7 @@ body {
                   width: 100%;
                   line-height: 48px;
                   font-size: 14px;
+                  outline: none;
                 }
                 input {
                   border: 0;
@@ -258,4 +259,7 @@ body {
       }
     }
   }
+}
+.payjp-button{
+  outline:none;
 }
