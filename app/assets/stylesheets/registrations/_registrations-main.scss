@@ -109,34 +109,6 @@
           height: 100px;
           width: 100px;
         }
-        .prefecture_box{
-          display: block;
-          #address_prefecture{
-            width: 150px;
-            margin-top: 5px;
-            height: 50px;
-            background-color: white;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-weight: lighter;
-            font-size: 15px;
-            cursor: pointer;
-            outline: none;
-            &:focus{
-              border: 1px solid rgb(79, 185, 255);
-            }
-          }          
-          i{  //選択欄のプルダウンマーク
-            height: 20px;
-            font-size: 20px;
-            position: relative;
-            padding: 0 3px;
-            left: -30px;
-            top: 5px;
-            color: #888;
-            background-color: white;
-          }
-        }
       }
       .back-home{
         height: 50px;

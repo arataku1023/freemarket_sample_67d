@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  
-  if verify_recaptcha
-    # 正常時に実行する処理
-  end
+
+  # if verify_recaptcha
+  #   # 正常時に実行する処理
+  # end
 
   # before_action :configure_sign_in_params, only: [:create]
 

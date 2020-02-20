@@ -72,8 +72,15 @@
 
         .review
           .review__favorite
-            = icon('fas', 'star',class: "star-icon")
-            %p.text お気に入り 0 
+            - if Favorite.find_by(user_id: current_user.id, item_id: @item.id)
+              = link_to "/favorites/#{@item.id}/destroy",{method: :post} do
+                %span.fa.fa-heart.like-btn-unlike{data: {item_id: @item.id}}
+            - else
+              = link_to "/favorites/#{@item.id}/create",{method: :post} do
+                %span.fa.fa-heart.like-btn{data: {item_id: @item.id}}
+            .favorites.count
+              = @favorites_count
+
           .review__poor
             = icon('fas', 'flag', class: "flag-icon")
             %p.text 不適切な商品の通報

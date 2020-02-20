@@ -23,6 +23,14 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  has_many :favorites
+  has_many :fav_items, through: :favorites, source: :item
+  # has_secure_password
+  # extend ActiveHash::Associations::ActiveRecordExtensions do
+  #   belong_to_active_hash :birth_year
+  #   belong_to_active_hash :birth_month
+  #   belong_to_active_hash :birth_day
+  # end
   extend ActiveHash::Associations::ActiveRecordExtensions do
     belong_to_active_hash :birth_year
     belong_to_active_hash :birth_month
