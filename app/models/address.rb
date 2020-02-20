@@ -1,9 +1,5 @@
 class Address < ApplicationRecord
-  validates :post_code,               presence: true
-  validates :prefectures,              presence: true
-  validates :town,                    presence: true
-  validates :address_num,             presence: true
-  validates :apartment_info,          length: { minimum: 0, maximum: 100 }
+  validates :phone_num,               length: {maximum: 11 }
   belongs_to :user, optional: true
   validates_associated :user
 

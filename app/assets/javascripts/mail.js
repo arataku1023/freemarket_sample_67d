@@ -15,6 +15,8 @@ $(function(){
                            必須
                          </span>
                        </label>
+                       <span id="mail_way_error" class="error_n">
+                       </span>
                        <div class="select-wrap">
                          <select name="item[mail_way]" id="item_mail_way">
                            <option value="">
