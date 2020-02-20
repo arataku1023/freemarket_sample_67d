@@ -218,7 +218,6 @@ function address_input_check(){
 		$("#tel").addClass("inp_error");
 		result = false;
 	}
-
 	return result;
 }
 
@@ -277,7 +276,7 @@ function card_input_check(){
 		$("#card_number_error").html("　*カード番号は必須です。");
 		$("#card_number").addClass("inp_error");
 		result = false;
- }else if(!card_number.match(/^([0-9])$/)){
+ }else if(!card_number.match(/[0-9]/)){
   $("#card_number_error").html("　*半角数字で入力してください。");
 		$("#card_number").addClass("inp_error");
 		result = false;
@@ -287,6 +286,142 @@ function card_input_check(){
 	// 	$("#card_error").html("　*カード番号を正しく入力してください。");
 	// 	$("#card").addClass("inp_error");
 	// 	result = false;
- // }     
+ // }
+	return result;
+}
+
+
+
+
+// 商品の出品
+$(function(){
+	$('input:submit[id="item_send"]').click(function(){
+		if(!items_input_check()){
+			return false;
+		}
+ });
+});
+
+// 入力内容チェックのための関数(送付先)
+function items_input_check(){
+	var result = true;
+ // エラー用装飾のためのクラスリセット
+ $('#item_name').removeClass("inp_error");
+ $('#item_detail').removeClass("inp_error");
+ $('#parent_category').removeClass("inp_error");
+ $('#status').removeClass("inp_error");
+ $('#item_mail').removeClass("inp_error");
+ $('#item_prefecture_id').removeClass("inp_error");
+ $('#item_arrival_date_id').removeClass("inp_error");
+ $('#item_price').removeClass("inp_error");
+
+ // 入力エラー文をリセット
+ $("#img_error").empty();
+ $("#item_name_error").empty();
+ $("#item_detail_error").empty();
+ $("#category_error").empty();
+ $("#status_error").empty();
+ $("#burden_select_error").empty();
+ $("#mail_way_error").empty();
+ $("#item_prefecture_error").empty();
+ $("#arrival_date_error").empty();
+ $("#price_error").empty();
+
+	// 入力内容セット
+ var item_name = $("#item_name").val();
+ var item_detail = $("#item_detail").val();
+ var parent_category = $("#parent_category").val();
+ var status = $("#status").val();
+ var item_mail = $("#item_mail").val();
+ var item_prefecture_id = $("#item_prefecture_id").val();
+ var item_mail = $("#item_mail").val();
+ var item_arrival_date_id = $("#item_arrival_date_id").val();
+ var item_price = $("#item_price").val();
+ var img = $("#img-file").val();
+
+ // 入力内容チェック
+ //画像
+	if(img == ""){
+		$("#img_error").html("　*出品画像は必須です。");
+		$("#image-box-1").addClass("inp_error");
+		result = false;
+ }
+	// 商品名
+	if(item_name == ""){
+		$("#item_name_error").html("　*商品名は必須です。");
+		$("#item_name").addClass("inp_error");
+		result = false;
+ }
+ //商品の説明
+ if(item_detail == ""){
+		$("#item_detail_error").html("　*商品の説明は必須です。");
+		$("#item_detail_name").addClass("inp_error");
+		result = false;
+	}
+ //カテゴリー
+ if(parent_category == "---"){
+		$("#category_error").html("　*カテゴリーを選択してください。");
+		$("#parent_category").addClass("inp_error");
+		result = false;
+ }else{  //子カテゴリーのチェック
+  var child_category = $("#child_category").val();
+  if(child_category == "---"){
+   $("#category_error").html("　*二番目のカテゴリーを選択してください。");
+   $("#child_category").addClass("inp_error");
+   result = false;
+  }else{  //孫カテゴリーのチェック
+   var grandchild_category = $("#grandchild_category").val()
+   if(grandchild_category == "---"){
+    $("#category_error").html("　*三番目のカテゴリーを選択してください。");
+    $("#grandchild_category").addClass("inp_error");
+    result = false;
+   }
+  }
+ }
+ //商品の状態
+ if(status == "nothing"){
+		$("#status_error").html("　*商品の状態を選択してください。");
+		$("#status").addClass("inp_error");
+		result = false;
+	}
+ //配送料の負担
+ if(item_mail == ""){
+		$("#burden_select_error").html("　*配送料の負担を選択してください。");
+		$("#item_mail").addClass("inp_error");
+		result = false;
+	}else{
+  var item_mail_way = $("#item_mail_way").val();
+  if(item_mail_way == ""){
+   $("#mail_way_error").html("　*配送の方法を選択してください。");
+   $("#item_mail_way").addClass("inp_error");
+   result = false;
+  }
+ }
+	// 発送元の地域
+ if(item_prefecture_id == ""){
+		$("#item_prefecture_error").html("　*発送元の地域を選択してください。");
+		$("#item_prefecture_id").addClass("inp_error");
+		result = false;
+ }
+ // 発送までの日数
+ if(item_arrival_date_id == ""){
+		$("#arrival_date_error").html("　*発送までの日数を選択してください。");
+		$("#item_arrival_date_id").addClass("inp_error");
+		result = false;
+ }
+// 価格
+ if(item_price == "" ){
+		$("#price_error").html("　*価格を入力してください。");
+		$("#item_price").addClass("inp_error");
+		result = false;
+ }else if(!item_price.match(/[0-9]/)){
+		$("#price_error").html("　*半角数字で入力してください。");
+		$("#item_price").addClass("inp_error");
+		result = false;
+	}else if(item_price <300){
+		$("#price_error").html("　*300円以上で入力してください。");
+		$("#item_price").addClass("inp_error");
+		result = false;
+	}
 	return result;
 }
