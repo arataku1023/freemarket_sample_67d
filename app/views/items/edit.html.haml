@@ -6,7 +6,7 @@
         %div{"data-reactroot" => ""}
           .exhibition__main__container__inner
             %h2
-              = render 'layouts/notifications'
+              -# = render 'layouts/notifications'
             %h2.exhibition__main__container__inner__head 商品の情報を入力
             = form_for(@item, url: "/items/#{@item.id}", method: :patch) do |f|
               .new_item__image
@@ -20,27 +20,30 @@
                       .item-image{"data-image" => img.image}
                         .item-image__content
                           .item-image__content--icon
-                            = image_tag img.image.url, "height": "114", "width": "116"
+                            = image_tag img.image.url, "height": "114", "width": "116",id: :pre_img, value:'1'
                         .item-image__operetion
-                          = link_to "削除",image_path(img.id),method: :delete
+                          = link_to "削除",image_path(img.id),method: :delete,class: "item-image__operetion--delete"
                     .image-box__item-num-0#image-box__container
                       = f.fields_for :image do |i|
                         .image-box__item-num-0__input-area#image-box__container__input-area
                           = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
                           %label{for: "img-file"}
                             %i.fas.fa-camera
+                  %span#img_error.error_n
               .e-content-name
                 .e-content-name__form-group
                   %label
                     商品名
                     %span.e-content-name__form-group__require 必須
+                  %span#item_name_error.error_n
                   %div
-                    = f.text_field :name,:placeholder => "商品名（必須 40文字まで)",class: "e-content-name__form-group__input-default"
+                    = f.text_field :name,:placeholder => "商品名（必須 40文字まで)",class: "e-content-name__form-group__input-default",id: :item_name
                 .e-content-name__form-group
                   %label
                     商品の説明
                     %span.e-content-name__form-group__require 必須
-                  = f.text_area :detail,class: "e-content-name__form-group__textarea-default", :rows => "5",:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+                  %span#item_detail_error.error_n
+                  = f.text_area :detail,id: :item_detail,class: "e-content-name__form-group__textarea-default", :rows => "5",:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
               .e-content
                 .e-content__header
                   %h3.e-content__header__head 商品の詳細
@@ -48,6 +51,7 @@
                   .listing-product-detail__category
                     = f.label :category_id, "カテゴリー"
                     %span.listing-default--require 必須  
+                    %span#category_error.error_n
                     .listing-select-wrapper
                       .listing-select-wrapper__box#parent_wrapper
                         = select_tag(:category_id, options_for_select(@parent_categories, selected: @parent.name),class: 'listing-select-wrapper__box--select', id: 'parent_category')
@@ -63,8 +67,9 @@
                     %label
                       商品の状態
                       %span.form-group__require 必須
+                    %span#status_error.error_n
                     .select-wrap
-                      = f.select(:status, Item.statuses_i18n.invert,{},prompt: "---")
+                      = f.select(:status, Item.statuses_i18n.invert,{},prompt: "---",id: :status)
               .e-content
                 .e-content__header
                   %h3.e-content__header__head 配送について
@@ -76,14 +81,16 @@
                       %label
                         配送料の負担
                         %span.form-group__require 必須
+                      %span#burden_select_error.error_n
                       .select-wrap
-                        = f.select(:mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: 'item_mail')
+                        = f.select(:mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: :burden_select)
                     .form-group-way#postage_wrapper
                       %label
                         配送の方法
                         %span.form-group__require 必須
+                      %span#mail_way_error.error_n
                       .select-wrap
-                        = f.select(:mail_way,[[@item.mail_way,@item.mail_way],["",""],["",""]],class: "select-wrap__select-default",id: 'item_mail_way')
+                        = f.select(:mail_way,[[@item.mail_way,@item.mail_way]],class: "select-wrap__select-default",id: 'item_mail_way')
                   .form-group
                     %label
                       発送元の地域
@@ -111,6 +118,7 @@
                           .e-content-price__form-box__price__form-group__inner__right__input
                             ¥
                           = f.text_field :price, :placeholder => "例）300",value: @item.price,class: "amount-input"
+                      %span#price_error.error_n
                     %li.e-content-price__form-box__price__form-group
                       .e-content-price__form-box__price__form-group__inner
                         %label.e-content-price__form-box__price__form-group__inner__left
@@ -141,7 +149,7 @@
                     =link_to "加盟店規約","/jp/seller_terms/"
                     に同意したことになります。
                 %div
-                  = f.submit '変更する', class:"e-btn-box__btn-default btn-red"
+                  = f.submit '変更する', class:"e-btn-box__btn-default btn-red",id: "item_send"
                 =link_to "もどる", "/",class: "e-btn-box__btn-default btn-gray"
             .exhibition__main__container__inner__overlay
             

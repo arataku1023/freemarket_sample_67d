@@ -89,6 +89,13 @@ function user_input_check(){
   $("#pass_confirm").addClass("inp_error");
   result = false;
  }
+ //確認用のパスワードの相違チェック
+ if(passwords == pass_confirm){
+ }else{
+  $("#passwords_error").html("　*パスワードが確認内容とあっていません。");
+  $("#passwords").addClass("inp_error");
+  result = false;
+ }
  //全角
  if(zenkaku_last == "" || zenkaku_first == ""){
   $("#zenkaku_error").html("　*お名前は必須です。");
@@ -142,7 +149,7 @@ $(function(){
 function address_input_check(){
 	var result = true;
  // エラー用装飾のためのクラスリセット
- $('#postcodes').removeClass("inp_error");
+ $('#address_post_code').removeClass("inp_error");
  $('#address_prefectures').removeClass("inp_error");
  $('#town').removeClass("inp_error");
  $('#address_num').removeClass("inp_error");
@@ -156,7 +163,7 @@ function address_input_check(){
  $("#tel_error").empty();
 
 	// 入力内容セット
- var postcodes = $("#postcodes").val();
+ var postcodes = $("#address_post_code").val();
  var address_prefecture = $("#address_prefectures").val();
  var town = $("#town").val();
  var address_num = $("#address_num").val();
@@ -167,15 +174,15 @@ function address_input_check(){
 	// 郵便番号
 	if(postcodes == ""){
 		$("#postcodes_error").html("　*郵便番号は必須です。");
-		$("#postcodes").addClass("inp_error");
+		$("#address_post_code").addClass("inp_error");
 		result = false;
-	}else if(!postcodes.match(/^[0-9]+$/)){
+	}else if(!postcodes.match(/[0-9]/)){
 		$("#postcodes_error").html("　*郵便番号は半角数字で入力してください。");
-		$("#postcodes").addClass("inp_error");
+		$("#address_post_code").addClass("inp_error");
 		result = false;
  }else if(!postcodes.length == 7){
 		$("#postcodes_error").html("　*郵便番号は7文字で入力してください。");
-		$("#postcodes").addClass("inp_error");
+		$("#address_post_code").addClass("inp_error");
 		result = false;
  }
  //送付先の都道府県
@@ -202,16 +209,17 @@ function address_input_check(){
  if(address_num == ""){
 		$("#address_num_error").html("　*番地は必須です。");
 		$("#town").addClass("inp_error");
-		result = false;
-	}else if((town.match(/\A[a-zA-Z0-9]+\z/)) || (town.match(/[！-／：-＠［-｀｛-～、-〜”’・]+/g))){
-  $("#town_error").html("　*番地を正しく入力してください。");
-		$("#town").addClass("inp_error");  //機能してない
-		result = false;
- }else if(town.length > 25){
-		$("#town_error").html("　*番地は25文字以内入力してください。");
-		$("#town").addClass("inp_error");
-		result = false;
-	}
+  result = false; 
+  }else if(town.length > 25){
+   $("#town_error").html("　*番地は25文字以内入力してください。");
+   $("#town").addClass("inp_error");
+   result = false;
+  }
+	// }else if((town.match(/\A[a-zA-Z0-9]+\z/)) || (town.match(/[！-／：-＠［-｀｛-～、-〜”’・]+/g))){
+ //  $("#town_error").html("　*番地を正しく入力してください。");
+	// 	$("#town").addClass("inp_error");  //機能してない
+	// 	result = false;
+
 	// 電話番号
  if((!tel.match(/^[0-9]+$/)) && (tel.length > 1)){
 		$('#tel_error').html(" 正しい電話番号を入力してください。");
@@ -293,7 +301,7 @@ function card_input_check(){
 
 
 
-// 商品の出品
+// 商品の出品・編集
 $(function(){
 	$('input:submit[id="item_send"]').click(function(){
 		if(!items_input_check()){
@@ -302,7 +310,7 @@ $(function(){
  });
 });
 
-// 入力内容チェックのための関数(送付先)
+// 入力内容チェックのための関数(商品)
 function items_input_check(){
 	var result = true;
  // エラー用装飾のためのクラスリセット
@@ -338,11 +346,16 @@ function items_input_check(){
  var item_arrival_date_id = $("#item_arrival_date_id").val();
  var item_price = $("#item_price").val();
  var img = $("#img-file").val();
+ //編集画面に既に画像があればimgの中身をセット
+ var pre_img = document.getElementById('pre_img');
+ if(!pre_img == ""){
+  img = "1"
+ }
 
  // 入力内容チェック
  //画像
 	if(img == ""){
-		$("#img_error").html("　*出品画像は必須です。");
+  $("#img_error").html("　*出品画像は必須です。");
 		$("#image-box-1").addClass("inp_error");
 		result = false;
  }
@@ -389,7 +402,7 @@ function items_input_check(){
 		$("#burden_select_error").html("　*配送料の負担を選択してください。");
 		$("#item_mail").addClass("inp_error");
 		result = false;
-	}else{
+	}else{ //配送の方法
   var item_mail_way = $("#item_mail_way").val();
   if(item_mail_way == ""){
    $("#mail_way_error").html("　*配送の方法を選択してください。");
@@ -425,3 +438,4 @@ function items_input_check(){
 	}
 	return result;
 }
+
