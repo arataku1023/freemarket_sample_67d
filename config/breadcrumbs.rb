@@ -7,74 +7,14 @@ crumb :mypage do
   parent :root
 end
 
-crumb :caregories do
+crumb :categories do
   link 'カテゴリー一覧', categories_path
   parent :root
 end
 
-crumb :caregories_woman do
-  link 'レディース'
-  parent :caregories
-end
-
-crumb :caregories_man do
-  link 'メンズ'
-  parent :caregories
-end
-
-crumb :caregories_babykids do
-  link 'ベビー・キッズ'
-  parent :caregories
-end
-
-crumb :caregories_interior do
-  link 'インテリア・住まい・小物'
-  parent :caregories
-end
-
-crumb :caregories_bookmusicgame do
-  link '本・音楽・ゲーム'
-  parent :caregories
-end
-
-crumb :caregories_toyhobbygood do
-  link 'おもちゃ・ホビー・グッズ'
-  parent :caregories
-end
-
-crumb :caregories_cosmeperfumebeauty do
-  link 'コスメ・香水・美容'
-  parent :caregories
-end
-
-crumb :caregories_homeappliancesphonecamera do
-  link '家電・スマホ・カメラ'
-  parent :caregories
-end
-
-crumb :caregories_sportleisure do
-  link 'スポーツ・レジャー'
-  parent :caregories
-end
-
-crumb :caregories_handmade do
-  link 'ハンドメイド'
-  parent :caregories
-end
-
-crumb :caregories_ticket do
-  link 'チケット'
-  parent :caregories
-end
-
-crumb :caregories_carsmotorcycles do
-  link '自動車・オートバイ'
-  parent :caregories
-end
-
-crumb :caregories_Other do
-  link 'その他'
-  parent :caregories
+crumb :category do |category|
+  link category.name, category_path
+  parent :categories
 end
 
 crumb :mypage_card do
