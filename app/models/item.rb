@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_many :images, dependent: :destroy
+  validates :images, presence: true
   accepts_nested_attributes_for :images, allow_destroy: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions do
@@ -26,6 +27,7 @@ class Item < ApplicationRecord
   has_many :users, through: :favorites
 
   # belongs_to :brand ←後日実装の予定
+  
 
   def self.search(search)
     return Item.all unless search

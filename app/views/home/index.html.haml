@@ -101,9 +101,11 @@
                   %ul
                     %li 
                       =item.price
-                    %li
-                      %i
-                      0
+                    %li.review__favorite
+                      - if Favorite.find_by(user_id: current_user.id, item_id: item.id)
+                        %span.fa.fa-heart.like-btn-unlike{data: {item_id: item.id}}
+                      - else
+                        %span.fa.fa-heart.like-btn{data: {item_id: item.id}}
                   %p (税込)
 
 = render 'modules/banner'
