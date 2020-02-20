@@ -59,5 +59,4 @@ Rails.application.routes.draw do
 
   post "favorites/:item_id/create" => "favorites#create"
   post "favorites/:item_id/destroy" => "favorites#destroy"
-  end 
 end
