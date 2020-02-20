@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @exhibited_items_count = Item.where(user_id: current_user.id).count
     @purchased_items_count = Item.where(buyer_id: current_user.id).count
-    @favorites = Favorite.where(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc)
   end
   
   def edit

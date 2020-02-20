@@ -10,7 +10,6 @@
         .mypage-user__icon
           .mypage-user__icon__link
             .mypage-user__icon__link__image
-              -# = image_tag 'member_photo_noimage_thumb.png', size: '60x60'
               = image_tag 'https://static.mercdn.net/thumb/members/303057758.jpg?1554357581', size: '60x60'
             .mypage-user__icon__link__user-name
               = current_user.nickname + "さん"
@@ -23,7 +22,7 @@
                 =@purchased_items_count
       
       .mypage-tab
-        -# お気に入り一覧
+        
         .mypage-tab__menu
           ⭐️ お気に入り 一覧 ⭐️
           - @favorites.each do |favo|
@@ -42,9 +41,6 @@
                       ¥
                     .mypage-tab__list__item__body__time__date
                       = item.price
-            -# .mypage-tab__list__item__icon-arrow-right
-            -# = link_to "/items/#{item.id}" do
-            -#   %i.fas.fa-chevron-right
 
       .mypage-tab
         
@@ -66,30 +62,6 @@
                     ¥
                   .mypage-tab__list__item__body__time__date
                     = item.price
-            -# .mypage-tab__list__item__icon-arrow-right
-            -# = link_to "/items/#{item.id}" do
-            -#   %i.fas.fa-chevron-right
-      -# .mypage-tab-container
-      -#   .mypage-tab-container__menu
-          
-      -#   .mypage-tab-container__list
-      -#     - items = Item.where(buyer_id: @user.id)
-      -#     .mypage-tab-container__list__item
-      -#     - items.each do |item|
-      -#       .mypage-tab-container__list__item__icon
-      -#         %figure
-      -#           = image_tag Image.find_by(item_id: item.id), size: '48x48'
-      -#       .mypage-tab-container__list__item__body
-      -#         .mypage-tab-container__list__item__body__text
-      -#           = item.name
-      -#         .mypage-tab-container__list__item__body__time
-      -#           .mypage-tab-container__list__item__body__time__icon
-      -#             ¥
-      -#           .mypage-tab-container__list__item__body__time__date
-      -#             = item.price
-      -#       .mypage-tab-container__list__item__icon-arrow-right
-      -#       = link_to "/items/#{item.id}" do
-      -#         %i.fas.fa-chevron-right
 
   = render ('modules/banner')
   = render ('modules/footer')
