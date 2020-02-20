@@ -25,18 +25,21 @@
                             = i.file_field :image, type: 'file', name: "item[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
                             %label{for: "img-file"}
                               %i.fas.fa-camera
+                    %span#img_error.error_n
                 .content-name
                   .content-name__form-group
                     %label
                       商品名
                       %span.content-name__form-group__require 必須
+                    %span#item_name_error.error_n
                     %div
-                      = f.text_field :name,:placeholder => "商品名（必須 40文字まで)",class: "content-name__form-group__input-default"
+                      = f.text_field :name,:placeholder => "商品名（必須 40文字まで)",class: "content-name__form-group__input-default",id: :item_name
                   .content-name__form-group
                     %label
                       商品の説明
                       %span.content-name__form-group__require 必須
-                    = f.text_area :detail,class: "content-name__form-group__textarea-default", :rows => "5",:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+                    %span#item_detail_error.error_n
+                    = f.text_area :detail,id: :item_detail,class: "content-name__form-group__textarea-default", :rows => "5",:placeholder => "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
                 .content
                   .content__header
                     %h3.content__header__head 商品の詳細
@@ -44,6 +47,7 @@
                     .listing-product-detail__category
                       = f.label 'カテゴリー', class: 'listing-default__label'
                       %span.listing-default--require 必須
+                      %span#category_error.error_n
                       .listing-select-wrapper
                         .listing-select-wrapper__box
                           //親カテゴリーのセレクトボックスの生成
@@ -53,8 +57,9 @@
                       %label
                         商品の状態
                         %span.form-group__require 必須
+                      %span#status_error.error_n
                       .select-wrap
-                        = f.select(:status, Item.statuses_i18n.invert,{},prompt: "---")
+                        = f.select(:status, Item.statuses_i18n.invert,{},prompt: "---",id: :status)
                 .content
                   .content__header
                     %h3.content__header__head 配送について
@@ -66,18 +71,21 @@
                         %label
                           配送料の負担
                           %span.form-group__require 必須
+                        %span#burden_select_error.error_n
                         .select-wrap
                           = f.select(:mail,[["---",''],["送料込み(出品者負担)","送料込み(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]],class: "select-wrap__select-default",id: :burden_select)
                     .form-group
                       %label
                         発送元の地域
                         %span.form-group__require 必須
+                      %span#item_prefecture_error.error_n
                       .select-wrap
                         = f.collection_select(:prefecture_id,Prefecture.all,:id, :name, prompt: "---",class:"select-wrap__select-default")
                     .form-group
                       %label
                         発送までの日数
                         %span.form-group__require 必須
+                      %span#arrival_date_error.error_n
                       .select-wrap
                         = f.collection_select(:arrival_date_id,Arrival_date.all,:id, :date, prompt: "---")
                 .content-price
@@ -94,8 +102,9 @@
                           .content-price__form-box__price__form-group__inner__right
                             .content-price__form-box__price__form-group__inner__right__input
                               ¥
-                            = f.text_field :price, :placeholder => "例）300",value: "",class: "amount-input"
-
+                            .price_form
+                              = f.text_field :price, :placeholder => "例）300",value: "",class: "amount-input"
+                        %span#price_error.error_n
                       %li.content-price__form-box__price__form-group
                         .content-price__form-box__price__form-group__inner
                           %label.content-price__form-box__price__form-group__inner__left
@@ -107,10 +116,10 @@
                           .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__left.boldest 販売利益
                           .exhibition__main__container__inner__form__content-price__form-box__price__form-group__inner__right.boldest
                             .total_amount
+                      
                 .modal{:role => "dialog", :tabindex => "-1"}
                   .modal__inner
                 .btn-box
-
                   %div
                     %p
                       =link_to "禁止されている出品", "/jp/help_center/getting_started/prohibited_items/", target: "_blank"
@@ -126,7 +135,7 @@
                       =link_to "加盟店規約","/jp/seller_terms/"
                       に同意したことになります。
                   %div
-                    = f.submit '出品する', class:"btn-box__btn-default btn-red"
+                    = f.submit '出品する', class:"btn-box__btn-default btn-red", id: :item_send
                   =link_to "もどる", "/",class: "btn-box__btn-default btn-gray"
               .exhibition__main__container__inner__overlay
              
