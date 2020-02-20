@@ -256,6 +256,9 @@
                 line-height: 1.5;
                 word-break: break-all;
                 margin-bottom: 20px;
+                .message-body-text{
+                  color: black;
+                }
                 .message-icons {
                   margin: 8px 0 0;
                   &:after {
@@ -385,6 +388,9 @@
                 line-height: 1.5;
                 word-break: break-all;
                 margin-bottom: 20px;
+                .message-body-text{
+                  color: black;
+                }
                 .message-icons {
                   margin: 8px 0 0;
                   &:after {

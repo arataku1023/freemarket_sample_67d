@@ -71,6 +71,7 @@
                 = @arrival_date.date
 
         .review
+        - if user_signed_in?
           .review__favorite
             - if Favorite.find_by(user_id: current_user.id, item_id: @item.id)
               = link_to "/favorites/#{@item.id}/destroy",{method: :post} do
