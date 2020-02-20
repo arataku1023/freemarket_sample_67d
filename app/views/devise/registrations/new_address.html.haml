@@ -5,41 +5,54 @@
       %h2.signup-main__head.signup-main__head--registration
         お届け先住所入力
       = form_for @address do |f|
-        = render "devise/shared/error_messages", resource: @address
+
         .signup-main__content
           .signup-main__form-group
             = f.label '郵便番号'
             %span.signup-main__form-require 必須
-            = f.text_field :post_code,placeholder:"例)000-0000", maxlength: "7"
+            = f.text_field :post_code,placeholder:"例)000-0000", maxlength: "7", id: :postcodes
+            %br
+            %span#postcodes_error.error_m
+
           .signup-main__form-group.prefecture_box
             .labels
               = f.label '都道府県'
               %span.signup-main__form-require 必須
-            =f.collection_select(:prefectures,Prefecture.all,:name, :name, prompt: "---", id: "address_prefecture")
-            = icon('fas', 'chevron-down')
-
-          -# .signup-main__form-group 
-          -#   = f.label '都道府県'
-          -#   %span.signup-main__form-require 必須
-          -#   = f.text_field :prefectures,placeholder:"例)福岡県"
+            .prefecture_input
+              = f.collection_select(:prefectures,Prefecture.all,:name, :name, prompt: "---")
+              = icon('fas', 'chevron-down')
+            %span#address_prefectures_error.error_m
 
           .signup-main__form-group
             = f.label '市区町村'
             %span.signup-main__form-require 必須
-            = f.text_field :town,placeholder:"例)福岡市中央区"
+            = f.text_field :town,placeholder:"例)福岡市中央区", id: :town
+            %br
+            %span#town_error.error_m
+
           .signup-main__form-group 
             = f.label '番地'
             %span.signup-main__form-require 必須
-            = f.text_field :address_num
+            = f.text_field :address_num, id: :address_num
+            %br
+            %span#address_num_error.error_m
+
           .signup-main__form-group 
             = f.label 'マンション名やビル名、その部屋番号'
             %span.signup-main__form-require 任意
-            = f.text_field :apartment_info
+            = f.text_field :apartment_info, id: :apartment_info
+            %br
+            %span#apartment_info_error.error_m
+
           .signup-main__form-group 
             = f.label '電話番号'
             %span.signup-main__form-require 任意
-            = f.text_field :phone_num, maxlength: "7"
+            = f.text_field :phone_num, maxlength: "11", placeholder:"例)090-1111-2222", id: :tel
             .clearfix
+            %br
+            %span#tel_error.error_m
+            = render "devise/shared/error_messages", resource: @address
+
           %p.signup-main__form-info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
           .single
@@ -47,6 +60,6 @@
             = link_to '#', target: '_blank' do
               利用規約
             に同意したものとみなします
-          = f.submit "登録",class: 'red-btn'
+          = f.submit "登録",id: :btn_submit_address
     
   = render "modules/logo-footer"
