@@ -14,6 +14,7 @@
             .card_input
               %label カード番号
               %span.require 必須
+              %span#card_number_error.error_m
               = text_field_tag "number", "", class: "top__margin input__deafult", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
               %ul.card_list.top__margin
                 %li
@@ -30,12 +31,15 @@
                   %img{src: "//www-mercari-jp.akamaized.net/assets/img/card/dinersclub.svg?73731125", width: '32', height: '20'}
                 %li
                   %img{src: "//www-mercari-jp.akamaized.net/assets/img/card/discover.svg?73731125", width: '32', height: '20'}
+
             .card_input
               %label 有効期限
               %span.require 必須
+              %span#exp_date_error.error_m
               .select-box.top__margin
                 .select-box__half
                   %select.select__default#exp_month{name: "exp_month", type: "text"}
+                    %option{value: ""}---
                     %option{value: "1"}01
                     %option{value: "2"}02
                     %option{value: "3"}03
@@ -53,6 +57,7 @@
                 .select-box__half
                   .icon
                   %select.select__default#exp_year{name: "exp_year", type: "text"}
+                    %option{value: ""}---
                     %option{value: "2020"}20
                     %option{value: "2021"}21
                     %option{value: "2022"}22
@@ -65,11 +70,12 @@
                     %option{value: "2029"}29
                     %option{value: "2029"}30
                   = icon('fas', 'chevron-down')
-                  %span  年
+                  %span 年
             .card_input.top__margin
               %label セキュリティーコード
               %span.require 必須
               = text_field_tag "cvc", "", maxlength: "3",class: "input__deafult top__margin", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+              %span#cvc_error.error_m
               .single__code.top__margin
                 %span.question-mark ? 
                 %span カードの裏面の番号とは？

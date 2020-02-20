@@ -96,7 +96,11 @@
             }
           }
         }
-        input.red-btn{
+        a{
+          height: 100px;
+          width: 100px;
+        }
+        #btn_submit{ //user登録
           background-color: #3CCACE;
           color: white;
           margin: 24px 0px 0px;
@@ -105,9 +109,14 @@
           text-align: center;
           margin-bottom: 10px;
         }
-        a{
-          height: 100px;
-          width: 100px;
+        #btn_submit_address{ // address登録
+          background-color: #3CCACE;
+          color: white;
+          margin: 24px 0px 0px;
+          height: 50px;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
         }
       }
       .back-home{
@@ -138,4 +147,47 @@
 }
 .input-box{
   display: flex;
+  .name{
+   max-width: 170px;
+  }
+}
+.prefecture_box{
+  .prefecture_input{
+    display: flex;
+    #address_prefectures{
+      width: 150px;
+      margin-top: 5px;
+      height: 50px;
+      background-color: white;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-weight: lighter;
+      font-size: 15px;
+      cursor: pointer;
+      outline: none;
+    }
+    i{
+      height: 20px;
+      padding: 5px;
+      color: #888;
+      margin: 13px 0 0 -33px;
+      font-size: 22px;
+      background-color: white;
+    }
+  }
+}
+.alert{
+ margin: 5px 0 0;
+ color: #3CCACE;
+  button.close{
+    padding: 0 10px 3px;
+    font-size: 20px;
+    color: white;
+    border-radius: 3px;
+  }
+}
+.error_m{
+  position: relative;
+  top: 5px;
+  color: #3CCACE;
 }
