@@ -1,5 +1,7 @@
 =render 'modules/header'
-
+.bread-crumbs
+  - breadcrumb :category, @category
+  = breadcrumbs separator: " &rsaquo; ", class: 'breadcrumbs-list'
 .items_whole
   .categories_line
     - items = Item.where(category_id: @category.subtree_ids)

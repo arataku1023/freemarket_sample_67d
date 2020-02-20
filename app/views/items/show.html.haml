@@ -87,7 +87,7 @@
 
     .item-detail-message
       .message-container
-        - if @comments.present?
+        - if @comments.present? && user_signed_in?
           .message-content
             %ul.message-items
               = render partial: 'user_comments',locals: { item: @item, comments: @comments}
