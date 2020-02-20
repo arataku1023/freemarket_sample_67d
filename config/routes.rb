@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :addresses,only: [:edit, :update,:show]
+  
   resources :images,only: [:destroy]
 
   resources :categories, only: [:index, :show]

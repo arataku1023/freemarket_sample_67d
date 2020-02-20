@@ -1,0 +1,53 @@
+.wrapper
+  = render ('modules/header')
+  .main
+    = render ('modules/side-bar')
+    .main__content
+    %section.card-section
+      %h2.card-section__title お届け先住所
+      %ul.address
+        %li
+          .info 
+            .center_box
+              %span 郵便番号
+          .post.center
+            = @address.post_code
+        %li
+          .info 
+            .center_box
+              %span 都道府県
+          .prefec.center
+            = @address.prefectures
+        %li
+          .info 
+            .center_box
+              %span 市区町村
+          .town.center
+            = @address.town
+        %li
+          .info 
+            .center_box
+              %span 番地
+          .area.center
+            = @address.address_num
+        %li
+          .info 
+            .center_box
+              %span 建物の名前
+          .building.center
+            = @address.apartment_info
+        %li
+          .info 
+            .center_box
+              %span 電話番号
+          .phone.center
+            = @address.phone_num
+        .link_box
+          %button
+            = link_to "住所を変更する", edit_address_path(current_user.id)
+
+
+
+
+  = render ('modules/banner')
+  = render ('modules/footer')

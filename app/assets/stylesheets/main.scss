@@ -385,3 +385,19 @@ button{
 .items_whole {
   padding-bottom: 100px;
 }
+.notifications {
+  color: white;
+  text-align: center;  
+
+  .notice {
+    margin:0;
+    background-color: lightBlue;
+    color: white;
+  }
+
+  .alert {
+    margin: 0;
+    background-color: #3CCACE;
+    color: white;
+  }
+}
