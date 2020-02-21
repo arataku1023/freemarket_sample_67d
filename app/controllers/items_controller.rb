@@ -50,9 +50,8 @@ class ItemsController < ApplicationController
 
 
   def update
-    # binding.pry
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to item_path(@item.id)
     else
       redirect_to edit_item_path(@item.id), notice: '内容に不備があります'
     end   
@@ -91,6 +90,11 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+    if @card.present?
+      Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
+    end
   end
 
   def delete
@@ -99,7 +103,7 @@ class ItemsController < ApplicationController
 
   def pay #クレジット購入
     if @card.blank?
-      redirect_to confirmation_card_path
+      redirect_to confirm_item_path
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       @item = Item.find(params[:id])

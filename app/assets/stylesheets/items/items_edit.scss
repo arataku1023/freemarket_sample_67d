@@ -34,6 +34,10 @@
       font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
       font-family: inherit;
       -webkit-appearance: none;
+      outline:none;
+      &:focus{
+        border: 1px solid #0099e8;
+      }
     }
   }
   &__form-group {
@@ -67,6 +71,10 @@
       background-color: #fff;
       font-size: 16px;
       line-height: 1.5;
+      outline:none;
+      &:focus{
+        border: 1px solid #0099e8;
+      }
     }
   }
 }
@@ -199,6 +207,10 @@
               height: 30px;
               border: 1px solid #ccc;
               border-radius: 5px;
+              outline:none;
+              &:focus{
+                border: 1px solid #0099e8;
+              }
             }                     
           }
         }
@@ -217,9 +229,8 @@
   font-size: 14px;
   padding: 40px;
   border-top: 1px solid #eee;
-
+  outline: none;
   div {
-
     p {
       line-height: 1.5;
       a {
@@ -238,7 +249,8 @@
     background: #3CCACE;
     border: 1px solid #3CCACE;
     margin: 40px 0 0;
-    color: #fff
+    color: #fff;
+    outline: none;
   }
   .btn-gray {
     background: #aaa;
@@ -281,4 +293,8 @@
   height: 40px;
   line-height: 40px;
   font-family: 'Source Sans Pro', Helvetica , Arial, 'æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“', 'YuGothic', 'ãƒ¡ã‚¤ãƒªã‚ª', 'Meiryo', sans-serif;
+}
+a.item-image__operetion--delete{
+  color: #1be2fc;
+  text-decoration: none;
 }

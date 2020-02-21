@@ -445,12 +445,14 @@
               width: 100%;
               line-height: 48px;
               font-size: 14px;
+              outline: none;
             }
             .btn-red {
               background: #3CCACE;
               border: 1px solid #3CCACE;
               margin: 40px 0 0;
-              color: #fff
+              color: #fff;
+              outline: none;
             }
             .btn-gray {
               background: #aaa;

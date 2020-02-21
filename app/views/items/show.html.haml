@@ -28,7 +28,7 @@
               = link_to '編集', "/items/#{@item.id}/edit", method: :get, class: "btn"
               %span or
               = link_to '削除', delete_item_path, class: "btn"
-          - if user_signed_in? && current_user.id != @item.user_id
+          - if user_signed_in? && current_user.id != @item.user_id && @item.buyer_id == nil
             .purchace
               = link_to "購入確認画面へ進む", confirm_item_path,class: "link" 
                     
@@ -73,12 +73,13 @@
         .review
         - if user_signed_in?
           .review__favorite
-            - if Favorite.find_by(user_id: current_user.id, item_id: @item.id)
-              = link_to "/favorites/#{@item.id}/destroy",{method: :post} do
-                %span.fa.fa-heart.like-btn-unlike{data: {item_id: @item.id}}
-            - else
-              = link_to "/favorites/#{@item.id}/create",{method: :post} do
-                %span.fa.fa-heart.like-btn{data: {item_id: @item.id}}
+            - if user_signed_in?
+              - if Favorite.find_by(user_id: current_user.id, item_id: @item.id)
+                = link_to "/favorites/#{@item.id}/destroy",{method: :post} do
+                  %span.fa.fa-heart.like-btn-unlike{data: {item_id: @item.id}}
+              - else
+                = link_to "/favorites/#{@item.id}/create",{method: :post} do
+                  %span.fa.fa-heart.like-btn{data: {item_id: @item.id}}
             .favorites.count
               = @favorites_count
 
@@ -112,10 +113,8 @@
         後ろの商品
         = icon('fas', 'angle-right')
 
-    .see-others 
-      %p.link 
-        =@grandchildren.name
-        をもっと見る 
+    
+    = link_to "#{@grandchildren.name} をもっと見る ", category_path(@grandchildren.id), class:"see-others"
 
 = render 'modules/banner'
 

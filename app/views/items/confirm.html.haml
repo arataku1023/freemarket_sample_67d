@@ -36,15 +36,27 @@
               %section.confirm__main__container__procedures__inner__form__payment.buy-user-info{"data-buy": "pay-method"}
                 .confirm__main__container__procedures__inner__form__payment__inner
                   %h3 支払い方法
-                  =link_to confirmation_card_path do
-                    %p.confirm__main__container__procedures__inner__form__payment__inner__user-info-text
-                      %i.fas.fa-plus-circle
-                      %span.confirm__main__container__procedures__inner__form__payment__inner__user-info-text__registar-text 登録してください
+                  - if @card.blank?
+                    =link_to confirmation_card_path do
+                      %p.confirm__main__container__procedures__inner__form__payment__inner__user-info-text
+                        %i.fas.fa-plus-circle
+                        %span.confirm__main__container__procedures__inner__form__payment__inner__user-info-text__registar-text 登録してください
+                  - else
+                    .card
+                      .card__logo.cl
+                        = image_tag '//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?73731125', width: '49', height: '20', alt: 'jcb'
+                      .card__number.cn
+                        = "**** **** **** " + @default_card_information.last4
+                      .expire__date.cd
+                        - exp_month = @default_card_information.exp_month.to_s
+                        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                        = exp_month + " / " + exp_year
+
               %section.confirm__main__container__procedures__inner__form__shipping-address.buy-user-info
                 .confirm__main__container__procedures__inner__form__shipping-address__inner
                   .confirm__main__container__procedures__inner__form__shipping-address__inner__clearfix
                     %h3.confirm__main__container__procedures__inner__form__shipping-address__inner__clearfix__left 配送先
-                    =link_to "https://www.mercari.com/jp/transaction/address/m96441081104/?_s=U2FsdGVkX1-VG7m5r2eDKAuxwfPHWBaohvvHR6Sz7lUoVYolnAVTs1H_mAXRFdGh0dA4QbXrgNYHENpP_cpSvdHYrSRoWmb_8RfV8FkvFQ1JIGhfiYVvgrhMyuTaWSTw", class: "confirm__main__container__procedures__inner__form__shipping-address__inner__clearfix__right buy-user-info-fix" do
+                    =link_to edit_address_path(current_user.id), class: "confirm__main__container__procedures__inner__form__shipping-address__inner__clearfix__right buy-user-info-fix" do
                       %span 変更する
                   %address.confirm__main__container__procedures__inner__form__shipping-address__inner__user-info-text
                     %p

@@ -53,7 +53,7 @@
             .mypage-tab__list__item
               .mypage-tab__list__item__icon
                 %figure
-                  = image_tag Image.find_by(item_id: item.id), size: '48x48'
+                  = image_tag Image.find_by(item_id: item.id).image.url, size: '48x48'
               .mypage-tab__list__item__body
                 .mypage-tab__list__item__body__text
                   = item.name
