@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
- before_action :set_address,pnly: [:show, :edit, :update]
+ before_action :set_address,only: [:show, :edit, :update]
 
  def show
  end
