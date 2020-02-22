@@ -42,6 +42,10 @@ Things you may want to cover:
 ### Association
 - has_many :items, dependent: :destroy
 - has_one :address, dependent: :destroy
+- has_many :cards, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :fav_items, through: :favorites, source: :item
 
 
 ## itemsテーブル
@@ -64,8 +68,10 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :category
-- has_many :images
 - belongs_to :brand
+- has_many :images
+- has_many :favorites
+- has_many :users, through: :favorites
 
 
 ## imagesテーブル
@@ -95,7 +101,7 @@ Things you may want to cover:
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
+- belongs_to :user, optional: true
 
 
 ## brandsテーブル
