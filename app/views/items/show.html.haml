@@ -22,15 +22,16 @@
             =@item.price
           %p.tax 
             (税込) 送料込み
-      
-          - if user_signed_in? && current_user.id == @item.user_id
-            .change
-              = link_to '編集', "/items/#{@item.id}/edit", method: :get, class: "btn"
-              %span or
-              = link_to '削除', delete_item_path, class: "btn"
-          - if user_signed_in? && current_user.id != @item.user_id && @item.buyer_id == nil
-            .purchace
-              = link_to "購入確認画面へ進む", confirm_item_path,class: "link" 
+          - if @item.name == "サンプル(非購入用)"
+          - else
+            - if user_signed_in? && current_user.id == @item.user_id
+              .change
+                = link_to '編集', "/items/#{@item.id}/edit", method: :get, class: "btn"
+                %span or
+                = link_to '削除', delete_item_path, class: "btn"
+            - if user_signed_in? && current_user.id != @item.user_id && @item.buyer_id == nil
+              .purchace
+                = link_to "購入確認画面へ進む", confirm_item_path,class: "link" 
                     
       .show-detail
         .show-detail__content
