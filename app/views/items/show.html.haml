@@ -23,6 +23,11 @@
           %p.tax 
             (税込) 送料込み
           - if @item.name == "サンプル(非購入用)"
+            - if user_signed_in? && current_user.id == @item.user_id
+              .change
+                = link_to '編集', "/items/#{@item.id}/edit", method: :get, class: "btn"
+                %span or
+                = link_to '削除', delete_item_path, class: "btn"
           - else
             - if user_signed_in? && current_user.id == @item.user_id
               .change
